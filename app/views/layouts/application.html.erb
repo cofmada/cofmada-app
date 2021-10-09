@@ -19,8 +19,15 @@
     <div class="container">
       <%= render 'layouts/flash_messages' %>
       
+      <% if logged_in? && controller_path == 'toppages' && action_name == 'index' %>
+      <% elsif logged_in? %>
+      <h2>ようこそ<%= current_user.name %>さん</h2>
+      <% else %>
+      <% end %>
+      
       <%= yield %>
     </div>
+
     <p>このページに来た時間は・・・<%= l Time.zone.now %></p>
   </body>
 </html>
