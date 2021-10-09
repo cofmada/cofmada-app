@@ -9,7 +9,11 @@
 <p>◇新規番組表登録ページで登録するチャンネルを選択◇</p>
 <p>My番組表の完成！</p>
 
-<p class="bg-info">利用開始はこちら</p>
-<p>登録済みの方はこちら</p>
-<%= link_to 'ユーザー登録', signup_path, class: 'btn btn-success' %>
-<p>ログイン</p>
+<% if logged_in? %>
+  <%= link_to 'マイページへ', user_path(current_user), class: 'btn btn-success' %>
+<% else %>
+  <p class="bg-info">利用開始はこちら</p>
+  <p>登録済みの方はこちら</p>
+  <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-success' %>
+  <%= link_to 'ログイン', login_path, class: 'btn btn-success' %>
+<% end %>

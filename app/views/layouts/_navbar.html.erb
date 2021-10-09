@@ -7,10 +7,15 @@
       </button>
 
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <% if logged_in? && controller_path == 'toppages' && action_name == 'index' %>
+          <li class="ms-3"><%= link_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-secondary' %></li>
+        <% elsif logged_in? %>
         <ul class="navbar-nav">
-          <li class="nav-item"><a href="#" class="nav-link">TOPへ</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">ログアウト</a></li>
+          <li class="ms-3"><%= link_to 'TOPへ', root_path, class: 'btn btn-success' %></li>
+          <li class="ms-3"><%= link_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-secondary' %></li>
         </ul>
+        <% else %>
+        <% end %>
       </div>
     </div>
   </nav>
