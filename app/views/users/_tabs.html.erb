@@ -1,0 +1,7 @@
+<ul class="nav nav-tabs nav-justified mb-3">
+  <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">使い方<span class="badge bg-secondary"></span></a></li>
+  <li class="nav-item"><a href="<%= followings_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(progamguides_path(@user)) %>">番組表一覧<span class="badge bg-secondary"><%= @count_programguides %></span></a></li>
+  <li class="nav-item"><a href="<%= followers_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(new_progamguides_path(@user)) %>">新規番組表登録<span class="badge bg-secondary"></span></a></li>
+  <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(channels_path(@user)) %>">登録チャンネル一覧<span class="badge bg-secondary"><%= @count_channels %></span></a></li>
+  <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(new_channels_path(@user)) %>">チャンネル情報登録<span class="badge bg-secondary"></span></a></li>
+</ul>
