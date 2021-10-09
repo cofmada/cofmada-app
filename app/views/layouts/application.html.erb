@@ -21,6 +21,6 @@
       
       <%= yield %>
     </div>
-    <p><%= l Time.now %></p>
+    <p>このページに来た時間は・・・<%= l Time.zone.now %></p>
   </body>
 </html>
