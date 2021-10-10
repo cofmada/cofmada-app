@@ -3,7 +3,7 @@ class ChannelsController < ApplicationController
   before_action :correct_user, only:[:edit,:update,:destroy]
   
   def index
-    @pagy,@channels = pagy(current_user.channels.all, items:10)
+    @pagy,@channels = pagy(Channel.all, items:10)
   end
   
   def new
@@ -15,7 +15,7 @@ class ChannelsController < ApplicationController
     
     if @channel.save
       flash[:success] = 'チャンネル情報を登録しました！'
-      redirect_to @channel
+      redirect_to channels_path
     else
       flash.now[:danger] = '登録できませんでした・・・'
       render :new
@@ -27,10 +27,9 @@ class ChannelsController < ApplicationController
   end
   
   def update
-    
     if @channel.update(channel_params)
       flash[:success] = "チャンネル情報を更新しました！"
-      redirect_to @channels
+      redirect_to channels_path
     else
       flash.now[:danger] = '更新できませんでした・・・もう一度入力してください・・・'
       render :edit

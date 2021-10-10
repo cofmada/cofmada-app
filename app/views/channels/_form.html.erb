@@ -34,7 +34,14 @@
         <%= f.label :close_at, '終了' %>
         <%= f.time_field :close_at, class: 'form-control' %>
       </div>
-    <%= f.submit '登録', class: 'btn btn-success' %>
+      
+    <% if controller_path == 'new_channel' && action_name == 'new' %>
+      <%= f.submit '登録', class: 'btn btn-success' %>
+    <% else %>
+      <%= f.submit '更新', class: 'btn btn-success' %>
+      <%= link_to '削除', @channel, method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-secondary' %>
+      <%= link_to '一覧に戻る', @channel, class: 'btn btn-success' %>
+　　<% end %>
     </div>
   </div>
 <% end %>
