@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   
   resources :users, only: [:show, :create]
   resources :channels, only: [:new, :index, :create, :edit, :update, :destroy]
-
+  resources :guides
 end
