@@ -1,0 +1,20 @@
+<% if @guides.any? %>
+
+  <table class="table table-striped text-center my-5">
+    <thead>
+      <tr>
+        <th style="width: 50%">番組表名</th>
+        <th style="width: 50%">作成日</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @guides.each do |guide| %>
+        <tr>
+          <td><%= link_to guide.name, edit_guide_path(guide.id) %></td>
+          <td><%= l guide.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+<%== pagy_bootstrap_nav(@pagy) %>

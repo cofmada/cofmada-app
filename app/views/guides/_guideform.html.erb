@@ -1,0 +1,20 @@
+<%= form_with(model: @guide) do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <%= f.label :name, '番組表名' %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+    </div>
+    
+    <div class="col-sm-2">
+      <div class="form-group">
+        <%= f.label :channel_id, 'ｃｈ選択' %>
+        <%= f.collection_select :channel_id, Channel.all, :id, :name, {},class: 'form-control' %>
+      </div>
+    </div>
+    
+      <%= f.submit '登録', class: 'btn btn-success' %>
+  </div>
+<% end %>

@@ -3,7 +3,7 @@ class ChannelsController < ApplicationController
   before_action :correct_user, only:[:edit,:update,:destroy]
   
   def index
-    @pagy,@channels = pagy(Channel.all, items:10)
+    @pagy,@channels = pagy(current_user.channels.all, items:10)
   end
   
   def new
