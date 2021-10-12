@@ -11,7 +11,7 @@ class GuidesController < ApplicationController
 
   def create
     @guide = current_user.guides.build(guide_params)
-    
+
     if @guide.save
       flash[:success] = '番組表を登録しました！'
       redirect_to guides_path
@@ -23,7 +23,6 @@ class GuidesController < ApplicationController
 
   def show
     @guide = Guide.find(params[:id])
-    @channellists = @guide.guides_channels.where( guide_id: @guide.id)
   end
 
   def edit
@@ -38,7 +37,6 @@ class GuidesController < ApplicationController
   private
     
   def guide_params
-    params.require(:guide).permit(:name, :user_id, )
+    params.require(:guide).permit(:name, :user_id)
   end
-    
 end

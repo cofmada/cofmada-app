@@ -11,4 +11,5 @@ Rails.application.routes.draw do
 
   resources :channels, only: [:new, :index, :create, :edit, :update, :destroy]
   resources :guides
+  resources :guides_channels, only: [:create, :destroy]
 end
