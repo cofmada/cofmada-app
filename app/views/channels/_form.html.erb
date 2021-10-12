@@ -40,7 +40,7 @@
     <% else %>
       <%= f.submit '更新', class: 'btn btn-success' %>
       <%= link_to '削除', @channel, method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-secondary' %>
-      <%= link_to '一覧に戻る', @channel, class: 'btn btn-success' %>
+      <%= link_to '一覧に戻る', channels_path, class: 'btn btn-success' %>
 　　<% end %>
     </div>
   </div>

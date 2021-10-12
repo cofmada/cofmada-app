@@ -22,6 +22,8 @@ class GuidesController < ApplicationController
   end
 
   def show
+    @guide = Guide.find(params[:id])
+    @channellists = @guide.guides_channels.where( guide_id: @guide.id)
   end
 
   def edit

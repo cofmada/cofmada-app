@@ -1,8 +1,9 @@
 class Guide < ApplicationRecord
   belongs_to :user
-  has_many :guides_channel
-  has_many :channel, through: :guides_channel, source: :channel
+  has_many :guides_channels
+  has_many :channels, through: :guides_channels
   
   validates :name, presence: true, length: { maximum: 255 }
+  
   
 end
