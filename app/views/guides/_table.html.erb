@@ -1,0 +1,32 @@
+<table class="table table-striped text-center my-5">
+  <thead>
+    <tr>
+      <th style="width: 30%">ｃｈ名</th>
+      <th style="width: 20%">媒体</th>
+      <th style="width: 15%">開始</th>
+      <th style="width: 10%"></th>
+      <th style="width: 15%">終了</th>
+      <th style="width: 10%"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% guide.registered.each do |ch| %>
+      <tr>
+        <td><%= ch.channel_name %></td>
+        <td><%= ch.media %></td>
+        <td><%= l ch.begin_at, format: :short %></td>
+        <td>~</td>
+        <td><%= l ch.close_at, format: :short %></td>
+        <% if current_page?(edit_guide_path) %>
+          <td><%= link_to '削除', guides_channel_path, method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-secondary' %></td>
+        <% else %>
+          <td></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div>
+  <%== pagy_bootstrap_nav(pagy) %>
+</div>
+<%= link_to '一覧に戻る', guides_path, class: 'btn btn-success' %>

@@ -1,28 +1,6 @@
-<h4>番組表名：<%= @guide.name %></h4>
+<h4>番組表名：<%= @guide.guide_name %></h4>
+<h5>放送日：<%= @guide.on_air %></h5>
 <%= link_to '編集', edit_guide_path(@guide.id), class: 'btn btn-success' %>
 <%= link_to '削除', @guide, method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-secondary' %>
-  <table class="table table-striped text-center my-5">
-    <thead>
-      <tr>
-        <th style="width: 30%">ｃｈ名</th>
-        <th style="width: 15%">媒体</th>
-        <th style="width: 20%">放送日</th>
-        <th style="width: 15%">開始</th>
-        <th style="width: 5%"></th>
-        <th style="width: 15%">終了</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @guide.channels.each do |ch| %>
-        <tr>
-          <td><%= ch.channels.name %></td>
-          <td><%= ch.channels.media %></td>
-          <td><%= ch.channels.on_air %></td>
-          <td><%= l ch.channels.begin_at, format: :short %></td>
-          <td>~</td>
-          <td><%= l ch.channels.close_at, format: :short %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<%= link_to '一覧に戻る', guides_path, class: 'btn btn-success' %>
+
+<%= render'table', { guide: @guide, guidechannels: @guidechannels, pagy: @pagy } %>

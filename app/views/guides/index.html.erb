@@ -1,16 +1,19 @@
+<%= render 'layouts/tabs' %>
 <% if @guides.any? %>
-
+<p>↓名前クリックで編集ページへ</p>
   <table class="table table-striped text-center my-5">
     <thead>
       <tr>
-        <th style="width: 50%">番組表名</th>
-        <th style="width: 50%">作成日</th>
+        <th style="width: 40%">番組表名</th>
+        <th style="width: 20%">放送日</th>
+        <th style="width: 40%">作成日</th>
       </tr>
     </thead>
     <tbody>
       <% @guides.each do |guide| %>
         <tr>
-          <td><%= link_to guide.name, edit_guide_path(guide.id) %></td>
+          <td><%= link_to guide.guide_name, edit_guide_path(guide.id) %></td>
+          <td><%= l guide.on_air %></td>
           <td><%= l guide.created_at %></td>
         </tr>
       <% end %>

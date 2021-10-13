@@ -43,7 +43,11 @@ class ChannelsController < ApplicationController
     redirect_to channels_url
   end
   
-    private
+  def affilication
+    @channel = Channel.find(params[:id])
+  end
+  
+  private
     
   def correct_user
     @channel = current_user.channels.find_by(id: params[:id])
@@ -53,7 +57,7 @@ class ChannelsController < ApplicationController
   end
 
   def channel_params
-    params.require(:channel).permit(:name, :media, :on_air, :begin_at, :close_at)
+    params.require(:channel).permit(:channel_name, :media, :begin_at, :close_at)
   end
 
   

@@ -1,22 +1,21 @@
+<%= render 'layouts/tabs' %>
 <% if @channels.any? %>
 <p>↓名前クリックで編集ページへ</p>
   <table class="table table-striped text-center my-5">
     <thead>
       <tr>
         <th style="width: 30%">ｃｈ名</th>
-        <th style="width: 15%">媒体</th>
-        <th style="width: 20%">放送日</th>
-        <th style="width: 15%">開始</th>
-        <th style="width: 5%"></th>
-        <th style="width: 15%">終了</th>
+        <th style="width: 20%">媒体</th>
+        <th style="width: 20%">開始</th>
+        <th style="width: 10%"></th>
+        <th style="width: 20%">終了</th>
       </tr>
     </thead>
     <tbody>
       <% @channels.each do |ch| %>
         <tr>
-          <td><%= link_to ch.name, edit_channel_path(ch.id) %></td>
+          <td><%= link_to ch.channel_name, edit_channel_path(ch.id) %></td>
           <td><%= ch.media %></td>
-          <td><%= ch.on_air %></td>
           <td><%= l ch.begin_at, format: :short %></td>
           <td>~</td>
           <td><%= l ch.close_at, format: :short %></td>

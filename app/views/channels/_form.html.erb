@@ -1,10 +1,10 @@
-<%= form_with(model: @channel) do |f| %>
+<%= form_with(model: channel) do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
   <div class="row">
     <div class="col-sm-4">
       <div class="form-group">
-        <%= f.label :name, 'チャンネル名' %>
-        <%= f.text_field :name, class: 'form-control' %>
+        <%= f.label :channel_name, 'チャンネル名' %>
+        <%= f.text_field :channel_name, class: 'form-control' %>
       </div>
     </div>
     
@@ -12,13 +12,6 @@
       <div class="form-group">
         <%= f.label :media, '媒体' %>
         <%= f.select :media, [["Youtube", "Youtube"], ["ニコニコ", "ニコニコ"], ["Mildom", "Mildom"], ["TVその他", "TVその他"]], {}, class: 'form-control' %>
-      </div>
-    </div>
-    
-    <div class="col-sm-2">
-      <div class="form-group">
-        <%= f.label :on_air, '放送日' %>
-        <%= f.date_field :on_air, class: 'form-control' %>
       </div>
     </div>
     
@@ -35,11 +28,11 @@
         <%= f.time_field :close_at, class: 'form-control' %>
       </div>
       
-    <% if controller_path == 'new_channel' && action_name == 'new' %>
+    <% if current_page?(new_channel_path) %>
       <%= f.submit '登録', class: 'btn btn-success' %>
     <% else %>
       <%= f.submit '更新', class: 'btn btn-success' %>
-      <%= link_to '削除', @channel, method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-secondary' %>
+      <%= link_to '削除', channel, method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-secondary' %>
       <%= link_to '一覧に戻る', channels_path, class: 'btn btn-success' %>
 　　<% end %>
     </div>

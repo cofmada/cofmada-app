@@ -1,20 +1,54 @@
-<%= form_with(model: @guide) do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="form-group">
-        <%= f.label :name, '番組表名' %>
-        <%= f.text_field :name, class: 'form-control' %>
+<% @path = request.fullpath %>
+<% if @path == '/guides/new' %>
+  <%= form_with(model: guide) do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <%= f.label :guide_name, '番組表名' %>
+          <%= f.text_field :guide_name, class: 'form-control' %>
+        </div>
+      </div>
+      
+      <div class="col-sm-2">
+        <div class="form-group">
+          <%= f.label :on_air, '放送日' %>
+          <%= f.date_field :on_air, class: 'form-control' %>
+        </div>
+      </div>
+        
+      <div class="col-sm-2">
+        <div class="form-group">
+          <%= f.submit '登録', class: 'btn btn-success' %>
+        </div>
       </div>
     </div>
-    
-    <div class="col-sm-2">
-      <div class="form-group">
-        <%= f.label :channel_id, 'ｃｈ選択' %>
-        <%= f.collection_select :channel_id, Channel.all, :id, :name, {},class: 'form-control' %>
+  <% end %>
+<% else %>
+  <%= form_with(model: guide) do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <%= f.label :guide_name, '番組表名' %>
+          <%= f.text_field :guide_name, class: 'form-control' %>
+        </div>
+      </div>
+      
+      <div class="col-sm-3">
+        <div class="form-group">
+          <%= f.label :on_air, '放送日' %>
+          <%= f.date_field :on_air, class: 'form-control' %>
+        </div>
+      </div>
+      
+      <div class="col-sm-2">
+        <div class="form-group">
+          <%= f.submit '更新', class: 'btn btn-success' %>
+          <%= link_to '削除', guide, method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-secondary' %>
+        </div>
       </div>
     </div>
-    
-      <%= f.submit '登録', class: 'btn btn-success' %>
-  </div>
+  <% end %>
 <% end %>
+

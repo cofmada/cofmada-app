@@ -10,12 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_12_112328) do
+ActiveRecord::Schema.define(version: 2021_10_13_014904) do
 
   create_table "channels", charset: "utf8mb4", force: :cascade do |t|
     t.string "channel_name"
     t.string "media"
-    t.date "on_air"
     t.time "begin_at"
     t.time "close_at"
     t.bigint "user_id", null: false
@@ -29,6 +28,7 @@ ActiveRecord::Schema.define(version: 2021_10_12_112328) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "on_air"
     t.index ["user_id"], name: "index_guides_on_user_id"
   end
 
