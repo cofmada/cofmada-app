@@ -2,16 +2,16 @@ class GuidesChannelsController < ApplicationController
     before_action :require_user_logged_in
     
   def create
-    ch = Channel.find(params[:channel_id])
-    @guide.add_channel(ch)
+    @guides_channel = @guide.guides_channels.build(params[:channel_id])
+    @guides_channel.save
     flash[:success] = 'チャンネルを追加しました!'
-    redirect_to @guide
+    redirect_to guides_path
   end
 
   def destroy
-    ch = GuidesChannel.find(params[:channel_id])
-    current_user.lift_channel(ch)
+    @guides_channel = @guide.guides_channels.find(params[:channel_id])
+    @guide.channel.destroy
     flash[:success] = 'チャンネルを解除しました。'
-    redirect_to @guide
+    redirect_to edit_guide_path
   end
 end

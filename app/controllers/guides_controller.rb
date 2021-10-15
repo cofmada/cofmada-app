@@ -23,13 +23,11 @@ class GuidesController < ApplicationController
   end
 
   def show
-    @guide = Guide.find(params[:id])
-    @pagy,@guidechannels = pagy(@guide.registered.all, items:10)
+    @guide = current_user.guides.find(params[:id])
   end
 
   def edit
     @guide = current_user.guides.find_by(id: params[:id])
-    @pagy,@guidechannels = pagy(@guide.registered.all, items:10)
   end
 
   def update
@@ -49,11 +47,6 @@ class GuidesController < ApplicationController
     redirect_to guides_url
   end
   
-  def registered
-    @guide = Guide.find(params[:id])
-    @pagy, @registered = pagy(@guide.registered.order(:id))
-  end
-  
   private
   
   def correct_guide
@@ -61,7 +54,6 @@ class GuidesController < ApplicationController
     unless @guide
       redirect_to root_url
     end
-    channels = @guide.guides_channels.all
   end
     
   def guide_params

@@ -1,15 +1,16 @@
 <%= render'guideform', guide: @guide %>
-<%= form_with(model: @guide.guides_channels.build) do |f| %>
+<%= render'table', guide: @guide %>
+
+<%= form_with(model: guides_channels) do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
   <div class="row">
     <div class="col-sm-4">
       <div class="form-group">
         <%= f.label :channel_id, '↓チャンネル追加' %>
-        <%= f.collection_select :channel_id, Channel.all, :id, :channel_name, {}, class: 'form-control' %>
+        <%= f.collection_select :channel_id, current_user.channels.all, :id, :channel_name, {}, class: 'form-control' %>
         <%= f.submit '追加', class: 'btn btn-warning' %>
       </div>
     </div>
   </div>
 <% end %>
 
-<%= render'table', { guide: @guide, guidechannels: @guidechannels, pagy: @pagy } %>

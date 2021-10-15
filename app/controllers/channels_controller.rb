@@ -43,10 +43,6 @@ class ChannelsController < ApplicationController
     redirect_to channels_url
   end
   
-  def affilication
-    @channel = Channel.find(params[:id])
-  end
-  
   private
     
   def correct_user

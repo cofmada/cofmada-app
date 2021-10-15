@@ -3,4 +3,4 @@
 <%= link_to '編集', edit_guide_path(@guide.id), class: 'btn btn-success' %>
 <%= link_to '削除', @guide, method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-secondary' %>
 
-<%= render'table', { guide: @guide, guidechannels: @guidechannels, pagy: @pagy } %>
+<%= render'table', guide: @guide %>

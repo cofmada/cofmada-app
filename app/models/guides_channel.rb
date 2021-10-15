@@ -3,4 +3,5 @@ class GuidesChannel < ApplicationRecord
   belongs_to :channel
   
   validates :guide_id, uniqueness:  { scope: :channel_id }
+  
 end

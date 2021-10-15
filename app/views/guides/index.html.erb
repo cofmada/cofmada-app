@@ -10,11 +10,11 @@
       </tr>
     </thead>
     <tbody>
-      <% @guides.each do |guide| %>
+      <% @guides.each do |g| %>
         <tr>
-          <td><%= link_to guide.guide_name, edit_guide_path(guide.id) %></td>
-          <td><%= l guide.on_air %></td>
-          <td><%= l guide.created_at %></td>
+          <td><%= link_to g.guide_name, guide_path(g.id) %></td>
+          <td><%= l g.on_air %></td>
+          <td><%= l g.created_at %></td>
         </tr>
       <% end %>
     </tbody>

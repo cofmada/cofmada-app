@@ -8,17 +8,9 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   resources :users, only: [:show, :create] 
 
-  resources :channels, only: [:new, :index, :create, :edit, :update, :destroy]do
-    member do
-      get :affilication
-    end
-  end
-  
-  resources :guides do
-    member do
-      get :registerd
-    end
-  end
-  
+  resources :channels, only: [:new, :index, :create, :edit, :update, :destroy]
+
+  resources :guides 
+
   resources :guides_channels, only: [:create, :destroy]
 end
