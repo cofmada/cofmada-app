@@ -21,13 +21,13 @@
       
       <% if logged_in? && controller_path == 'toppages' && action_name == 'index' %>
       <% elsif logged_in? %>
-      <h2>ようこそ<%= current_user.name %>さん</h2>
+        <h2>ようこそ<%= current_user.name %>さん</h2>
+        <p>このページに来た時間は・・・<%= l Time.zone.now %></p>
       <% else %>
       <% end %>
       
       <%= yield %>
     </div>
 
-    <p>このページに来た時間は・・・<%= l Time.zone.now %></p>
   </body>
 </html>

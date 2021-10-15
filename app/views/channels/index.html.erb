@@ -4,11 +4,12 @@
   <table class="table table-striped text-center my-5">
     <thead>
       <tr>
-        <th style="width: 30%">ｃｈ名</th>
-        <th style="width: 20%">媒体</th>
-        <th style="width: 20%">開始</th>
-        <th style="width: 10%"></th>
-        <th style="width: 20%">終了</th>
+      <th style="width: 30%">ｃｈ名</th>
+      <th style="width: 20%">媒体</th>
+      <th style="width: 15%">開始</th>
+      <th style="width: 10%"></th>
+      <th style="width: 15%">終了</th>
+      <th style="width: 10%"></th>
       </tr>
     </thead>
     <tbody>
@@ -19,6 +20,7 @@
           <td><%= l ch.begin_at, format: :short %></td>
           <td>~</td>
           <td><%= l ch.close_at, format: :short %></td>
+          <td><%= link_to '削除', channels_path, method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-secondary' %></td>
         </tr>
       <% end %>
     </tbody>

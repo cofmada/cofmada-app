@@ -4,3 +4,17 @@
 <%= link_to '削除', @guide, method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-secondary' %>
 
 <%= render'table', guide: @guide %>
+
+<%= form_with(model: @guides_channel) do |f| %>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <%= hidden_field_tag :guide_id, params[:id] %>
+        <%= f.label :channel_id, '↓チャンネル追加' %>
+        <%= f.collection_select :channel_id, current_user.channels.all, :id, :channel_name, {}, class: 'form-control' %>
+        <%= f.submit '追加', class: 'btn btn-warning' %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<%= link_to '一覧に戻る', guides_path, class: 'btn btn-success' %>

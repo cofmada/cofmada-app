@@ -8,13 +8,34 @@
 
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <% if logged_in? && controller_path == 'toppages' && action_name == 'index' %>
-          <li class="ms-3"><%= link_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-secondary' %></li>
-        <% elsif logged_in? %>
-        <ul class="navbar-nav">
-          <li class="ms-3"><%= link_to 'TOPへ', root_path, class: 'btn btn-success' %></li>
-          <li class="ms-3"><%= link_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-secondary' %></li>
-        </ul>
+          <div class="btn-group">
+            <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">MENU</button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li class="dropdown-item"><%= link_to 'マイページへ', user_path(current_user), class: 'nav-link' %></li>
+              <li class="dropdown-divider"></li>
+              <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link' %></li>
+            </ul>
+          </div>
+        <% elsif logged_in? && controller_path == 'users' && action_name == 'show' %>
+          <div class="btn-group">
+            <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">MENU</button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li class="dropdown-item"><%= link_to 'TOPへ', root_path, class: 'nav-link' %></li>
+              <li class="dropdown-divider"></li>
+              <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link' %></li>
+            </ul>
+          </div>
         <% else %>
+          <div class="btn-group">
+            <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">MENU</button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li class="dropdown-item"><%= link_to 'TOPへ', root_path, class: 'nav-link' %></li>
+              <li class="dropdown-divider"></li>
+              <li class="dropdown-item"><%= link_to 'マイページへ', user_path(current_user), class: 'nav-link' %></li>
+              <li class="dropdown-divider"></li>
+              <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link' %></li>
+            </ul>
+          </div>
         <% end %>
       </div>
     </div>
