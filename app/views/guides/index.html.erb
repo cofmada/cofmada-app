@@ -1,7 +1,8 @@
 <%= render 'layouts/tabs' %>
 <% if @guides.any? %>
-<p>↓名前クリックで編集ページへ</p>
-  <table class="table table-striped text-center my-5">
+<div class="row m-2">
+  <div class="col-6 text-danger text-center m-0 pb-0">↓名前クリックで詳細表示・編集</div>
+  <table class="table table-striped text-center mb-3">
     <thead>
       <tr>
         <th style="width: 40%">番組表名</th>
@@ -21,3 +22,4 @@
   </table>
 <% end %>
 <%== pagy_bootstrap_nav(@pagy) %>
+</div>

@@ -1,12 +1,12 @@
-<table class="table table-striped text-center my-5">
+<table class="table  table-sm table-striped text-center my-3">
   <thead>
     <tr>
       <th style="width: 30%">ｃｈ名</th>
       <th style="width: 20%">媒体</th>
       <th style="width: 15%">開始</th>
-      <th style="width: 10%"></th>
+      <th style="width: 5%"></th>
       <th style="width: 15%">終了</th>
-      <th style="width: 10%"></th>
+      <th style="width: 15%"></th>
     </tr>
   </thead>
   <tbody>
@@ -18,7 +18,7 @@
         <td>~</td>
         <td><%= l ch.close_at, format: :short %></td>
         <% if current_page?(edit_guide_path) %>
-          <td><%= link_to '削除',  guide_guides_channel_path(params[:id], ch.id), method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-secondary' %></td>
+          <td><%= link_to '削除',  guide_guides_channel_path(params[:id], ch.id), method: :delete, data: { confirm: '削除しますか？' }, class: 'btn  btn-sm btn-secondary' %></td>
         <% else %>
           <td></td>
         <% end %>

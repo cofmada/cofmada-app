@@ -1,39 +1,35 @@
 <%= form_with(model: channel) do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="form-group">
+    <div class="row m-3">
+      <div class="col-sm-4 form-group mb-3">
         <%= f.label :channel_name, 'チャンネル名' %>
         <%= f.text_field :channel_name, class: 'form-control' %>
       </div>
-    </div>
-    
-    <div class="col-sm-2">
-      <div class="form-group">
-        <%= f.label :media, '媒体' %>
+      
+      <div class="col-sm-2 form-group mb-3">
+        <%= f.label :media, '媒体選択' %>
         <%= f.select :media, [["Youtube", "Youtube"], ["ニコニコ", "ニコニコ"], ["Mildom", "Mildom"], ["TVその他", "TVその他"]], {}, class: 'form-control' %>
       </div>
-    </div>
-    
-    <div class="col-sm-2">
-      <div class="form-group">
+      
+      <div class="col-sm-2 form-group mb-3">
         <%= f.label :begin_at, '開始' %>
         <%= f.time_field :begin_at, class: 'form-control' %>
       </div>
-    </div>
-    
-    <div class="col-sm-2">
-      <div class="form-group">
+      
+      <div class="col-sm-2 form-group mb-3">
         <%= f.label :close_at, '終了' %>
         <%= f.time_field :close_at, class: 'form-control' %>
       </div>
-      
-    <% if current_page?(new_channel_path) %>
-      <%= f.submit '登録', class: 'btn btn-success' %>
-    <% else %>
-      <%= f.submit '更新', class: 'btn btn-success' %>
-      <%= link_to '一覧に戻る', channels_path, class: 'btn btn-success' %>
-　　<% end %>
+        
+      <% if current_page?(new_channel_path) %>
+        <div class="col-sm-2 mt-4 form-group text-center">
+          <%= f.submit '登録', class: 'btn btn-success' %>
+        </div>
+      <% else %>
+        <div class="col-sm-2 mt-4 form-group text-center">
+          <%= f.submit '更新', class: 'btn btn-primary' %>
+        </div>
+  　　<% end %>
     </div>
   </div>
 <% end %>
