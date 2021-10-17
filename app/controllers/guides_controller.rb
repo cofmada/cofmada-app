@@ -24,10 +24,12 @@ class GuidesController < ApplicationController
 
   def show
     @guide = current_user.guides.find(params[:id])
+    @pagy,@guidechannels = pagy(@guide.channels.all, items:10)
   end
 
   def edit
     @guide = current_user.guides.find_by(id: params[:id])
+    @pagy,@guidechannels = pagy(@guide.channels.all, items:10)
   end
 
   def update

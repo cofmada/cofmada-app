@@ -1,12 +1,11 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark m-0 p-0">
-  <div class="container-fluid ps-5 pe-5">
-    <a class="navbar-brand" href="/"><%= p 'My番組表' unless current_page?(root_path) %></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-      <% if logged_in? && controller_path == 'toppages' && action_name == 'index' %>
+<% if logged_in? && current_page?(root_path) %>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark m-0 p-0">
+    <div class="container-fluid ps-5 pe-5">
+      <a class="navbar-brand" href="/">My番組表</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <div class="btn-group">
           <button type="button" class="btn btn-sm btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">MENU</button>
           <ul class="dropdown-menu dropdown-menu-end">
@@ -15,28 +14,53 @@
             <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link' %></li>
           </ul>
         </div>
-      <% elsif logged_in? && controller_path == 'users' && action_name == 'show' %>
-        <div class="btn-group">
-          <button type="button" class="btn btn-sm btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">MENU</button>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li class="dropdown-item"><%= link_to 'TOPへ', root_path, class: 'nav-link' %></li>
-            <li class="dropdown-divider"></li>
-            <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link' %></li>
-          </ul>
-        </div>
-      <% elsif logged_in? %>
-        <div class="btn-group">
-          <button type="button" class="btn btn-sm btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">MENU</button>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li class="dropdown-item"><%= link_to 'TOPへ', root_path, class: 'nav-link' %></li>
-            <li class="dropdown-divider"></li>
-            <li class="dropdown-item"><%= link_to 'マイページへ', user_path(current_user), class: 'nav-link' %></li>
-            <li class="dropdown-divider"></li>
-            <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link' %></li>
-          </ul>
-        </div>
-      <% else %>
-      <% end %>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+<% elsif logged_in? && controller_path == 'users' && action_name == 'show' %>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark m-0 p-0">
+    <div class="container-fluid ps-5 pe-5">
+      <a class="navbar-brand" href="/">My番組表</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <div class="btn-group">
+          <button type="button" class="btn btn-sm btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">MENU</button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li class="dropdown-item"><%= link_to 'TOPへ', root_path, class: 'nav-link' %></li>
+            <li class="dropdown-divider"></li>
+            <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link' %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+<% elsif logged_in? %>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark m-0 p-0">
+    <div class="container-fluid ps-5 pe-5">
+      <a class="navbar-brand" href="/">My番組表</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <div class="btn-group">
+          <button type="button" class="btn btn-sm btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">MENU</button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li class="dropdown-item"><%= link_to 'TOPへ', root_path, class: 'nav-link' %></li>
+            <li class="dropdown-divider"></li>
+            <li class="dropdown-item"><%= link_to 'マイページへ', user_path(current_user), class: 'nav-link' %></li>
+            <li class="dropdown-divider"></li>
+            <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link' %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+<% else %>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark m-0 p-0">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">&emsp;</a>
+    </div>
+  </nav>
+<% end %>

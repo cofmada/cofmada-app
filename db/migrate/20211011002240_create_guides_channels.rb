@@ -6,6 +6,6 @@ class CreateGuidesChannels < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+    add_index :guides_channels, [:guide_id, :channel_id], unique: true
   end
-  add_index :guides_channels, [:guide_id, :channel_id], unique: true
 end

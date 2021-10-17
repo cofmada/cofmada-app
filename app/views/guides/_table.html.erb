@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-    <% guide.channels.each do |ch| %>
+    <% guidechannels.each do |ch| %>
       <tr>
         <td><%= ch.channel_name %></td>
         <td><%= ch.media %></td>
@@ -26,3 +26,6 @@
     <% end %>
   </tbody>
 </table>
+<div class="mb-5 pb-5 px-2">
+  <%== pagy_bootstrap_nav(@pagy) %>
+</div>

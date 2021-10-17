@@ -1,37 +1,17 @@
-<% @path = request.fullpath %>
-<% if @path == '/guides/new' %>
-  <%= form_with(model: guide) do |f| %>
-    <%= render 'layouts/error_messages', model: f.object %>
-    <div class="col-sm-6 offset-sm-3 my-3">
-      <%= f.label :guide_name, '番組表名' %>
-      <%= f.text_field :guide_name, class: 'form-control' %>
-    </div>
+<%= form_with(model: guide) do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+  <div class="col-sm-4 offset-sm-4 my-3 px-3">
+    <%= f.label :guide_name, '番組表名' %>
+    <%= f.text_field :guide_name, class: 'form-control' %>
+  </div>
+  
+  <div class="col-sm-4 offset-sm-4 mb-3 px-3">
+    <%= f.label :on_air, '放送日' %>
+    <%= f.date_field :on_air, class: 'form-control' %>
+  </div>
     
-    <div class="col-sm-6 offset-sm-3 mb-3">
-      <%= f.label :on_air, '放送日' %>
-      <%= f.date_field :on_air, class: 'form-control' %>
-    </div>
-      
-    <div class="text-center">
-      <%= f.submit '登録', class: 'btn btn-success' %>
-    </div>
-  <% end %>
-<% else %>
-  <%= form_with(model: guide) do |f| %>
-    <%= render 'layouts/error_messages', model: f.object %>
-    <div class="col-sm-6 offset-sm-3 my-3">
-      <%= f.label :guide_name, '番組表名' %>
-      <%= f.text_field :guide_name, class: 'form-control' %>
-    </div>
-    
-    <div class="col-sm-6 offset-sm-3 mb-3">
-      <%= f.label :on_air, '放送日' %>
-      <%= f.date_field :on_air, class: 'form-control' %>
-    </div>
-      
-    <div class="text-center">
-      <%= f.submit '更新', class: 'btn btn-primary' %>
-    </div>
-  <% end %>
+  <div class="text-center">
+    <%= f.submit '登録', class: 'btn btn-success' %>
+  </div>
 <% end %>
 

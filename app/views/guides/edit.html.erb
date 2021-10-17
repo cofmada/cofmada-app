@@ -1,5 +1,6 @@
 <%= render'guideform', guide: @guide %>
-<%= render'table', guide: @guide %>
-<div class="text-center my-0 pb-5 pt-2 bg-secondary bg-gradient fixed-bottom">
-  <%= link_to '戻る', @guide, class: 'btn btn-warning text-dark mb-2' %>
+<%= render'table', guidechannels: @guidechannels %>
+
+<div class="text-center my-4">
+  <%= link_to '戻る', @guide, class: 'btn btn-warning text-dark mb-5 px-5' %>
 </div>

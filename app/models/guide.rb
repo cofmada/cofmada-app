@@ -4,5 +4,5 @@ class Guide < ApplicationRecord
   has_many :channels, through: :guides_channels
   
   validates :guide_name, presence: true, length: { maximum: 255 }
-  
+  validates :on_air, presence: true
 end

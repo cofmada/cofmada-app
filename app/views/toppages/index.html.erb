@@ -3,7 +3,7 @@
   <p>自分の好きなチャンネルを登録することで、自分だけの番組表を作れるサービスです。</p>
   <p>※カテゴリはYouTube、ニコニコ動画、Mildom、TVその他の4つになります。</p>
 
-  <div class="my-5 text-success">
+  <div class="my-4 text-success">
     <p>◇好きなチャンネルの情報を登録◇</p>
     <p>↓</p>
     <p>◇番組表を作ってチャンネルを追加◇</p>
@@ -15,12 +15,14 @@
     <div><%= link_to 'マイページへ', user_path(current_user), class: 'btn btn-info text-light' %></div>
   <% else %>
     <div class="row">
-      <div class="text-danger col-sm-6 ps-5">利用開始はこちら</div>
-      <div class="text-danger col-sm-6 pe-5">登録済みの方はこちら</div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6 ps-5"><%= link_to 'ユーザー登録', signup_path, class: 'btn btn-success' %></div>
-      <div class="col-sm-6 pe-5"><%= link_to '　ログイン　', login_path, class: 'btn btn-primary' %></div>
+      <div class="text-danger col-sm-3 offset-sm-3 my-1">
+        ↓利用開始↓<br>
+        <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-success px-2' %>
+      </div>
+        <div class="text-danger col-sm-3 my-1">
+          ↓登録済みの方↓<br>
+        <%= link_to 'ログイン', login_path, class: 'btn btn-primary px-4' %>
+      </div>
     </div>
   <% end %>
 </div>
