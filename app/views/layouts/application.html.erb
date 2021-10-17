@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html  lang="ja">
   <head>
     <title>My番組表</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -24,11 +24,11 @@
             <h1>MY番組表</h1>
           </div>
           <div class="text-center text-light border-bottom my-0 pt-2 bg-secondary bg-gradient">
-            <h2>自分だけのオリジナル番組表を作ろう！</h2>
+            <h3>自分だけのオリジナル番組表を作ろう！</h3>
           </div>
         <% elsif logged_in? %>
           <div class="bg-primary bg-gradient text-light text-center my-0 py-2">
-            <h1>ようこそ<%= current_user.name %>さん</h1>
+            <h2>ようこそ<%= current_user.name %>さん</h2>
           </div>
           <div class="text-center text-light border-bottom my-0 pt-3 bg-secondary bg-gradient">
             <p>このページに来たのは・・・<%= l Time.zone.now %></p>
@@ -38,7 +38,7 @@
             <h1>MY番組表</h1>
           </div>
           <div class="text-center text-light border-bottom my-0 pt-2 bg-secondary bg-gradient">
-            <h2>自分だけのオリジナル番組表を作ろう！</h2>
+            <h3>自分だけのオリジナル番組表を作ろう！</h3>
           </div>
         <% end %>
       </div>

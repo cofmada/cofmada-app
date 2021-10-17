@@ -1,25 +1,25 @@
 <div class="text-center">
-  <h2 class="my-5">ログイン認証</h2>
+  <h4 class="my-2">ログイン認証</h4>
 </div>
 
 <div class="row">
   <div class="col-sm-4 offset-sm-4 px-4">
     <%= form_with(url: login_path, scope: :session) do |f| %>
-      <div class="mb-3">
+      <div class="mb-2">
         <%= f.label :email, 'Emailアドレス' %>
         <%= f.email_field :email, class: 'form-control' %>
       </div>
-      <div class="mb-3">
+      <div class="mb-2">
         <%= f.label :password, 'パスワード' %>
         <%= f.password_field :password, class: 'form-control' %>
       </div>
-      <div class=" text-center my-4">
+      <div class=" text-center mb-5">
         <%= f.submit 'ログイン', class: 'btn btn-primary w-80' %>
       </div>
     <% end %>
   </div>
 </div>
-<div class="text-center my-3">
-  <%= link_to 'ユーザー登録へ', signup_path, class: 'btn btn-success mx-4' %>
-  <%= link_to 'TOPに戻る', root_path, class: 'btn btn-warning mx-4 px-4' %>
+<div class="text-center mb-5">
+  <%= link_to 'ユーザー登録へ', signup_path, class: 'btn btn-success mx-4 mb-5' %>
+  <%= link_to 'TOPに戻る', root_path, class: 'btn btn-warning mx-4 px-4 mb-5' %>
 </div>

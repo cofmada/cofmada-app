@@ -2,25 +2,24 @@
 <% if @guides.any? %>
   <div class="row m-2">
     <div class="col-6 text-danger text-center m-0 pb-0">↓名前クリックで詳細表示・編集</div>
-      <table class="table table-striped text-center mb-3">
-        <thead>
+    <table class="table table-striped text-center mb-3">
+      <thead>
+        <tr>
+          <th style="width: 40%">番組表名</th>
+          <th style="width: 20%">放送日</th>
+          <th style="width: 40%">作成日</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @guides.each do |g| %>
           <tr>
-            <th style="width: 40%">番組表名</th>
-            <th style="width: 20%">放送日</th>
-            <th style="width: 40%">作成日</th>
+            <td><%= link_to g.guide_name, guide_path(g.id) %></td>
+            <td><%= l g.on_air %></td>
+            <td><%= l g.created_at %></td>
           </tr>
-        </thead>
-        <tbody>
-          <% @guides.each do |g| %>
-            <tr>
-              <td><%= link_to g.guide_name, guide_path(g.id) %></td>
-              <td><%= l g.on_air %></td>
-              <td><%= l g.created_at %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 <% end %>
 <div class="mb-5 pb-5 px-2">
