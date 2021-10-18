@@ -13,13 +13,12 @@
       <%= hidden_field_tag :guide_id, params[:id] %>
       <%= f.label :channel_id, '↓追加するチャンネルを選択' %>
       <%= f.collection_select :channel_id, current_user.channels.all, :id, :channel_name, {}, class: 'form-control' %>
-      
-      <div class="text-center mt-3">
-        <%= f.submit '追加', class: 'btn btn-info text-light' %>
-      </div>
     </div>
+    <div class="text-center mt-3">
+      <%= f.submit '追加', class: 'btn btn-info text-light' %>
+    </div>
+  <% end %>
 </div>
-<% end %>
 <div class="text-center my-4">
   <%= link_to '一覧に戻る', guides_path, class: 'btn btn-warning text-dark mb-5' %>
 </div>
