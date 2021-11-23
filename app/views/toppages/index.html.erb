@@ -1,27 +1,27 @@
-<div class="text-center">
+<div class="blue-w text-center text-white m-0">
   <h2 class="my-4">My番組表とは？</h2>
   <p>自分の好きなチャンネルを登録することで、自分だけの番組表を作れるサービスです。</p>
   <p>※カテゴリはYouTube、ニコニコ動画、Mildom、TVその他の4つになります。</p>
 
-  <div class="my-4 text-success">
-    <p>◇好きなチャンネルの情報を登録◇</p>
-    <p>↓</p>
-    <p>◇番組表を作ってチャンネルを追加◇</p>
-    <p>↓</p>
-    <p>◇My番組表の完成！◇</p>
+  <div class="m-4">
+    <h5 class="p-1">◇好きなチャンネルの情報を登録◇</h5>
+    <p>▼</p>
+    <h5 class="p-1">◇番組表を作ってチャンネルを追加◇</h5>
+    <p>▼</p>
+    <h5 class="p-1">◇My番組表の完成！◇</h5>
   </div>
 
   <% if logged_in? %>
-    <div class="mb-5"><%= link_to 'マイページへ', user_path(current_user), class: 'btn btn-info text-light mb-5' %></div>
+    <div class="mb-5"><%= link_to 'マイページへ', user_path(current_user), class: 'metal btn text-light mb-5' %></div>
   <% else %>
     <div class="row mb-5">
       <div class="text-danger col-sm-3 offset-sm-3 my-1">
         ↓利用開始↓<br>
-        <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-success px-2 mb-5' %>
+        <%= link_to 'ユーザー登録', signup_path, class: 'metal btn text-success px-2 mb-5' %>
       </div>
         <div class="text-danger col-sm-3 my-1">
           ↓登録済みの方↓<br>
-        <%= link_to 'ログイン', login_path, class: 'btn btn-primary px-4 mb-5' %>
+        <%= link_to 'ログイン', login_path, class: 'metal btn text-primary px-4 mb-5' %>
       </div>
     </div>
   <% end %>

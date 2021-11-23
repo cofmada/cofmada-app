@@ -1,33 +1,35 @@
 <%= render 'layouts/tabs' %>
-<% if @channels.any? %>
-  <div class="row m-2">
-  <div class="col-4 text-danger text-center m-0 pb-0">↓名前クリックで編集</div>
-    <table class="table table-striped text-center mb-3">
-      <thead>
-        <tr>
-        <th style="width: 30%">ｃｈ名</th>
-        <th style="width: 25%">媒体</th>
-        <th style="width: 15%">開始</th>
-        <th style="width: 5%"></th>
-        <th style="width: 15%">終了</th>
-        <th style="width: 10%"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @channels.each do |ch| %>
+<div class="blue-w">
+  <% if @channels.any? %>
+    <div class="row m-2">
+    <div class="col-4 text-danger text-center m-0 pb-0">↓名前クリックで編集</div>
+      <table class="table table-striped text-center mb-3">
+        <thead>
           <tr>
-            <td><%= link_to ch.channel_name, edit_channel_path(ch.id) %></td>
-            <td><%= ch.media %></td>
-            <td><%= l ch.begin_at, format: :short %></td>
-            <td>~</td>
-            <td><%= l ch.close_at, format: :short %></td>
-            <td></td>
+          <th style="width: 30%">ｃｈ名</th>
+          <th style="width: 25%">媒体</th>
+          <th style="width: 15%">開始</th>
+          <th style="width: 5%"></th>
+          <th style="width: 15%">終了</th>
+          <th style="width: 10%"></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @channels.each do |ch| %>
+            <tr>
+              <td><%= link_to ch.channel_name, edit_channel_path(ch.id) %></td>
+              <td><%= ch.media %></td>
+              <td><%= l ch.begin_at, format: :short %></td>
+              <td>~</td>
+              <td><%= l ch.close_at, format: :short %></td>
+              <td></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+  <div class="mb-5 pb-5 px-2">
+    <%== pagy_bootstrap_nav(@pagy) %>
   </div>
-<% end %>
-<div class="mb-5 pb-5 px-2">
-  <%== pagy_bootstrap_nav(@pagy) %>
 </div>
