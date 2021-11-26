@@ -16,40 +16,22 @@
   <body data-turbolinks="false">
     <header class="m-0 p-0">
       <%= render 'layouts/navbar' %>
-      <div class="text-center border-bottom my-0 pb-1 bg-secondary bg-gradient">
-        <%= render 'layouts/clock' %>
-      </div>
       <div class="container-fruid">
+        <div class="text-light text-center my-0 py-0">
+          <h1 class="m-0 py-2">MY番組表</h1>
+        </div>
+        <div class="clock wind text-center my-0 py-1">
+          <p class="clock-date pt-2"></p>
+          <p class="clock-time pt-1"></p>
+        </div>
         <%= render 'layouts/flash_messages' %>
-        
-        <% if logged_in? && current_page?(root_path) %>
-          <div class="text-light text-center my-0 py-0">
-            <h1 class="m-0">MY番組表</h1>
-          </div>
-          <div class="wind text-center text-light my-0">
-            <h3>自分だけのオリジナル番組表を作ろう！</h3>
-          </div>
-        <% elsif logged_in? %>
-          <div class="text-light text-center my-0">
-            <h2 class="m-0">ようこそ<%= current_user.name %>さん</h2>
-          </div>
-        <% else %>
-          <div class="text-light text-center my-0 py-0">
-            <h1 class="m-0">MY番組表</h1>
-          </div>
-          <div class="wind text-center text-light my-0 py-2">
-            <h3>自分だけのオリジナル番組表を作ろう！</h3>
-          </div>
-        <% end %>
       </div>
-  </header>
+    </header>
 
-<%= yield %>
+    <%= yield %>
 
-  <footer class="bg-secondary bg-gradient text-center m-0 fixed-bottom">
-    <div>&emsp;</div>
-    <div class="bg-primary bg-gradient">&emsp;</div>
-    <div class="text-light bg-dark m-0">created_by&emsp;Cofmada</div>
-  </footer>
+    <footer class="text-center m-0 fixed-bottom">
+      <div class="text-light bg-dark m-0">created_by&emsp;Cofmada</div>
+    </footer>
   </body>
 </html>
