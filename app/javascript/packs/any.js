@@ -1,12 +1,12 @@
 document.addEventListener('turbolinks:load', () => {
+  //開閉用
   $('.ac-p').on('click', function () {
-    $(this).next().slideToggle();
-    //openクラスをつける
+    $('ul').slideToggle();
     $(this).toggleClass("open");
-    //クリックされていないac-parentのopenクラスを取る
     $('.ac-p').not(this).removeClass('open');
   });
-  const clock = () => {
+  //時計
+  setInterval((function clock() {
     const d = new Date();
     const year = d.getFullYear();
     let month = d.getMonth() + 1;
@@ -26,6 +26,6 @@ document.addEventListener('turbolinks:load', () => {
     const time = `${hour}:${min}:${sec}`;
     document.querySelector('.clock-date').innerText = today;
     document.querySelector('.clock-time').innerText = time;
-  };
-  setInterval(clock, 1000);
+    return clock;
+  }()), 1000);
 })

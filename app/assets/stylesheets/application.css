@@ -4,6 +4,7 @@ body {
     font-family: 'DotGothic16', sans-serif;
     font-weight: bold;
     font-size: 25px;
+    color: #fffafa;
     text-shadow:
            1px 1px 0px #000, -1px -1px 0px #000,
           -1px 1px 0px #000,  1px -1px 0px #000,
@@ -81,3 +82,25 @@ h1,h2,h5,.blue-w {
 }
 /*　説明文行間　*/
 p1 { line-height: 210%; }
+/*　登録ボタン表示用　*/
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+/*　ウィンドウ開閉用*/
+.ac-p:after {
+  content: "▼";
+  cursor: pointer;
+}
+.ac-p.open:after {
+  content: "▲";
+  cursor: pointer;
+}
+ul {
+  display: none;
+}
+li {
+  font-size: 20px;
+  margin-left: 2em;
+}
