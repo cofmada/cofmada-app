@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Iceland&display=swap');
 /*　基本フォント　*/
-body {
+body,.n-btn {
     font-family: 'DotGothic16', sans-serif;
     font-weight: bold;
     font-size: 25px;
@@ -38,6 +38,9 @@ h1,h2,h5,.blue-w {
 }
 /*　メタルボタン　*/
 .metal {
+  font-weight: bold;
+  font-size: 15px;
+  color: #fffafa;
   padding: 1rem 2rem;
   border-top: 4px solid #d8dcdc;
   border-right: 4px solid #666;
@@ -49,7 +52,15 @@ h1,h2,h5,.blue-w {
   background-image: -o-linear-gradient(135deg, #ccc 0%, #868888 20%, #d8dcdc 34%, white 53%, #ccc 100%);
   background-image: -moz-linear-gradient(-45deg, #ccc 0%, #868888 20%, #d8dcdc 34%, white 53%, #ccc 100%);
 }
-/*　時計表示用　*/
+.metal:hover {
+  color: #ffd700;
+}
+.metal:active {
+  -moz-webkit-transform: translateY(2px);
+  transform: translateY(2px);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  background-image: linear-gradient(135deg, #ccc 0%, #868888 20%, #d8dcdc 34%, white 53%, #ccc 100%);
+}/*　時計表示用　*/
 .clock {
   font-family: 'Iceland', cursive;;
   color: #daf6ff;
@@ -103,4 +114,20 @@ ul {
 li {
   font-size: 20px;
   margin-left: 2em;
+}
+
+.n-btn {
+  font-size: 20px;
+  border-radius: 5px;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(0deg, rgba(11,89,145,1) 0%, rgba(37,152,204,1) 30%, rgba(114,229,249,1) 70%, rgba(74,216,241,1) 100%);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+}
+
+.n-btn:active {
+  -moz-webkit-transform: translateY(2px);
+  transform: translateY(2px);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  background-image: linear-gradient(0deg, rgba(11,89,145,1) 0%, rgba(37,152,204,1) 30%, rgba(114,229,249,1) 70%, rgba(74,216,241,1) 100%);
 }
