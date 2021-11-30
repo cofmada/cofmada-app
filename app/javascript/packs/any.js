@@ -1,7 +1,7 @@
 document.addEventListener('turbolinks:load', () => {
   //開閉用
   $('.ac-p').on('click', function () {
-    $('ul').slideToggle();
+    $('ul1').slideToggle();
     $(this).toggleClass("open");
     $('.ac-p').not(this).removeClass('open');
   });

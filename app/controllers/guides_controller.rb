@@ -3,7 +3,7 @@ class GuidesController < ApplicationController
   before_action :correct_guide, only:[:edit,:update,:destroy]
 
   def index
-    @pagy,@guides = pagy(current_user.guides.all, items:10)
+    @pagy,@guides = pagy(current_user.guides.all, items:5)
   end
 
   def new
