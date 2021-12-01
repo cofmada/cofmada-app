@@ -3,13 +3,13 @@
   <%= form_with(model: @user) do |f| %>
     <%= render 'layouts/error_messages', model: f.object %>
     <div class="row px-0 m-0 pt-3">
-      <div class="col-5 text-end mb-2">
-        <%= f.label :name, 'ユーザー名:', class: 'my-2 pt-2' %>
-        <%= f.label :email, 'メールアドレス:', class: 'my-2' %>
-        <%= f.label :password, 'パスワード:', class: 'my-2' %>
-        <%= f.label :password_confirmation, 'パスワード確認:', class: 'my-2' %>
+      <div class="col-sm-4 small text-end mb-2 mx-0 px-0">
+        <%= f.label :name, 'ユーザー名:', class: 'pt-1 my-3 d-block' %>
+        <%= f.label :email, 'メールアドレス:', class: 'pt-1 my-3 d-block' %>
+        <%= f.label :password, 'パスワード:', class: 'pt-1 my-3 d-block' %>
+        <%= f.label :password_confirmation, 'パスワード確認:', class: 'pt-1 my-3 d-block' %>
       </div>
-      <div class="col-6 mb-2">
+      <div class="col-sm-5 offset-col-3 mb-2">
         <%= f.text_field :name, class: 'form-control my-3' %>
         <%= f.email_field :email, class: 'form-control my-3' %>
         <%= f.password_field :password, class: 'form-control my-3' %>

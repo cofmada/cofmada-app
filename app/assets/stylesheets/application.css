@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Iceland&display=swap');
 /*　基本フォント　*/
-body,.n-btn {
+body {
     font-family: 'DotGothic16', sans-serif;
     font-weight: bold;
     font-size: 25px;
@@ -13,20 +13,27 @@ body,.n-btn {
     margin: 0;
     background-color: #191970;
 }
+h3,.n-btn {
+    font-family: 'DotGothic16', sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+    color: #fffafa;
+    text-shadow:
+           1px 1px 0px #000, -1px -1px 0px #000,
+          -1px 1px 0px #000,  1px -1px 0px #000,
+           1px 0px 0px #000, -1px  0px 0px #000,
+           0px 1px 0px #000,  0px -1px 0px #000;
+}
 /*　基本ウィンドウ青　*/
-h1,h2,h5,.blue-w {
+h1,h2,h5,.blue-w,.alert-warning,.nav-tabs .nav-link.active,
+.text-warning,.text-success {
+  padding: 5px;
+  margin: 0;
   box-shadow:0px 0px 5px 3px rgba(0, 0, 0, 0.2);
   border: 4px solid #f5f5f5;
   border-radius: 10px;
   background: rgb(55,27,204);
   background: linear-gradient(0deg, rgba(55,27,204,1) 0%, rgba(77,45,245,1) 30%, rgba(77,150,246,1) 70%, rgba(106,124,254,1) 100%);
-}
-/*　タブメニューウィンドウ　*/
-.nav-item {
-  box-shadow:0px 0px 5px 3px rgba(0, 0, 0, 0.2)
-                ,0px 0px 5px 3px rgba(0, 0, 0, 0.2) inset;
-  border: 4px solid #f5f5f5;
-  border-radius: 10px;
 }
 /*　基本ウィンドウ黒　*/
 .wind {
@@ -39,7 +46,7 @@ h1,h2,h5,.blue-w {
 /*　メタルボタン　*/
 .metal {
   font-weight: bold;
-  font-size: 15px;
+  font-size: 20px;
   color: #fffafa;
   padding: 1rem 2rem;
   border-top: 4px solid #d8dcdc;
@@ -73,21 +80,27 @@ h1,h2,h5,.blue-w {
 .clock-time {
   font-size: 50px;
 }
+
+.nav-tabs {
+  font-size: 20px;
+}
 /*　メニューセレクト　*/
-.select {
+.select,.nav-tabs .nav-link {
   cursor: pointer;
 }
+.nav-tabs .nav-link:hover,
 .select:hover {
   color: #dcdcdc;
 }
 /* セレクト後　*/
-.selected {
+.selected,.nav-tabs .nav-link.active {
   color: #ffd700;
   margin-right: 1em;
 }
 .selected:hover {
   color: #ffd700;
 }
+.nav-tabs .nav-link.active:before,
 .selected:before {
   content: "▶";
 }
@@ -120,53 +133,82 @@ ul1 > li {
   margin-left: 2em;
   line-height: 180%;
 }
-/*　通常ボタン　*/
+/*　ボタン　*/
 .n-btn {
+  letter-spacing: 3px;
   font-size: 20px;
-  border-radius: 5px;
+  padding: 5px 5px 5px 5px;
+  border: 2px solid #afeeee;
+  border-radius: 15px;
   text-align: center;
   overflow: hidden;
   background: linear-gradient(0deg, rgba(11,89,145,1) 0%, rgba(37,152,204,1) 30%, rgba(114,229,249,1) 70%, rgba(74,216,241,1) 100%);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
 }
+.d-btn {
+  letter-spacing: 3px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fffafa;
+  padding: 5px 5px 5px 5px;
+  border: 2px solid #c71585;
+  border-radius: 15px;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(0deg, rgba(41,23,7,1) 0%, rgba(99,37,13,1) 30%, rgba(247,63,17,1) 66%, rgba(70,13,4,1) 100%);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+}
+.d-btn:active,
 .n-btn:active {
   -moz-webkit-transform: translateY(2px);
   transform: translateY(2px);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
   background-image: linear-gradient(0deg, rgba(11,89,145,1) 0%, rgba(37,152,204,1) 30%, rgba(114,229,249,1) 70%, rgba(74,216,241,1) 100%);
 }
+.d-btn:hover,
+.n-btn:hover {
+  color: #ffd700;
+  }
 /*　ページネーションデザイン*/
 .page-item.active .page-link {
   z-index: 3;
+  height: 36px;
   color: #fffafa;
-  height: 35px;
   padding-top: 0;
   margin: 0;
-  border-radius: 10px;
+  border-radius: 0;
   background: rgb(0,0,0);
   background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(18,17,20,1) 30%, rgba(70,164,223,1) 60%, rgba(37,34,77,1) 100%);
 }
 .page-item > .page-link {
   z-index: 3;
+  height: 36px;
   color: #fffafa;
-  height: 35px;
   padding-top: 0;
   margin: 0;
-  border-radius: 10px;
-  background: rgb(55,27,204);
-  background: linear-gradient(0deg, rgba(55,27,204,1) 0%, rgba(77,45,245,1) 30%, rgba(77,150,246,1) 70%, rgba(106,124,254,1) 100%);
+  border-radius: 0;
+  background: linear-gradient(0deg, rgba(87,23,249,1) 0%, rgba(113,73,246,1) 30%, rgba(201,183,254,1) 66%, rgba(106,114,255,1) 100%);
+}
+.page-link {
+  background-color: #f5f5f5;
 }
 .page-item:first-child .page-link {
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 .page-item:last-child .page-link {
-  border-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 .page-item.disabled .page-link {
   color: #fffafa;
 }
 .pagination {
   font-size: 20px;
+}
+.pagy-bootstrap-nav {
+  display: inline;
+  margin-right: 60px;
 }
 /*　表　*/
 .table,tr,td,td > a {
@@ -182,4 +224,16 @@ td {
 td > a:hover {
   letter-spacing: 5px;
   color: #ffd700;
+}
+
+.mini {
+  white-space: nowrap;
+  font-size: 18px;
+  color: #ffd700;
+}
+
+.alert-warning {
+  font-size: 20px;
+  color: #fffafa;
+  
 }

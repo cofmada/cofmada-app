@@ -1,35 +1,28 @@
 <%= form_with(model: channel) do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
-    <div class="row m-3">
-      <div class="col-sm-4 form-group mb-3">
-        <%= f.label :channel_name, 'チャンネル名' %>
-        <%= f.text_field :channel_name, class: 'form-control' %>
-      </div>
-      
-      <div class="col-sm-2 form-group mb-3">
-        <%= f.label :media, '媒体選択' %>
-        <%= f.select :media, [["Youtube", "Youtube"], ["ニコニコ", "ニコニコ"], ["Mildom", "Mildom"], ["TVその他", "TVその他"]], {}, class: 'form-control' %>
-      </div>
-      
-      <div class="col-sm-2 form-group mb-3">
-        <%= f.label :begin_at, '開始' %>
-        <%= f.time_field :begin_at, class: 'form-control' %>
-      </div>
-      
-      <div class="col-sm-2 form-group mb-3">
-        <%= f.label :close_at, '終了' %>
-        <%= f.time_field :close_at, class: 'form-control' %>
-      </div>
-      
-      <% if current_page?(new_channel_path) %>
-        <div class="col-sm-2 mt-4 form-group text-center">
-          <%= f.submit '登録', class: 'btn btn-success mx-1' %>
-        </div>
-      <% else %>
-        <div class="col-sm-2 mt-4 form-group text-center">
-          <%= f.submit '登録', class: 'btn btn-success mx-1' %>
-          <%= link_to '削除', @channel, method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-secondary mx-1' %>
-        </div>
-      <% end %>
+  <div class="row px-0 m-0 pt-3">
+    <div class="col-sm-4 small text-end mb-2 mx-0 px-0">
+      <%= f.label :channel_name, 'チャンネル名:', class: 'pt-1 my-3 d-block' %>
+      <%= f.label :media, '媒体選択:', class: 'pt-1 my-3 d-block' %>
+      <%= f.label :begin_at, '開始:', class: 'pt-1 my-3 d-block' %>
+      <%= f.label :close_at, '終了:', class: 'pt-1 my-3 d-block' %>
     </div>
+    <div class="col-sm-5 offset-col-3 mb-2">
+      <%= f.text_field :channel_name, class: 'form-control my-3' %>
+      <%= f.select :media, [["Youtube", "Youtube"], ["ニコニコ", "ニコニコ"], ["Mildom", "Mildom"], ["TVその他", "TVその他"]], {}, class: 'form-control my-3' %>
+      <%= f.time_field :begin_at, class: 'form-control my-3' %>
+      <%= f.time_field :close_at, class: 'form-control my-3' %>
+    </div>
+    
+    <% if current_page?(new_channel_path) %>
+      <div class=" text-center mb-2 mt-0">
+        <%= f.submit '登録', class: 'n-btn btn px-4 mb-3 mt-2' %>
+      </div>
+    <% else %>
+      <div class="text-center mt-2">
+        <%= f.submit '登録', class: 'n-btn btn px-4 mt-2 mx-2' %>
+        <%= link_to '削除', @channel, method: :delete, data: { confirm: '削除しますか？' }, class: 'd-btn btn px-4 mx-2 mt-2' %>
+      </div>
+    <% end %>
+  </div>
 <% end %>

@@ -1,14 +1,18 @@
-<div class="blue-w">
-  <h3 class="text-center text-danger border-bottom pb-2 mt-2">番組表名：<%= @guide.guide_name %></h3>
-  <h5 class="text-center text-danger border-bottom pb-2 mt-0">放送日：<%= @guide.on_air %></h5>
-  
-  <div class="text-center">
-    <%= link_to '編集', edit_guide_path(@guide.id), class: 'btn btn-primary mx-2' %>
-    <%= link_to '削除', @guide, method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-secondary mx-2' %>
+<div class="row blue-w align-middle px-0 m-0">
+  <div class="col-6 text-end py-2 px-1 m-0">
+    <h3>番組表名:<br>放送日:</h3>
   </div>
-  <div class="row mx-2">
-    <%= render'table', guidechannels: @guidechannels %>
-    
+  <div class="col-6 text-start py-2 px-1 m-0">
+    <h3><%= @guide.guide_name %><br><%= @guide.on_air %></h3>
+  </div>
+</div>
+<div class="row blue-w px-0 m-0">
+  <%= render'table', guidechannels: @guidechannels %>
+  <div class="d-inline-flex flex-row align-items-baseline my-2 px-2">
+    <%== pagy_bootstrap_nav(@pagy) %>
+    <%= link_to '編集', edit_guide_path(@guide.id), class: 'n-btn btn px-4 mt-2 mx-3' %>
+    <%= link_to '削除', @guide, method: :delete, data: { confirm: '削除しますか？' }, class: 'd-btn btn px-4 mx-3 mt-2' %>
+  </div>
     <%= form_with(model: @guides_channel) do |f| %>
       <div class="form-group col-sm-6 offset-sm-3 my-2">
         <%= hidden_field_tag :guide_id, params[:id] %>
@@ -16,11 +20,10 @@
         <%= f.collection_select :channel_id, current_user.channels.all, :id, :channel_name, {}, class: 'form-control' %>
       </div>
       <div class="text-center mt-3">
-        <%= f.submit '追加', class: 'btn btn-info text-light' %>
+        <%= f.submit '追加', class: 'n-btn btn px-4 mt-2 mx-3' %>
       </div>
     <% end %>
-  </div>
   <div class="text-center my-4">
-    <%= link_to '一覧に戻る', guides_path, class: 'btn btn-warning text-dark mb-5' %>
+    <%= link_to '一覧に戻る', guides_path, class: 'btn metal mb-5 p-2' %>
   </div>
 </div>
