@@ -1,8 +1,8 @@
 <div class="row text-center m-0 px-0">
-  <h3 class="col-4 offset-col-8 blue-w m-0 py-2">せつめい</h3>
+  <h3 class="col-4 offset-col-8 blue-w py-2">せつめい</h3>
 </div>
 <div class="row text-center m-0 px-0 py-0">
-  <div1 class="col-4 wind m-0 px-0 py-3">
+  <div1 class="col-4 wind px-0 py-3">
     <p class="select ev1">MY番組表？</p>
     <p class="select ev2">Ch情報登録</p>
     <p class="select ev3">登録Ch一覧</p>
@@ -13,18 +13,18 @@
   </div2>
 </div>
 <div class="row align-items-end  px-0 m-0">
-  <div class="text-center col-3 wind m-0 h-50">
+  <div class="text-center col-3 wind h-50">
     <p class=" m-0 py-1">更新情報</p>
   </div>
-  <div class="ac-p text-center col-1 blue-w m-0 p-0 h-50">
+  <div class="ac-p text-center col-1 blue-w p-0 h-50">
   </div>
   <% if logged_in? %>
-    <div class="wind col-8 text-center m-0 pt-2">
+    <div class="wind col-8 text-center pt-2">
       マイページへ<br>
       <%= link_to 'マイページ', user_path(current_user), class: 'metal btn px-2 mb-3 mt-2 py-2' %>
     </div>
   <% else %>
-    <div class=" box wind col-8 m-0">
+    <div class=" box wind col-8">
       <div class="text-center mt-2">
         利用開始<br>
         <%= link_to 'ユーザー登録', signup_path, class: 'metal btn px-2 mb-3 mt-2 py-2' %>
