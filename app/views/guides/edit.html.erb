@@ -1,5 +1,15 @@
+<h4 class="blue-w text-center gold pb-2">番組表編集ページ</h4>
 <%= render'guideform', guide: @guide %>
-<%= render'table', guidechannels: @guidechannels %>
-<div class="text-center my-4">
-  <%= link_to '戻る', @guide, class: 'btn metal my-3 py-2' %>
+<div class="blue-w text-center px-0 pb-0">
+  <h4>登録chリスト</h4>
 </div>
+<div class="row  blue-w px-0 py-3">
+  <%= render'table', guidechannels: @guidechannels %>
+  <div class="text-center my-2">
+    <%= link_to '戻る', @guide, class: 'btn metal py-2 px-4' %>
+  </div>
+</div>
+<input type="hidden" id="id" value="<%= params[:id] %>">
+<% if @guide.errors.any? %>
+  <%= javascript_pack_tag 'render' %>
+<% end %>

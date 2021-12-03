@@ -1,2 +1,6 @@
 <%= render 'layouts/tabs' %>
 <%= render'guideform', guide: @guide %>
+<input type="hidden" id="id" value="">
+<% if @guide.errors.any? %>
+  <%= javascript_pack_tag 'render' %>
+<% end %>

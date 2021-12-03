@@ -7,7 +7,7 @@ class GuidesChannelsController < ApplicationController
       redirect_to guide_path(params[:guide_id])
     else
       GuidesChannel.create(guide_id: params[:guide_id], channel_id: params[:channel_id])
-      flash[:success] = 'チャンネルを追加しました!'
+      flash[:success] = 'Chを追加しました!'
       redirect_to guide_path(params[:guide_id])
     end
   end
@@ -15,7 +15,7 @@ class GuidesChannelsController < ApplicationController
   def destroy
     @guides_channel = GuidesChannel.find_by(guide_id: params[:guide_id], channel_id: params[:id])
     @guides_channel.destroy
-    flash[:success] = 'チャンネルを解除しました。'
+    flash[:success] = 'Chを削除しました。'
     redirect_to guide_path(params[:guide_id])
   end
 end

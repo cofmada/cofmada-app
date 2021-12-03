@@ -1,4 +1,6 @@
-<div class="blue-w text-center align-middle px-0 m-0 py-2">
-  <h3>チャンネル情報編集</h3>
-</div>
+<h4 class="blue-w text-center gold pb-2">番組表編集ページ</h4>
 <%= render'form',channel: @channel %>
+<input type="hidden" id="id" value="<%= params[:id] %>">
+<% if @channel.errors.any? %>
+  <%= javascript_pack_tag 'render' %>
+<% end %>

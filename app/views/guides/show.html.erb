@@ -1,3 +1,4 @@
+<h4 class="blue-w text-center gold pb-2">番組表詳細ページ</h4>
 <div class="row blue-w align-middle p-0">
   <div class="col-6 text-end py-2 px-1 m-0">
     <h3>番組表名:<br>放送日:</h3>
@@ -5,6 +6,9 @@
   <div class="col-6 text-start py-2 px-1 m-0">
     <h3><%= @guide.guide_name %><br><%= @guide.on_air %></h3>
   </div>
+</div>
+<div class="blue-w text-center px-0 pb-0">
+  <h4>登録chリスト</h4>
 </div>
 <div class="blue-w px-0">
   <%= render'table', guidechannels: @guidechannels %>
@@ -37,3 +41,4 @@
     <%= link_to '一覧に戻る', guides_path, class: 'btn metal p-2' %>
   </div>
 </div>
+<input type="hidden" id="id" value="<%= params[:id] %>">

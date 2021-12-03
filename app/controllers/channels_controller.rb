@@ -31,7 +31,7 @@ class ChannelsController < ApplicationController
       flash[:success] = "チャンネル情報を更新しました！"
       redirect_to channels_path
     else
-      flash.now[:danger] = '更新できませんでした・・・もう一度入力してください・・・'
+      flash.now[:danger] = '更新できませんでした・・・'
       render :edit
     end
   end

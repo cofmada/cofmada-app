@@ -1,2 +1,6 @@
 <%= render 'layouts/tabs' %>
 <%= render'form',channel: @channel %>
+<input type="hidden" id="id" value="">
+<% if @channel.errors.any? %>
+  <%= javascript_pack_tag 'render' %>
+<% end %>
