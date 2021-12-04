@@ -1,20 +1,16 @@
 <%= render 'layouts/tabs' %>
-<div class="text-center blue-w">
-  <h4 class="mb-2 p-2">【チャンネル情報登録】でチャンネルの情報を登録</h4>
-  <div class="text-white">
-    <P>媒体は「YouTube」「ニコニコ」「Mildom」「TVその他」から選んでください。</P>
-    <p>1チャンネルで複数の媒体や放送時間を登録したい場合は、別で登録して下さい。</p>
+<div class="row blue-w align-middle px-0 py-4 m-0">
+  <div class="col-5 text-end">
+    <%= image_tag @user.avatar.url %>
   </div>
-  
-  <h4 class="text-light my-3 p-2">【登録チャンネル一覧】で登録内容表示</h4>
-  <div class="text-white">チャンネル情報の編集・削除はこちらから行えます。</div>
-  
-  <h4 class="text-light my-3 p-2">【新規番組表登録】で番組表を登録</h4>
-  <div class="text-white">名前と放送日を登録して下さい。</div>
-  
-  <h4 class="text-light my-3 p-2">【番組表一覧】で登録した番組表を表示</h4>
-  <div class="text-white mb-5 pb-5">
-    <p>名前をクリックすると番組表に登録されたチャンネル情報も表示されます。</p>
-    <p>チャンネルの追加や番組表の編集はこちらから行えます。</p>
+  <div class="col-5 text-center p-0">
+    <p>ユーザー:&nbsp;<%= @user.name %></p>
+    <p>番組表数:&nbsp;<%= @count_guides %></p>
+    <p>登録Ch数:&nbsp;<%= @count_channels %></p>
   </div>
 </div>
+<%= form_with(model: @user) do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+  <%= f.file_field :avatar %>
+  <%= f.submit '登録', class: 'b-metal btn' %>
+<% end %>

@@ -52,3 +52,6 @@ gem 'rails-i18n'
 group :production do
   gem 'pg', '>= 0.18', '< 2.0'
 end
+
+gem 'carrierwave'
+gem 'mini_magick'
