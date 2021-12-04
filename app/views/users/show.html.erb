@@ -1,16 +1,28 @@
 <%= render 'layouts/tabs' %>
-<div class="row blue-w align-middle px-0 py-4 m-0">
+<div class="row blue-w align-middle px-0 pt-4 m-0">
   <div class="col-5 text-end">
-    <%= image_tag @user.avatar.url %>
+    <%= image_tag @user.avatar.url %><br>
+    <div class="ac-p d-metal btn  text-center py-0 px-2 m-0">変更&nbsp;</div>
   </div>
-  <div class="col-5 text-center p-0">
+  <div class="col-5 offset-col-2 text-center p-0">
     <p>ユーザー:&nbsp;<%= @user.name %></p>
     <p>番組表数:&nbsp;<%= @count_guides %></p>
     <p>登録Ch数:&nbsp;<%= @count_channels %></p>
   </div>
 </div>
-<%= form_with(model: @user) do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
-  <%= f.file_field :avatar %>
-  <%= f.submit '登録', class: 'b-metal btn' %>
-<% end %>
+<ul1 class=" blue-w text-center align-middle px-0 py-2 m-0">
+  <div class="mini">※画像は最大150×150にリサイズされます</div>
+  <div>
+    <%= form_with(model: @user) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      <%= f.label :avatar, '写真変更:' %>
+      <%= f.file_field :avatar %>
+      <%= f.submit '登録', class: 'b-metal btn m-2' %>
+    <% end %>
+  </div>
+</ul1>
+<div class="wind text-center p-0 m-0">
+  表示中の番組表：
+</div>
+<div class=" blue-w text-center align-middle px-0 py-2 m-0">
+</div>

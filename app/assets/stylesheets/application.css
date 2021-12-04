@@ -239,5 +239,13 @@ td > a:hover {
 .alert-warning {
   font-size: 20px;
   color: #fffafa;
-  
+}
+
+img {
+  border: 3px solid #fffff9;
+  border-style: ridge;
+  border-radius: 10px;
+}
+#user_avatar {
+  font-size: 20px;
 }
