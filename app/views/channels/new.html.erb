@@ -4,3 +4,9 @@
 <% if @channel.errors.any? %>
   <%= javascript_pack_tag 'render' %>
 <% end %>
+
+<ul>
+  <% @movies.each do |movie| %>
+    <li><%= movie[:snippet][:title] %></li>
+  <% end %>
+</ul>

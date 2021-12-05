@@ -8,6 +8,12 @@ class ChannelsController < ApplicationController
   
   def new
     @channel = current_user.channels.build
+    require 'google/apis/youtube_v3'
+    youtube = Google::Apis::YoutubeV3::YouTubeService.new
+    youtube.key = Rails.application.credentials[:youtube_api_key]
+    youtube_search_list = youtube.list_searches("snippet", type: "channel", q: 'フレン', max_results: 5)
+    search_result = youtube_search_list.to_h
+    @movies = search_result[:items]
   end
   
   def create
@@ -56,5 +62,4 @@ class ChannelsController < ApplicationController
     params.require(:channel).permit(:channel_name, :media, :begin_at, :close_at)
   end
 
-  
 end

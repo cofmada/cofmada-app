@@ -93,7 +93,7 @@ h1,h2,h5,.blue-w,.alert-warning,.nav-tabs .nav-link.active,
 .metal:hover,.selected:hover,
 .gold,.nav-tabs .nav-link:hover,
 .text-warning,.text-success,
-.select:hover {
+.select:hover,.page-item > a:hover {
   color: #ffd700;
 }
 .d-metal:active,
