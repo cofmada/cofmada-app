@@ -7,5 +7,5 @@ class Channel < ApplicationRecord
   validates :media, presence: true, length: { maximum: 10 }
   validates :begin_at, presence: true
   validates :close_at, presence: true
-
+  validates :search, presence: true, length: { maximum: 20 }
 end

@@ -1,12 +1,11 @@
 <%= render 'layouts/tabs' %>
+<div class="text-center gold wind m-0 py-0">フリー登録</div>
 <%= render'form',channel: @channel %>
+
+<div class="text-center gold wind m-0 py-0">YouTube検索</div>
+<%= render'search' %>
+
 <input type="hidden" id="id" value="">
 <% if @channel.errors.any? %>
   <%= javascript_pack_tag 'render' %>
 <% end %>
-
-<ul>
-  <% @movies.each do |movie| %>
-    <li><%= movie[:snippet][:title] %></li>
-  <% end %>
-</ul>
