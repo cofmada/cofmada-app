@@ -1,0 +1,11 @@
+<ul1 class=" blue-w text-center px-0 py-2 m-0">
+  <div class="mini">※画像は最大150×150にリサイズされます</div>
+  <div>
+    <%= form_with(model: @user) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      <%= f.label :avatar, '写真変更:' %>
+      <%= f.file_field :avatar %>
+      <%= f.submit '登録', class: 'b-metal btn m-2' %>
+    <% end %>
+  </div>
+</ul1>
