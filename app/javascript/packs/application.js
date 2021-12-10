@@ -7,8 +7,9 @@ import Rails from "@rails/ujs";
 import Turbolinks from "turbolinks";
 import "channels";
 import "jquery";
-import "./any";
 import "./typewriter";
+import "./any";
+import "./render";
 
 Rails.start();
 Turbolinks.start();

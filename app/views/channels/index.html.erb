@@ -7,23 +7,14 @@
           <thead>
             <tr>
               <th style="width: 30%">ｃｈ名</th>
-              <th style="width: 25%">媒体</th>
-              <th style="width: 15%">開始</th>
-              <th style="width: 5%"></th>
-              <th style="width: 15%">終了</th>
-              <th style="width: 10%"></th>
+              <th style="width: 25%">アイコン</th>
             </tr>
           </thead>
           <tbody>
             <% @channels.each do |ch| %>
               <tr>
                 <td><%= link_to ch.channel_name, edit_channel_path(ch.id) %></td>
-                <td><%= ch.media %></td>
-                <td><%= l ch.begin_at, format: :short %></td>
-                <td>~</td>
-                <td><%= l ch.close_at, format: :short %></td>
-                <td></td>
-              </tr>
+                <td><%= ch.icon %></td>
             <% end %>
           </tbody>
         </table>

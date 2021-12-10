@@ -10,16 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_04_040900) do
+ActiveRecord::Schema.define(version: 2021_12_10_035344) do
 
   create_table "channels", charset: "utf8mb4", force: :cascade do |t|
     t.string "channel_name"
-    t.string "media"
-    t.time "begin_at"
-    t.time "close_at"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "icon"
     t.index ["user_id"], name: "index_channels_on_user_id"
   end
 
@@ -51,8 +49,22 @@ ActiveRecord::Schema.define(version: 2021_12_04_040900) do
     t.string "avatar"
   end
 
+  create_table "videos", charset: "utf8mb4", force: :cascade do |t|
+    t.string "video_name"
+    t.string "media"
+    t.time "begin_at"
+    t.time "close_at"
+    t.string "url"
+    t.string "thumbnail"
+    t.bigint "channel_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["channel_id"], name: "index_videos_on_channel_id"
+  end
+
   add_foreign_key "channels", "users"
   add_foreign_key "guides", "users"
   add_foreign_key "guides_channels", "channels"
   add_foreign_key "guides_channels", "guides"
+  add_foreign_key "videos", "channels"
 end

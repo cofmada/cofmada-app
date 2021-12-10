@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :create, :update] 
   
   resources :channels, only: [:new, :index, :create, :edit, :update, :destroy]
-  
+
   post 'guides/:id', to: 'guides_channels#create'
   resources :guides do
     resources :guides_channels, only: [:destroy]

@@ -54,7 +54,7 @@ class ChannelsController < ApplicationController
   end
 
   def channel_params
-    params.require(:channel).permit(:channel_name, :media, :begin_at, :close_at)
+    params.require(:video).permit(:channel_name, :video_name, :media, :begin_at, :close_at)
   end
 
 end
