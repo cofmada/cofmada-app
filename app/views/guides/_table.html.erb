@@ -14,10 +14,10 @@
       <% guidechannels.each do |ch| %>
         <tr>
           <td><%= ch.channel_name %></td>
-          <td><%= ch.media %></td>
-          <td><%= l ch.begin_at, format: :short %></td>
+          <td></td>
+          <td></td>
           <td>~</td>
-          <td><%= l ch.close_at, format: :short %></td>
+          <td></td>
           <% if current_page?(edit_guide_path) %>
             <td><%= link_to '削除',  guide_guides_channel_path(params[:id], ch.id), method: :delete, data: { confirm: '削除しますか？' }, class: 'btn d-metal p-1' %></td>
           <% else %>

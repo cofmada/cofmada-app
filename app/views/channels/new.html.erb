@@ -3,7 +3,7 @@
 <%= render'form',channel: @channel %>
 
 <div class="text-center gold wind m-0 py-0">YouTube検索</div>
-<%= render'search' %>
+<%= render'search',channel: @channel %>
 
 <input type="hidden" id="id" value="">
 <% if @channel.errors.any? %>

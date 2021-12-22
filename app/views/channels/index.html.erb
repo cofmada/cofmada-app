@@ -7,14 +7,16 @@
           <thead>
             <tr>
               <th style="width: 30%">ｃｈ名</th>
-              <th style="width: 25%">アイコン</th>
+              <th style="width: 10%">登録動画数</th>
+              <th style="width: 25%">URL</th>
             </tr>
           </thead>
           <tbody>
             <% @channels.each do |ch| %>
               <tr>
                 <td><%= link_to ch.channel_name, edit_channel_path(ch.id) %></td>
-                <td><%= ch.icon %></td>
+                <td><%= ch.videos.count %></td>
+                <td><%= ch.ch_url %></td>
             <% end %>
           </tbody>
         </table>

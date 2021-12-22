@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_10_035344) do
+ActiveRecord::Schema.define(version: 2021_12_13_035541) do
 
   create_table "channels", charset: "utf8mb4", force: :cascade do |t|
     t.string "channel_name"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_12_10_035344) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "icon"
+    t.string "ch_url"
     t.index ["user_id"], name: "index_channels_on_user_id"
   end
 
@@ -27,6 +28,8 @@ ActiveRecord::Schema.define(version: 2021_12_10_035344) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.date "on_air"
+    t.time "begin_at"
+    t.time "close_at"
     t.index ["user_id"], name: "index_guides_on_user_id"
   end
 
@@ -52,8 +55,6 @@ ActiveRecord::Schema.define(version: 2021_12_10_035344) do
   create_table "videos", charset: "utf8mb4", force: :cascade do |t|
     t.string "video_name"
     t.string "media"
-    t.time "begin_at"
-    t.time "close_at"
     t.string "url"
     t.string "thumbnail"
     t.bigint "channel_id", null: false
