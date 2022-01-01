@@ -250,11 +250,7 @@ img {
   font-size: 20px;
 }
 
-.non {
-  list-style:none
-}
-
-li > img {
+.text-start.mb-2 > img {
   border: none;
   border-radius: 50%;
   width: 50px;
@@ -263,4 +259,8 @@ li > img {
 
 .scroll {
   overflow: auto;
+}
+
+.col-1 > div {
+  display:none;
 }

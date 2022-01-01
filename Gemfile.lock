@@ -248,6 +248,9 @@ GEM
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     uber (0.1.0)
+    validate_url (1.0.13)
+      activemodel (>= 3.0.0)
+      public_suffix
     web-console (4.1.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -286,6 +289,7 @@ DEPENDENCIES
   spring
   turbolinks (~> 5)
   tzinfo-data
+  validate_url
   web-console (>= 4.1.0)
   webpacker (~> 5.0)
 

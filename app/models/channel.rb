@@ -4,5 +4,7 @@ class Channel < ApplicationRecord
   has_many :guides, through: :guides_channels
   has_many :videos
   
-  validates :search, presence: true, length: { maximum: 20 }
+  validates :channel_name, presence: true, length: { maximum: 50 }
+  validates :ch_url, url: { allow_blank: true }
+  validates :icon, url: { allow_blank: true }
 end

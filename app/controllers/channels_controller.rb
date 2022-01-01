@@ -8,7 +8,7 @@ class ChannelsController < ApplicationController
   
   def new
     @channel = current_user.channels.build
-    search(params[:search]) if params[:search].present?
+    search(params[:search]) if request.get?
   end
   
   def create
@@ -54,7 +54,7 @@ class ChannelsController < ApplicationController
   end
 
   def channel_params
-    params.require(:video).permit(:channel_name, :video_name, :media, :begin_at, :close_at)
+    params.require(:channel).permit(:channel_name, :user_id, :ch_url, :icon)
   end
 
 end

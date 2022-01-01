@@ -1,20 +1,30 @@
 <%= form_with url: new_channel_path, method: :get do |f| %>
   <div class="row text-center blue-w align-items-center px-0 py-3 m-0">
     <div class="mini text-center">※入力は20文字まで、結果は上位5件のみ表示</div>
-    <div class="col-3 text-end mx-0 px-0"><%= f.label :search, 'Ch名：' %></div>
-    <div class="col-7 mx-0 px-0"><%= f.text_field :search, maxlength: 20, class: 'form-control' %></div>
+    <div class="col-2 text-end mx-0 px-0"><%= f.label :search, 'Ch名：' %></div>
+    <div class="col-8 mx-0 px-0"><%= f.text_field :search, maxlength: 20, value: params[:search], class: 'form-control' %></div>
     <div class="col-2 mx-0 px-0"><%= f.submit '検索', class: 'd-metal btn px-2 py-0' %></div>
+   
 
-    <ul class="non text-center px-2 py-3 m-0">
-      <% if params[:search].present? %>
-        <%= form_with(model: channel) do |f| %>
-          <li class="gold pb-3">『<%= params[:search] %>』の検索結果</li>
-          <% @results.each do |ch_data| %>
-            <li class="mb-2"><img src=<%= ch_data[:snippet][:thumbnails][:default][:url] %>><%= ch_data[:snippet][:title] %>
-            <%= f.check_box :channel_name, style: 'transform: scale(2);' %></li>
-          <% end %>
+    <% if params[:search].present? %>
+      <%= form_with(model: channel) do |f| %>
+        <div class="text-center gold py-3">『<%= params[:search] %>』の検索結果</div>
+        <% @results.each.with_index(1) do |ch_data, i| %>
+          <% icons = ch_data[:snippet][:thumbnails][:default][:url] %>
+          <% names = ch_data[:snippet][:title] %>
+          <div class="col-2" ></div>
+          <div class="col-7 text-start small border-bottom mx-0 px-0 mb-2" >
+            <img src=<%= icons %>>
+            <%= names %>
+          </div>
+          <div class="col-1 text-start px-0 pb-2 mb-2"><%= f.check_box :channel_name, { style: 'transform: scale(2);', class: i }, names, false %>
+            <div><%= f.check_box :icon, { id: i }, icons, false %></div>
+          </div>
+          <div class="col-2" ></div>
         <% end %>
+        <div class="mini text-center mt-2">↓チェックしたCh名を登録↓</div>
+        <div class="text-center"><%= f.submit '登録', class: 'b-metal btn m-0 py-0' %></div>
       <% end %>
-    </ul>
-  </div>
+    <% end %>
+  </div>  
 <% end %>
