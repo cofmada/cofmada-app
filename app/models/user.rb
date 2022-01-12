@@ -7,6 +7,6 @@ class User < ApplicationRecord
   has_secure_password
   mount_uploader :avatar, ImageUploader
   
-  has_many :channels
-  has_many :guides
+  has_many :channels, dependent: :destroy
+  has_many :guides, dependent: :destroy
 end

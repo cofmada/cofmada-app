@@ -1,6 +1,6 @@
 class ChannelsController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_channel, only:[:show, :edit,:update,:destroy]
+  before_action :correct_channel, only:[:show,:edit,:update,:destroy]
   
   def index
     @pagy,@channels = pagy(current_user.channels.all, items:10)
@@ -44,10 +44,14 @@ class ChannelsController < ApplicationController
   end
   
   def destroy
-    @channel.destroy
-    
-    flash[:success] = 'チャンネル情報を削除しました。'
-    redirect_to channels_url
+    if request.referer&.include?("/channels/#{params[:id]}")
+      @channel.videos.where(id: delete_ids[:video_id]).delete_all
+      flash[:success] = '動画を削除しました。'
+      redirect_to @channel
+    else @channel.destroy
+      flash[:success] = 'チャンネル情報を削除しました。'
+      redirect_to channels_url
+    end
   end
   
   private
@@ -65,5 +69,9 @@ class ChannelsController < ApplicationController
   
   def video_params
     params.require(:channel).permit(:channel_id, :video_name, :media, :url, :thumbnail )
+  end
+  
+  def delete_ids
+    params.require(:channel).permit(video_id: [])
   end
 end
