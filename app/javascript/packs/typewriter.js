@@ -1,24 +1,24 @@
 document.addEventListener('turbolinks:load', () => {
-  const txt1 = `好きなチャンネルの情報を登録し、自分だけのオリジナル番組表を作るサービスです。`;
-  const txt2 = `放送している媒体を選択し、Ch情報を登録できます。`;
-  const txt3 = `登録したChの一覧が確認でき、情報の編集や削除が行えます。`;
-  const txt4 = `登録したCh情報を元に番組表の作成・登録ができます。`;
-  const txt5 = `番組表の一覧が確認でき、表の編集や削除が行えます。`;
+  const txt1 = `好きなチャンネルや動画の情報を登録することで、自分だけの番組表を作成できます。アーカイブ消化や視聴スケジュール表としてご活用下さい。`;
+  const txt2 = `Ch名とChのURLを登録できます。まずはこちらで登録をして下さい。`;
+  const txt3 = `登録したChの一覧が確認できます。一覧にある各Ch名をクリックし、動画の登録を行って下さい。`;
+  const txt4 = `登録したCh情報と動画情報を元に、番組表の作成・登録ができます。`;
+  const txt5 = `番組表の一覧が確認でき、表の編集ができます。`;
 
   //タイプライター風表示
   const showText = (selector) => {
     let i = 0;
     $.when(
-      $('div1 > p').removeClass('selected'),
-      $('div1').css('pointer-events', 'none'),
-      $('div2').html('<p1 id="type" class="pt-2"></p1>')
+      $('.writer > p').removeClass('selected'),
+      $('.writer').css('pointer-events', 'none'),
+      $('.txt').html('<p id="type" class="pt-2"></p>')
     ).done(function typeWriter() {
       if (i < selector.length) {
         document.getElementById('type').innerHTML += selector.charAt(i);
         i++;
-        setTimeout(typeWriter, 30);
+        setTimeout(typeWriter, 40);
         if (i == selector.length) {
-          $('div1').css('pointer-events', '');
+          $('.writer').css('pointer-events', '');
         }
       }
     });

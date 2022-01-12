@@ -14,10 +14,10 @@ class GuidesController < ApplicationController
     @guide = current_user.guides.build(guide_params)
 
     if @guide.save
-      flash[:success] = '番組表を登録しました！'
+      flash[:success] = '登録完了！'
       redirect_to guides_path
     else
-      flash.now[:danger] = '登録できませんでした・・・'
+      flash.now[:danger] = '登録できませんでした...'
       render :new
     end
   end
@@ -34,10 +34,10 @@ class GuidesController < ApplicationController
 
   def update
     if @guide.update(guide_params)
-      flash[:success] = "番組表を更新しました！"
-      redirect_to guides_path
+      flash[:success] = "更新完了！"
+      redirect_to @guide
     else
-      flash.now[:danger] = '更新できませんでした・・・'
+      flash.now[:danger] = '更新できませんでした...'
       render :edit
     end
   end
@@ -45,7 +45,7 @@ class GuidesController < ApplicationController
   def destroy
     @guide.destroy
     
-    flash[:success] = '番組表番組表を削除しました'
+    flash[:success] = '番組表を削除しました。'
     redirect_to guides_url
   end
   

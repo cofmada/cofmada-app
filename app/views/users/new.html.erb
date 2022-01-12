@@ -24,7 +24,3 @@
     </div>
   <% end %>
 </div>
-<input type="hidden" id="id" value="<%= params[:id] %>">
-<% if @user.errors.any? %>
-  <%= javascript_pack_tag 'render' %>
-<% end %>

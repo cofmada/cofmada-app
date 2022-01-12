@@ -13,7 +13,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
   
   def default_url
-    'no_image.jpg'
+    'no_image.png'
   end
   
   def extension_whitelist

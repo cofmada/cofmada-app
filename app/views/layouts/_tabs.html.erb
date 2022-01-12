@@ -1,7 +1,7 @@
 <ul class="nav nav-tabs nav-justified p-0">
   <li class="nav-item m-0 p-0"><a href="<%= user_path(current_user) %>" class="nav-link px-0  <%= 'active blue-w m-0' if current_page?(user_path(current_user)) %>">ﾕｰｻﾞｰ<br>情報</a></li>
-  <li class="nav-item m-0 p-0"><a href="<%= guides_path %>" class="nav-link px-0 <%= 'active blue-w m-0' if current_page?(guides_path) %>">番組表<br>一覧</a></li>
-  <li class="nav-item m-0 p-0"><a href="<%= new_guide_path %>" class="nav-link px-0 <%= 'active blue-w m-0' if current_page?(new_guide_path) %>">番組表<br>登録</a></li>
-  <li class="nav-item m-0 p-0"><a href="<%= channels_path %>" class="nav-link px-0 <%= 'active blue-w m-0' if current_page?(channels_path) %>">登録Ch<br>一覧</a></li>
   <li class="nav-item m-0 p-0"><a href="<%= new_channel_path %>" class="nav-link px-0 <%= 'active blue-w m-0' if current_page?(new_channel_path) %>">Ch情報<br>登録</a></li>
+  <li class="nav-item m-0 p-0"><a href="<%= channels_path %>" class="nav-link px-0 <%= 'active blue-w m-0' if current_page?(channels_path) %>">Ch情報<br>編集</a></li>
+  <li class="nav-item m-0 p-0"><a href="<%= new_guide_path %>" class="nav-link px-0 <%= 'active blue-w m-0' if current_page?(new_guide_path) %>">番組表<br>登録</a></li>
+  <li class="nav-item m-0 p-0"><a href="<%= guides_path %>" class="nav-link px-0 <%= 'active blue-w m-0' if current_page?(guides_path) %>">番組表<br>一覧</a></li>
 </ul>

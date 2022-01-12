@@ -1,10 +1,12 @@
 document.addEventListener('turbolinks:load', () => {
   //開閉用
-  $('.ac-p').on('click', function () {
-    $('ul1').slideToggle();
-    $(this).toggleClass("open");
-    $('.ac-p').not(this).removeClass('open');
+  $('.acord').on('click', function () {
+    let parent = $(this).parent();
+    $(parent).addClass('open');
+    $('.open + .page').slideToggle();
+    $(parent).removeClass('open');
   });
+  
   //時計
   setInterval((function clock() {
     const d = new Date();
@@ -28,43 +30,43 @@ document.addEventListener('turbolinks:load', () => {
   }()), 500);
   
   $('.1').on('change', function() {
-    $('input[type=checkbox]').not('.1,#1').prop('checked', false);
+    $('input[type=checkbox]').not('.1').prop('checked', false);
     if ($(this).prop('checked')) {
-      $('#1').prop('checked', true);
+      $('.1').prop('checked', true);
     } else {
-      $('#1').prop('checked', false);
+      $('.1').prop('checked', false);
     }
   });
   $('.2').on('change', function() {
-    $('input[type=checkbox]').not('.2,#2').prop('checked', false);
+    $('input[type=checkbox]').not('.2').prop('checked', false);
     if ($(this).prop('checked')) {
-      $('#2').prop('checked', true);
+      $('.2').prop('checked', true);
     } else {
-      $('#2').prop('checked', false);
+      $('.2').prop('checked', false);
     }
   });
   $('.3').on('change', function() {
-    $('input[type=checkbox]').not('.3,#3').prop('checked', false);
+    $('input[type=checkbox]').not('.3').prop('checked', false);
     if ($(this).prop('checked')) {
-      $('#3').prop('checked', true);
+      $('.3').prop('checked', true);
     } else {
-      $('#3').prop('checked', false);
+      $('.3').prop('checked', false);
     }
   });
   $('.4').on('change', function() {
-    $('input[type=checkbox]').not('.4,#4').prop('checked', false);
+    $('input[type=checkbox]').not('.4').prop('checked', false);
     if ($(this).prop('checked')) {
-      $('#4').prop('checked', true);
+      $('.4').prop('checked', true);
     } else {
-      $('#4').prop('checked', false);
+      $('.4').prop('checked', false);
     }
   });
   $('.5').on('change', function() {
-    $('input[type=checkbox]').not('.5,#5').prop('checked', false);
+    $('input[type=checkbox]').not('.5').prop('checked', false);
     if ($(this).prop('checked')) {
-      $('#5').prop('checked', true);
+      $('.5').prop('checked', true);
     } else {
-      $('#5').prop('checked', false);
+      $('.5').prop('checked', false);
     }
   });
 })

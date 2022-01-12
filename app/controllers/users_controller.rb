@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       flash[:success] = 'ユーザ登録完了！'
       redirect_to @user
     else
-      flash.now[:danger] = '登録できませんでした・・・'
+      flash.now[:danger] = '登録できませんでした...'
       render :new
     end
   end
@@ -26,10 +26,10 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = "画像を更新しました！"
+      flash[:success] = "画像更新完了！"
       redirect_to @user
     else
-      flash.now[:danger] = '更新できませんでした・・・'
+      flash.now[:danger] = '更新できませんでした...'
       render :show
     end
   end

@@ -39,7 +39,6 @@ h1,h2,h5,.blue-w,.alert-warning,.nav-tabs .nav-link.active,
 }
 /*　メタルボタン　*/
 .metal {
-  font-size: 15px;
   color: #fffafa;
   border-top: 4px solid #d8dcdc;
   border-right: 4px solid #666;
@@ -145,7 +144,7 @@ h1,h2,h5,.blue-w,.alert-warning,.nav-tabs .nav-link.active,
   content: "▶";
 }
 /*　説明文行間　*/
-p1 { 
+#type { 
   letter-spacing: 1px;
   line-height: 210%;
   }
@@ -156,18 +155,8 @@ p1 {
   justify-content: space-around;
 }
 /*　ウィンドウ開閉用*/
-.ac-p:after {
-  content: "▼";
-  cursor: pointer;
-}
-.ac-p.open:after {
-  content: "▲";
-  cursor: pointer;
-}
-ul1 {
+.page {
   display: none;
-}
-ul1 > li {
   letter-spacing: 1px;
   font-size: 20px;
   margin-left: 2em;
@@ -211,7 +200,6 @@ ul1 > li {
   font-size: 20px;
 }
 .pagy-bootstrap-nav {
-  display: inline;
   margin-right: 60px;
 }
 /*　表　*/
@@ -222,16 +210,13 @@ ul1 > li {
 td > a {
   letter-spacing: 5px;
 }
-td {
-  font-size: 20px;
-}
 td > a:hover {
   letter-spacing: 5px;
   color: #ffd700;
 }
 
 .mini {
-  white-space: nowrap;
+  white-space: normal;
   font-size: 18px;
   color: #ffd700;
 }
@@ -247,14 +232,26 @@ img {
   border-radius: 10px;
 }
 #user_avatar {
-  font-size: 20px;
+  font-size: 18px;
 }
 
-.text-start.mb-2 > img {
+.icon {
   border: none;
   border-radius: 50%;
   width: 50px;
   height: 50px;
+}
+
+.none {
+  border: none;
+  min-width: 160px;
+  min-height: 90px;
+}
+
+.thumb {
+  border: none;
+  width: 128px;
+  height: 128px;
 }
 
 .scroll {
@@ -264,3 +261,20 @@ img {
 .col-1 > div {
   display:none;
 }
+
+.omit, .omit:hover {
+  font-size: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.omit >a {
+  color: #fffafa;
+  text-decoration: none;
+}
+.omit >a:hover {
+  color: #ffd700;
+  white-space: normal;
+}
+

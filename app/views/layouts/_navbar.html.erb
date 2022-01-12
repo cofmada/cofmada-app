@@ -4,11 +4,11 @@
   </div>
 <% elsif logged_in? %>
   <div class="row bg-dark px-0 py-1">
-    <div class=" col-6 text-start">
-      <%= link_to 'ＴＯＰへ', root_path, class: 'metal btn py-1 px-2 mx-5' %>
+    <div class=" col-6 text-center">
+      <%= link_to 'ＴＯＰへ', root_path, class: 'metal btn py-1 px-2' %>
     </div>
-    <div class="col-6 text-end">
-      <%= link_to 'ログアウト', logout_path, method: :delete, class: 'metal btn p-1 mx-5' %>
+    <div class="col-6 text-center">
+      <%= link_to 'ログアウト', logout_path, method: :delete, class: 'metal btn p-1' %>
     </div>
   </div>
 <% else %>

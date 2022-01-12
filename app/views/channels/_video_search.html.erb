@@ -1,0 +1,57 @@
+<%= form_with url: edit_channel_path, method: :get do |f| %>
+  <%= f.hidden_field :searchid, value: channel.searchid %>
+  <div class="row text-center wind m-0 p-1">
+    <div class="col-11 mx-0 px-0">動画検索(YouTube)</div>
+    <div class="col-1 acord metal btn p-0">？</div>
+  </div>
+  
+  <div class="blue-w page m-0 py-3">
+    Ch名と入力した動画名を元にYouTube上で動画を検索します。<br><br>
+    ChがYouTube検索から登録されたものの場合はそのChの動画内から最新順に表示され、それ以外の場合は関連度の高いものが結果として表示されます。<br><br>
+    検索結果は10件までなので、目当ての動画がない場合は文字を変えて検索し直してみて下さい。<br><br>
+    任意のものを一つチェックして登録すると、URLやサムネイルも自動で登録されます。
+  </div>
+  
+  <div class="row blue-w px-0 py-3 m-0">
+    <div class="mini text-center">※入力は50文字まで、結果は10件のみ表示</div>
+    <div class="col-2 small text-end mb-2 mx-0 px-0">
+      <%= f.label :video_name, '動画名：', class: 'pt-1 mt-3 d-block' %>
+    </div>
+    <div class="col-8 px-0">
+      <%= f.text_field :video_name, maxlength: 50, class: 'form-control my-3' %>
+    </div>
+    <div class="text-center mx-0"><%= f.submit '検索', class: 'd-metal btn px-3 py-0' %></div>
+  </div>
+<% end %>
+
+<% if params[:video_name].present? %>
+  <%= form_with(model: channel) do |f| %>
+   <%= f.hidden_field :channel_id, value: channel.id %>
+    <div class="row blue-w align-items-center px-0 py-3 m-0">
+      <div class="text-center gold pb-3">『<%= params[:video_name] %>』の検索結果</div>
+      <% @video_results.each.with_index(1) do |v_data, i| %>
+        <% title = v_data[:snippet][:title] %>
+        <% thumbnails = v_data[:snippet][:thumbnails][:medium][:url] %>
+        <% v_id = v_data[:id][:video_id] %>
+        
+        <div class="text-center mx-0 px-2" ><img src="<%= thumbnails %>" alt="" class="none"></div>
+        
+        <div class="col-11 small text-center mx-0 px-2 mb-3">
+          <div class="omit border-bottom"><%= title %></div>
+          <div class="omit"><%= v_data[:snippet][:channel_title] %></div>
+        </div>
+        
+        <div class="col-1 mx-0 px-0 mb-3">
+          <%= f.check_box :video_name, { style: 'transform: scale(2);', class: i, id: title.gsub(" ", "") }, title, false %>
+          <div>
+            <%= f.check_box :media, { class: i, id: i }, "YouTube", false %>
+            <%= f.check_box :thumbnail, { class: i, id: thumbnails.gsub(" ", "") }, thumbnails, false %>
+            <%= f.check_box :url, { class: i, id: v_id.gsub(" ", "") }, "https://www.youtube.com/channel/#{v_id}", false %>
+          </div>
+        </div>  
+      <% end %>
+      <div class="mini text-center mt-2">↓チェックした動画を登録↓</div>
+      <div class="text-center"><%= f.submit '登録', class: 'b-metal btn m-0 py-0' %></div>
+    </div>
+  <% end %>
+<% end %>

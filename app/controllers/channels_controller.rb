@@ -1,6 +1,6 @@
 class ChannelsController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only:[:edit,:update,:destroy]
+  before_action :correct_channel, only:[:show, :edit,:update,:destroy]
   
   def index
     @pagy,@channels = pagy(current_user.channels.all, items:10)
@@ -8,31 +8,37 @@ class ChannelsController < ApplicationController
   
   def new
     @channel = current_user.channels.build
-    search(params[:search]) if request.get?
+    search(params[:search]) if params[:search].present?
   end
   
   def create
     @channel = current_user.channels.build(channel_params)
-    
     if @channel.save
-      flash[:success] = 'チャンネル情報を登録しました！'
+      flash[:success] = '登録完了！'
       redirect_to channels_path
     else
-      flash.now[:danger] = '登録できませんでした・・・'
+      flash.now[:danger] = '登録できませんでした...'
       render :new
     end
   end
   
+  def show
+    @pagy,@videos = pagy(@channel.videos.all, itens:10)
+  end
+  
   def edit
-    
+    video_search(params[:video_name]) if params[:video_name].present?
+    @video = @channel.videos.build
   end
   
   def update
-    if @channel.update(channel_params)
-      flash[:success] = "チャンネル情報を更新しました！"
-      redirect_to channels_path
+    @video = @channel.videos.build(video_params) 
+    
+    if @channel.update(channel_params) || @video.save
+      flash[:success] = "更新完了！"
+      redirect_to action: :edit
     else
-      flash.now[:danger] = '更新できませんでした・・・'
+      flash.now[:danger] = '更新できませんでした...'
       render :edit
     end
   end
@@ -40,13 +46,13 @@ class ChannelsController < ApplicationController
   def destroy
     @channel.destroy
     
-    flash[:success] = 'チャンネル情報を削除しました'
+    flash[:success] = 'チャンネル情報を削除しました。'
     redirect_to channels_url
   end
   
   private
     
-  def correct_user
+  def correct_channel
     @channel = current_user.channels.find_by(id: params[:id])
     unless @channel
       redirect_to root_url
@@ -54,7 +60,10 @@ class ChannelsController < ApplicationController
   end
 
   def channel_params
-    params.require(:channel).permit(:channel_name, :user_id, :ch_url, :icon)
+    params.require(:channel).permit(:channel_name, :icon, :ch_url, :searchid )
   end
-
+  
+  def video_params
+    params.require(:channel).permit(:channel_id, :video_name, :media, :url, :thumbnail )
+  end
 end

@@ -6,10 +6,10 @@ class SessionsController < ApplicationController
     email = params[:session][:email].downcase
     password = params[:session][:password]
     if login(email, password)
-      flash[:success] = 'ログインしました！'
+      flash[:success] = 'ログイン完了！'
       redirect_to @user
     else
-      flash.now[:danger] = 'ログインできませんでした・・・<br>入力内容を確認してください。'.html_safe
+      flash.now[:danger] = 'ログインできませんでした...<br>入力内容を確認してください。'.html_safe
       render :new
     end
   end
