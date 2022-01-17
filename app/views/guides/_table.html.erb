@@ -11,11 +11,11 @@
   </thead>
   <tbody>
     <% if @guide.guide_name.present? %>
-      <% guidechannels.each do |ch| %>
+      <% guidevideos.each do |v| %>
         <tr>
-          <td><%= ch.channel_name %></td>
+          <td><%= v.video_name %></td>
           <% if current_page?(edit_guide_path) %>
-            <td><%= link_to '削除',  guide_guides_channel_path(params[:id], ch.id), method: :delete, data: { confirm: '削除しますか？' }, class: 'btn d-metal p-1' %></td>
+            <td><%= link_to '削除',  guide_path(params[:id], ch.id), method: :delete, data: { confirm: '削除しますか？' }, class: 'btn d-metal p-1' %></td>
           <% else %>
             <td></td>
           <% end %>

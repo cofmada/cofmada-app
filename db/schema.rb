@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(version: 2021_12_11_002240) do
 
   create_table "guides", charset: "utf8mb4", force: :cascade do |t|
     t.string "guide_name"
-    t.string "on_air"
-    t.string "begin_at"
-    t.string "close_at"
+    t.date "on_air"
+    t.time "begin_at"
+    t.time "close_at"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

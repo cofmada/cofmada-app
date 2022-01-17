@@ -33,6 +33,7 @@
         <% title = v_data[:snippet][:title] %>
         <% thumbnails = v_data[:snippet][:thumbnails][:medium][:url] %>
         <% v_id = v_data[:id][:video_id] %>
+        <% v_some = "#{title}" + "#{i}" %>
         
         <div class="text-center mx-0 px-2" ><img src="<%= thumbnails %>" alt="" class="none"></div>
         
@@ -42,10 +43,10 @@
         </div>
         
         <div class="all_check col-1 mx-0 px-0 mb-3">
-          <%= f.check_box :video_name, { style: 'transform: scale(2);', class: i, id: title.gsub(" ", "") }, title, false %>
-          <%= f.check_box :media, { class: i, id: i }, "YouTube", false %>
-          <%= f.check_box :thumbnail, { class: i, id: thumbnails.gsub(" ", "") }, thumbnails, false %>
-          <%= f.check_box :video_url, { class: i, id: v_id.gsub(" ", "") }, "https://www.youtube.com/channel/#{v_id}", false %>
+          <%= f.check_box :video_name, { style: 'transform: scale(2);', class: i, id: v_some.gsub(" ", "") }, title, false %>
+          <%= f.check_box :media, { class: "hide", id: i }, "YouTube", false %>
+          <%= f.check_box :thumbnail, { class: "hide", id: thumbnails.gsub(" ", "") }, thumbnails, false %>
+          <%= f.check_box :video_url, { class: "hide", id: v_id.gsub(" ", "") }, "https://www.youtube.com/channel/#{v_id}", false %>
         </div>  
       <% end %>
       <div class="mini text-center mt-2">↓チェックした動画を登録↓</div>

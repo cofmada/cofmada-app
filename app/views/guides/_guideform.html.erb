@@ -39,10 +39,9 @@
         <%= f.label :video_name, "動画名：", class: "mt-3" %>
       </div>
       <div class="col-8 m-0 mx-0 px-0">
-        <%= f.collection_select(:channel_id, channels, :id, :channel_name, {include_blank: "---"}, class: "form-control mt-3") %>
-        <%= f.select(:videoid, [], {include_blank: "---"}, class: "default_select form-control mt-3") %>
+        <%= collection_select(:channel, :channel_id, channels, :id, :channel_name, {include_blank: "---"}, class: "form-control mt-3") %>
+        <%= f.select(:video_id, [], {include_blank: "---"}, class: "default_select form-control mt-3") %>
       </div>
-      
     </div>
     
     <div class="row align-items-center col-md-6 m-0 p-0">
@@ -58,7 +57,7 @@
     
     <%- channels.each do |ch|  %>
       <template id="videos<%= ch.id %>">
-        <%= f.collection_select(:videoid, ch.videos, :id, :video_name, {include_blank: "---"}, class: "form-control mt-3") %>
+        <%= collection_select(:guides_video, :video_id, ch.videos, :id, :video_name, {include_blank: "---"}, class: "form-control mt-3") %>
       </template>
     <% end %>
 

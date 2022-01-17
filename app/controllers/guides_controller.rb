@@ -1,6 +1,7 @@
 class GuidesController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_guide, only:[:edit,:update,:destroy]
+  before_action :correct_guide, only:[:show, :edit, :update, :destroy]
+  before_action :guide_videos, only:[:show, :edit]
 
   def index
     @pagy,@guides = pagy(current_user.guides.all, items:5)
@@ -12,27 +13,23 @@ class GuidesController < ApplicationController
   end
 
   def create
-    @guide = current_user.guides.build(guide_params)
-    ch = current_user.channels.find(ch_id)
+    @guide = current_user.guides.find_or_create_by(guide_params)
     
-    if @guide.save
-      @guide.regist(ch)
+    if @guide.save || @guide.present?
+      @guide.guides_videos.create(video_id: v_id)
       flash[:success] = '登録完了！'
-      redirect_to guide_path
+      redirect_to guides_path
     else
       flash.now[:danger] = '登録できませんでした...'
       render :new
     end
+
   end
 
   def show
-    @guide = current_user.guides.find(params[:id])
-    @pagy,@guidechannels = pagy(@guide.channels.all, items:10)
   end
 
   def edit
-    @guide = current_user.guides.find_by(id: params[:id])
-    @pagy,@guidechannels = pagy(@guide.channels.all, items:10)
   end
 
   def update
@@ -60,12 +57,16 @@ class GuidesController < ApplicationController
       redirect_to root_url
     end
   end
+  
+  def guide_videos
+    @pagy,@guidevideos = pagy(@guide.videos.all, items:10)
+  end
     
   def guide_params
     params.require(:guide).permit(:guide_name, :on_air, :begin_at, :close_at)
   end
   
-  def ch_id
-    params[:guide][:channel_id]
+  def v_id
+    params.require(:guides_video).permit(:video_id)
   end
 end

@@ -260,7 +260,7 @@ img {
   overflow: auto;
 }
 
-.col-1 > div {
+.all_check > .hide {
   display:none;
 }
 
