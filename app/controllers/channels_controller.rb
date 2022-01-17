@@ -23,7 +23,7 @@ class ChannelsController < ApplicationController
   end
   
   def show
-    @pagy,@videos = pagy(@channel.videos.all, itens:10)
+   @videos = @channel.videos.all
   end
   
   def edit

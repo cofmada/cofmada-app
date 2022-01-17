@@ -1,7 +1,7 @@
 class GuidesChannel < ApplicationRecord
   belongs_to :guide
-  belongs_to :channel
+  belongs_to :video
   
-  validates :guide_id, uniqueness:  { scope: :channel_id }
+  validates :guide_id, uniqueness:  { scope: :video_id }
   
 end

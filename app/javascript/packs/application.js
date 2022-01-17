@@ -9,6 +9,8 @@ import "channels";
 import "jquery";
 import "./typewriter";
 import "./any";
+import "./checks";
+import "./select";
 
 Rails.start();
 Turbolinks.start();

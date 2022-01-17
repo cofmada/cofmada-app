@@ -244,14 +244,16 @@ img {
 
 .none {
   border: none;
-  min-width: 160px;
-  min-height: 90px;
+  min-width: 128px;
+  max-width: 320px;
+  min-height: 72px;
+  max-height: 180px;
 }
 
 .thumb {
   border: none;
-  width: 128px;
-  height: 128px;
+  width: 90px;
+  height: 90px;
 }
 
 .scroll {

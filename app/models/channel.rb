@@ -1,7 +1,5 @@
 class Channel < ApplicationRecord
   belongs_to :user
-  has_many :guides_channels, dependent: :destroy
-  has_many :guides, through: :guides_channels
   has_many :videos, dependent: :delete_all
   
   validates :channel_name, presence: true, length: { maximum: 50 }

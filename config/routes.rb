@@ -10,8 +10,6 @@ Rails.application.routes.draw do
   
   resources :channels
 
-  post 'guides/:id', to: 'guides_channels#create'
-  resources :guides do
-    resources :guides_channels, only: [:destroy]
-  end
+  post 'guides/new', to: 'guides#create'
+  resources :guides
 end

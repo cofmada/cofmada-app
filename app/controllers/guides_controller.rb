@@ -8,14 +8,17 @@ class GuidesController < ApplicationController
 
   def new
     @guide = current_user.guides.build
+    @channels = current_user.channels.all
   end
 
   def create
     @guide = current_user.guides.build(guide_params)
-
+    ch = current_user.channels.find(ch_id)
+    
     if @guide.save
+      @guide.regist(ch)
       flash[:success] = '登録完了！'
-      redirect_to guides_path
+      redirect_to guide_path
     else
       flash.now[:danger] = '登録できませんでした...'
       render :new
@@ -59,6 +62,10 @@ class GuidesController < ApplicationController
   end
     
   def guide_params
-    params.require(:guide).permit(:guide_name, :user_id, :on_air)
+    params.require(:guide).permit(:guide_name, :on_air, :videoid, :begin_at, :close_at)
+  end
+  
+  def ch_id
+    params[:guide][:channel_id]
   end
 end

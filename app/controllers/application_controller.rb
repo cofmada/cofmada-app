@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     require 'google/apis/youtube_v3'
     youtube = Google::Apis::YoutubeV3::YouTubeService.new
     youtube.key = Rails.application.credentials[:youtube_api_key]
-    youtube_search_list = youtube.list_searches("id, snippet",type: 'channel', max_results: 2, q: keyword)
+    youtube_search_list = youtube.list_searches("id, snippet",type: 'channel', max_results: 10, q: keyword)
     search_result = youtube_search_list.to_h
     @results = search_result[:items]
   end
@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
         video_search_result = youtube_search_list.to_h
         @video_results = video_search_result[:items]
       else
-        youtube_search_list = youtube.list_searches(:snippet, type: 'video', max_results: 2, q: word)
+        youtube_search_list = youtube.list_searches(:snippet, type: 'video', max_results: 10, q: word)
         video_search_result = youtube_search_list.to_h
         @video_results = video_search_result[:items]
       end
