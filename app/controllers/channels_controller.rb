@@ -64,11 +64,11 @@ class ChannelsController < ApplicationController
   end
 
   def channel_params
-    params.require(:channel).permit(:channel_name, :icon, :ch_url, :searchid )
+    params.require(:channel).permit(:channel_name, :icon, :channel_url, :search_key )
   end
   
   def video_params
-    params.require(:channel).permit(:channel_id, :video_name, :media, :url, :thumbnail )
+    params.require(:channel).permit(:channel_id, :video_name, :media, :video_url, :thumbnail )
   end
   
   def delete_ids

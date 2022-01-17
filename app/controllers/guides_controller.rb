@@ -62,7 +62,7 @@ class GuidesController < ApplicationController
   end
     
   def guide_params
-    params.require(:guide).permit(:guide_name, :on_air, :videoid, :begin_at, :close_at)
+    params.require(:guide).permit(:guide_name, :on_air, :begin_at, :close_at)
   end
   
   def ch_id

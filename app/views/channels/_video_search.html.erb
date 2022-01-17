@@ -1,5 +1,5 @@
 <%= form_with url: edit_channel_path, method: :get do |f| %>
-  <%= f.hidden_field :searchid, value: channel.searchid %>
+  <%= f.hidden_field :search_key, value: channel.search_key %>
   <div class="row text-center wind m-0 p-1">
     <div class="col-11 mx-0 px-0">動画検索(YouTube)</div>
     <div class="col-1 acord metal btn p-0">？</div>
@@ -45,7 +45,7 @@
           <%= f.check_box :video_name, { style: 'transform: scale(2);', class: i, id: title.gsub(" ", "") }, title, false %>
           <%= f.check_box :media, { class: i, id: i }, "YouTube", false %>
           <%= f.check_box :thumbnail, { class: i, id: thumbnails.gsub(" ", "") }, thumbnails, false %>
-          <%= f.check_box :url, { class: i, id: v_id.gsub(" ", "") }, "https://www.youtube.com/channel/#{v_id}", false %>
+          <%= f.check_box :video_url, { class: i, id: v_id.gsub(" ", "") }, "https://www.youtube.com/channel/#{v_id}", false %>
         </div>  
       <% end %>
       <div class="mini text-center mt-2">↓チェックした動画を登録↓</div>

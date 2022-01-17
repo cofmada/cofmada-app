@@ -22,8 +22,8 @@ class ApplicationController < ActionController::Base
     youtube = Google::Apis::YoutubeV3::YouTubeService.new
     youtube.key = Rails.application.credentials[:youtube_api_key]
     if params[:video_name].present?
-      if params[:searchid].present?
-        youtube_search_list = youtube.list_searches(:snippet, type: 'video', channel_id: params[:searchid], max_results: 10, order: :date,  q: word)
+      if params[:search_key].present?
+        youtube_search_list = youtube.list_searches(:snippet, type: 'video', channel_id: params[:search_key], max_results: 10, order: :date,  q: word)
         video_search_result = youtube_search_list.to_h
         @video_results = video_search_result[:items]
       else
