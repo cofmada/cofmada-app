@@ -10,39 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_16_012658) do
+ActiveRecord::Schema.define(version: 2021_12_11_002240) do
 
   create_table "channels", charset: "utf8mb4", force: :cascade do |t|
     t.string "channel_name"
+    t.string "channel_url"
+    t.string "icon"
+    t.string "search_key"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "icon"
-    t.string "ch_url"
-    t.string "searchid"
     t.index ["user_id"], name: "index_channels_on_user_id"
   end
 
   create_table "guides", charset: "utf8mb4", force: :cascade do |t|
     t.string "guide_name"
+    t.string "on_air"
+    t.string "begin_at"
+    t.string "close_at"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.date "on_air"
-    t.time "begin_at"
-    t.time "close_at"
-    t.integer "videoid"
     t.index ["user_id"], name: "index_guides_on_user_id"
   end
 
-  create_table "guides_channels", charset: "utf8mb4", force: :cascade do |t|
+  create_table "guides_videos", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "guide_id", null: false
-    t.bigint "channel_id", null: false
+    t.bigint "video_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["channel_id"], name: "index_guides_channels_on_channel_id"
-    t.index ["guide_id", "channel_id"], name: "index_guides_channels_on_guide_id_and_channel_id", unique: true
-    t.index ["guide_id"], name: "index_guides_channels_on_guide_id"
+    t.index ["guide_id", "video_id"], name: "index_guides_videos_on_guide_id_and_video_id", unique: true
+    t.index ["guide_id"], name: "index_guides_videos_on_guide_id"
+    t.index ["video_id"], name: "index_guides_videos_on_video_id"
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
@@ -51,13 +50,12 @@ ActiveRecord::Schema.define(version: 2022_01_16_012658) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "avatar"
   end
 
   create_table "videos", charset: "utf8mb4", force: :cascade do |t|
     t.string "video_name"
     t.string "media"
-    t.string "url"
+    t.string "video_url"
     t.string "thumbnail"
     t.bigint "channel_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -67,7 +65,7 @@ ActiveRecord::Schema.define(version: 2022_01_16_012658) do
 
   add_foreign_key "channels", "users"
   add_foreign_key "guides", "users"
-  add_foreign_key "guides_channels", "channels"
-  add_foreign_key "guides_channels", "guides"
+  add_foreign_key "guides_videos", "guides"
+  add_foreign_key "guides_videos", "videos"
   add_foreign_key "videos", "channels"
 end
