@@ -1,7 +1,6 @@
 class GuidesController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_guide, only:[:show, :edit, :update, :destroy]
-  before_action :guide_videos, only:[:show, :edit]
 
   def index
     @pagy,@guides = pagy(current_user.guides.all, items:5)
@@ -13,23 +12,32 @@ class GuidesController < ApplicationController
   end
 
   def create
-    @guide = current_user.guides.find_or_create_by(guide_params)
+    check = current_user.guides.find_by(guide_name: guide_params[:guide_name], on_air: guide_params[:on_air])
     
-    if @guide.save || @guide.present?
-      @guide.guides_videos.create(video_id: v_id)
+    if check == nil
+      @guide = current_user.guides.create(guide_params)
+      @guide.guides_videos.create(v_id)
       flash[:success] = '登録完了！'
+      redirect_to guides_path
+    elsif check.present?
+      check.guides_videos.create(v_id)
+      flash[:success] = '追加完了！'
       redirect_to guides_path
     else
       flash.now[:danger] = '登録できませんでした...'
       render :new
     end
-
   end
 
   def show
+    @pagy,@videos = pagy(@guide.videos.all, items:10)
+    @channel_ids = @videos.distinct.pluck(:channel_id)
+    @guide_channels = current_user.channels.find(@channel_ids)
   end
 
   def edit
+    @pagy,@videos = pagy(@guide.videos.all, items:10)
+    @channels = current_user.channels.all
   end
 
   def update
@@ -43,10 +51,14 @@ class GuidesController < ApplicationController
   end
 
   def destroy
-    @guide.destroy
-    
-    flash[:success] = '番組表を削除しました。'
-    redirect_to guides_url
+    if request.referer&.include?("/guides/#{params[:id]}")
+      @guide.videos.where(id: delete_ids[:video_id]).delete_all
+      flash[:success] = '動画を削除しました。'
+      redirect_to @guide
+    else @guide.destroy
+      flash[:success] = '番組表を削除しました。'
+      redirect_to guides_url
+    end
   end
   
   private
@@ -58,15 +70,15 @@ class GuidesController < ApplicationController
     end
   end
   
-  def guide_videos
-    @pagy,@guidevideos = pagy(@guide.videos.all, items:10)
-  end
-    
   def guide_params
     params.require(:guide).permit(:guide_name, :on_air, :begin_at, :close_at)
   end
   
   def v_id
     params.require(:guides_video).permit(:video_id)
+  end
+  
+  def delete_ids
+    params.require(:guide).permit(video_id: [])
   end
 end

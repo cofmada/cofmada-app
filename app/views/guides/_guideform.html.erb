@@ -1,4 +1,4 @@
-<%= form_with(model: guide, url: new_guide_path, method: :post) do |f| %>
+<%= form_with(model: guide) do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
   <div class="row  blue-w px-0 py-2">
     <div class="row col-md-6 m-0 p-0">
@@ -62,7 +62,7 @@
     <% end %>
 
     <div class="text-center my-2">
-      <%= f.submit '登録', class: 'b-metal btn py-0' %>
+      <%= f.submit '登録', class: 'b-metal btn mt-2 py-1' %>
     </div>
   </div>
 <% end %>

@@ -1,0 +1,53 @@
+<% if current_page?(channel_path) %>
+ <% current = channel %>
+<% else current_page?(edit_guide_path) %>
+ <% current = guide %>
+<% end %>
+
+<% if current.videos.any? %>
+  <%= form_with(model: current, method: :delete) do |f| %>  
+    <div class="row d-flex align-items-center blue-w mx-0 py-3">
+      <div class="text-center mini m-0 pb-2 px-0">※動画をチェックし【削除】で一括削除できます</div>
+    
+      <% @videos.each do |v| %>
+        <% if v.thumbnail.present? %>
+          <img src=<%= v.thumbnail %> alt="" class="col-3 my-2 mx-0 px-0 none">
+          
+          <div class="col-7 small d-flex align-items-center my-2 mx-0 px-1"><%= v.video_name %></div>
+          
+          <div class="col-1 d-flex justify-content-center align-items-center my-2 mx-0 px-0">
+            <%= f.check_box :video_id, { multiple: true, style: 'transform: scale(2);', id: v.id }, v.id, false %>
+          </div>
+        <% else %>
+          <div class="col-3 text-center my-2 mx-0 px-2"><%= image_tag "/assets/"+v.media+".png", alt: "", class: "thumb" %></div>
+          
+          <div class="col-7 d-flex align-items-center my-2 px-1"><%= v.video_name %></div>
+          
+          <div class="col-1 d-flex justify-content-center align-items-center my-2 mx-0 px-0">
+            <%= f.check_box :video_id, { multiple: true, style: 'transform: scale(2);', id: v.id }, v.id, false %>
+          </div>
+        <% end %>
+      <% end %>
+  
+      <div class="d-flex justify-content-center align-items-center my-3 px-0">
+        <%= f.submit '削除', data: { confirm: 'チェックした動画を削除しますか？' }, class: 'd-metal btn py-0 px-3' %>
+      </div>
+      
+      <% if current_page?(channel_path) %>
+        <div class="text-center mt-3">
+          <%= link_to '一覧に戻る', channels_path, class: 'btn metal p-1' %>
+        </div>
+      <% else current_page?(guide_path) %>
+        <div class="text-center mt-3">
+          <%= link_to '戻る', guide_path, class: 'btn metal py-1' %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <div class="blue-w mx-0 py-3">
+    <div class="text-center mt-3">
+      <%= link_to '一覧に戻る', guides_path, class: 'btn metal p-1' %>
+    </div>
+  </div>  
+<% end %>

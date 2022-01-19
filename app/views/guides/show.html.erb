@@ -1,43 +1,20 @@
 <h4 class="blue-w text-center gold pb-2">番組表詳細ページ</h4>
 <div class="row blue-w align-middle p-0">
-  <div class="col-6 text-end py-2 px-1 m-0">
-    <h3>番組表名:<br>放送日:</h3>
-  </div>
-  <div class="col-6 text-start py-2 px-1 m-0">
-    <h3><%= @guide.guide_name %><br><%= @guide.on_air %></h3>
+  <div class="text-center pt-2 m-0">
+    『<%= @guide.guide_name %>』
+  </div> 
+  <div class="text-center small pb-2 m-0">  
+    <%= @guide.on_air %>&nbsp;放送分
   </div>
 </div>
-<div class="blue-w text-center px-0 pb-0">
-  <h4>登録chリスト</h4>
-</div>
-<div class="blue-w px-0">
-  <%= render'table', guidevideos: @guidevideos %>
-  <div class="row my-2 px-0">
-    <div class="col-6 text-start mx-0 pt-3 px-4">
-      <%== pagy_bootstrap_nav(@pagy) %>
-    </div>
-    <div class="col-3 text-end mx-0 px-3">
-      <%= link_to '編集', edit_guide_path(@guide.id), class: 'b-metal btn mt-2' %>
-    </div>
-    <div class="col-3 text-center mx-0">
-      <%= link_to '削除', @guide, method: :delete, data: { confirm: '削除しますか？' }, class: 'd-metal btn mt-2' %>
-    </div>
+
+<div class="row blue-w scroll p-0 m-0">
+  <%= render 'timetable', guide_channels: @guide_channels %>
+    
+  <div class="col-6 text-center">
+    <%= link_to '一覧に戻る', guides_path, class: 'btn metal p-1' %>
   </div>
-    <%= form_with(model: @guides_channel) do |f| %>
-      <div class="row align-items-baseline px-0 py-3 m-0">
-        <div class="col-3 small text-end mx-0 px-1">
-          <%= hidden_field_tag :guide_id, params[:id] %>
-          <%= f.label :channel_id, 'Ch追加:' %>
-        </div>
-        <div class="col-5 offset-col-1 mx-0 px-1">
-          <%= f.collection_select :channel_id, current_user.channels.all, :id, :channel_name, {}, class: 'form-control' %>
-        </div>
-        <div class="col-2 mx-2 px-2">
-          <%= f.submit '追加', class: 'b-metal btn mx-3' %>
-        </div>
-      </div>
-    <% end %>
-  <div class="text-center my-4">
-    <%= link_to '一覧に戻る', guides_path, class: 'btn metal p-2' %>
+  <div class="col-6 text-center">
+    <%= link_to '編集ページ', edit_guide_path, class: 'btn d-metal p-1' %>
   </div>
 </div>

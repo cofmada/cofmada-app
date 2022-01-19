@@ -39,6 +39,7 @@ h1,h2,h5,.blue-w,.alert-warning,.nav-tabs .nav-link.active,
 }
 /*　メタルボタン　*/
 .metal {
+  font-size: 20px;
   color: #fffafa;
   border-top: 4px solid #d8dcdc;
   border-right: 4px solid #666;
@@ -203,16 +204,11 @@ h1,h2,h5,.blue-w,.alert-warning,.nav-tabs .nav-link.active,
   margin-right: 60px;
 }
 /*　表　*/
-.table,tr,td,td > a {
+.table {
   color: #fffafa;
-  text-decoration: none;
 }
-td > a {
-  letter-spacing: 5px;
-}
-td > a:hover {
-  letter-spacing: 5px;
-  color: #ffd700;
+td {
+  max-width: 256px;
 }
 
 .mini {
@@ -245,9 +241,9 @@ img {
 .none {
   border: none;
   min-width: 128px;
-  max-width: 320px;
+  max-width: 256px;
   min-height: 72px;
-  max-height: 180px;
+  max-height: 144px;
 }
 
 .thumb {

@@ -1,36 +1,19 @@
 <table class="table">
   <thead>
     <tr>
-      <th></th><th></th>
-      <th>5</th><th></th>
-      <th>6</th><th></th>
-      <th>7</th><th></th>
-      <th>8</th><th></th>
-      <th>9</th><th></th>
-      <th>10</th><th></th>
-      <th>11</th><th></th>
-      <th>12</th><th></th>
-      <th>13</th><th></th>
-      <th>14</th><th></th>
-      <th>15</th><th></th>
-      <th>16</th><th></th>
-      <th>17</th><th></th>
-      <th>18</th><th></th>
-      <th>19</th><th></th>
-      <th>20</th><th></th>
-      <th>21</th><th></th>
-      <th>22</th><th></th>
-      <th>23</th><th></th>
-      <th>24</th><th></th>
-      <th>1</th><th></th>
-      <th>2</th><th></th>
-      <th>3</th><th></th>
-      <th>4</th><th></th>
+      <td></td>
+      <% guide_channels.each do |c| %>
+        <td class="omit"><img src="<%= c.icon %>" alt="" class="icon"><%= c.channel_name %></td>
+      <% end %>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>ch</td>
+      <% guide_channels.each do |c| %>
+        <% v_thumb = @videos.find_by(channel_id: c.id) %>
+        <td><img src="<%= v_thumb.thumbnail %>" alt="" class="none px-1"></td>
+      <% end %>
     </tr>
   </tbody>
 </table>

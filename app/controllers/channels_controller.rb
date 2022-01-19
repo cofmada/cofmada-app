@@ -68,7 +68,7 @@ class ChannelsController < ApplicationController
   end
   
   def video_params
-    params.require(:channel).permit(:channel_id, :video_name, :media, :video_url, :thumbnail )
+    params.require(:video).permit(:video_name, :media, :video_url, :thumbnail )
   end
   
   def delete_ids
