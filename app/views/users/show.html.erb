@@ -32,5 +32,7 @@
 </div>
 
 <div class="blue-w text-center align-middle scroll px-0 py-2 m-0">
-  <%= render 'guides/timetable' %>
+  <% if params[:guide_id].present? %>
+    <%= render 'guides/timetable', guide_channels: @guide_channels %>
+  <% end %>
 </div>

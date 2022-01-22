@@ -208,7 +208,12 @@ h1,h2,h5,.blue-w,.alert-warning,.nav-tabs .nav-link.active,
   color: #fffafa;
 }
 td {
-  max-width: 256px;
+  max-width: 30px;
+}
+td > img {
+  border: none;
+  width: 160px;
+  height: 90px;
 }
 
 .mini {

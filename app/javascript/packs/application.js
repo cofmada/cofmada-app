@@ -5,12 +5,8 @@
 
 import Rails from "@rails/ujs";
 import Turbolinks from "turbolinks";
-import "channels";
 import "jquery";
-import "./typewriter";
-import "./any";
-import "./checks";
-import "./select";
+import "user/any";
 
 Rails.start();
 Turbolinks.start();

@@ -33,6 +33,7 @@ class GuidesController < ApplicationController
     @pagy,@videos = pagy(@guide.videos.all, items:10)
     @channel_ids = @videos.distinct.pluck(:channel_id)
     @guide_channels = current_user.channels.find(@channel_ids)
+    
   end
 
   def edit
@@ -52,7 +53,7 @@ class GuidesController < ApplicationController
 
   def destroy
     if request.referer&.include?("/guides/#{params[:id]}")
-      @guide.videos.where(id: delete_ids[:video_id]).delete_all
+      @guide.videos.where(delete_ids).delete_all
       flash[:success] = '動画を削除しました。'
       redirect_to @guide
     else @guide.destroy
@@ -71,11 +72,11 @@ class GuidesController < ApplicationController
   end
   
   def guide_params
-    params.require(:guide).permit(:guide_name, :on_air, :begin_at, :close_at)
+    params.require(:guide).permit(:guide_name, :on_air, :start_h, :start_m)
   end
   
   def v_id
-    params.require(:guides_video).permit(:video_id)
+    params.require(:guide).permit(:video_id)
   end
   
   def delete_ids

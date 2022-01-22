@@ -3,17 +3,43 @@
     <tr>
       <td></td>
       <% guide_channels.each do |c| %>
-        <td class="omit"><img src="<%= c.icon %>" alt="" class="icon"><%= c.channel_name %></td>
-      <% end %>
+        <td class="omit m-0 px-0">
+          <img src="<%= c.icon %>" alt="" class="icon"><br>
+          <%= c.channel_name %>
+        </td>
+      <% end %>    
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>ch</td>
-      <% guide_channels.each do |c| %>
-        <% v_thumb = @videos.find_by(channel_id: c.id) %>
-        <td><img src="<%= v_thumb.thumbnail %>" alt="" class="none px-1"></td>
-      <% end %>
-    </tr>
+    <% i = 5 %>
+    <% while i < 29 %>
+      <% if i < 24 %>
+        <tr>
+          <td><%= i %></td>
+          <% guide_channels.each do |c| %>
+            <% v = @videos.find_by(channel_id: c.id) %>
+            <% t = @guide.find_by(video_id: v.id)
+            <% if v.start_h == i %>
+              <td><img src="<%= v.thumbnail %>" alt="" class="px-0 m-0"></td>
+            <% else %>  
+              <td></td>
+            <% end %>
+          <% end %>
+        </tr>
+      <% else %>
+        <tr>
+          <td><%= i-24 %></td>
+          <% guide_channels.each do |c| %>
+            <% v = @videos.find_by(channel_id: c.id) %>
+            <% if v.start_h == i %>
+              <td><img src="<%= v.thumbnail %>" alt="" class="px-0 m-0"></td>
+            <% else %>  
+              <td></td>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>  
+      <% i += 1 %>
+    <% end %>  
   </tbody>
 </table>
