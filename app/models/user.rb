@@ -9,4 +9,5 @@ class User < ApplicationRecord
   
   has_many :channels, dependent: :destroy
   has_many :guides, dependent: :destroy
+  has_many :air_times, dependent: :destroy
 end

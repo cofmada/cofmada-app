@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_12_002240) do
+ActiveRecord::Schema.define(version: 2021_12_13_002240) do
 
   create_table "channels", charset: "utf8mb4", force: :cascade do |t|
     t.string "channel_name"
@@ -23,6 +23,18 @@ ActiveRecord::Schema.define(version: 2021_12_12_002240) do
     t.index ["user_id"], name: "index_channels_on_user_id"
   end
 
+  create_table "guide_videos", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "start_h"
+    t.integer "start_m"
+    t.bigint "guide_id", null: false
+    t.bigint "video_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["guide_id", "start_h", "start_m"], name: "index_guide_videos_on_guide_id_and_start_h_and_start_m", unique: true
+    t.index ["guide_id"], name: "index_guide_videos_on_guide_id"
+    t.index ["video_id"], name: "index_guide_videos_on_video_id"
+  end
+
   create_table "guides", charset: "utf8mb4", force: :cascade do |t|
     t.string "guide_name"
     t.date "on_air"
@@ -30,25 +42,6 @@ ActiveRecord::Schema.define(version: 2021_12_12_002240) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_guides_on_user_id"
-  end
-
-  create_table "play_videos", charset: "utf8mb4", force: :cascade do |t|
-    t.bigint "play_id", null: false
-    t.bigint "video_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["play_id", "video_id"], name: "index_play_videos_on_play_id_and_video_id", unique: true
-    t.index ["play_id"], name: "index_play_videos_on_play_id"
-    t.index ["video_id"], name: "index_play_videos_on_video_id"
-  end
-
-  create_table "plays", charset: "utf8mb4", force: :cascade do |t|
-    t.integer "start_h"
-    t.integer "start_m"
-    t.bigint "guide_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["guide_id"], name: "index_plays_on_guide_id"
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
@@ -72,9 +65,8 @@ ActiveRecord::Schema.define(version: 2021_12_12_002240) do
   end
 
   add_foreign_key "channels", "users"
+  add_foreign_key "guide_videos", "guides"
+  add_foreign_key "guide_videos", "videos"
   add_foreign_key "guides", "users"
-  add_foreign_key "play_videos", "plays"
-  add_foreign_key "play_videos", "videos"
-  add_foreign_key "plays", "guides"
   add_foreign_key "videos", "channels"
 end

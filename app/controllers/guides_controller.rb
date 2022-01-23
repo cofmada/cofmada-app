@@ -9,28 +9,30 @@ class GuidesController < ApplicationController
   def new
     @guide = current_user.guides.build
     @channels = current_user.channels.all
+    @air_times = current_user.air_times.all
   end
 
   def create
     check = current_user.guides.find_by(guide_name: guide_params[:guide_name], on_air: guide_params[:on_air])
-    
     if check == nil
-      @guide = current_user.guides.create(guide_params)
-      @guide.guides_videos.create(v_id)
-      flash[:success] = '登録完了！'
-      redirect_to guides_path
+      @guide = current_user.guides.build(guide_params)
+      if @guide.save
+        create_model(@guide)
+      else
+        flash.now[:danger] = '登録できませんでした。名前と放送日を確認してください。'
+        render :new
+      end
     elsif check.present?
-      check.guides_videos.create(v_id)
-      flash[:success] = '追加完了！'
-      redirect_to guides_path
+      create_model(check)
     else
-      flash.now[:danger] = '登録できませんでした...'
+      flash.now[:danger] = '登録できませんでした。入力内容を確認してください。'
       render :new
     end
   end
 
   def show
-    @pagy,@videos = pagy(@guide.videos.all, items:10)
+    @air_times = @guide.air_times.all
+    @videos = @air_times.videos.distinct.pluck(:video_id)
     @channel_ids = @videos.distinct.pluck(:channel_id)
     @guide_channels = current_user.channels.find(@channel_ids)
     
@@ -72,11 +74,21 @@ class GuidesController < ApplicationController
   end
   
   def guide_params
-    params.require(:guide).permit(:guide_name, :on_air, :start_h, :start_m)
+    params.require(:guide).permit(:guide_name, :on_air)
   end
   
   def v_id
     params.require(:guide).permit(:video_id)
+  end
+  
+  def air_time_params
+    params.require(:air_time).permit(:start_h, :start_m)
+  end
+  
+  def create_model(any)
+    @air_time = current_user.air_times.find_by(air_time_params)
+    @air_time_video = @air_time.air_time_videos.find_or_create_by(video_id: v_id)
+    @air_time_guide = any.air_time_guides.create(air_time_id: @air_time.id)
   end
   
   def delete_ids
