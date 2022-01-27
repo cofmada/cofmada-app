@@ -2,9 +2,9 @@
   <div class="row text-center blue-w align-items-center px-0 py-3 m-0">
     <div class="mini text-center">※入力は20文字まで、上位10件のみ表示</div>
     
-    <div class="col-2 text-end mx-0 px-0"><%= f.label :search, 'Ch名：' %></div>
+    <div class="col-3 text-end mx-0 px-0"><%= f.label :search, 'Ch名：' %></div>
     
-    <div class="col-8 mx-0 px-0"><%= f.text_field :search, maxlength: 20, class: 'form-control' %></div>
+    <div class="col-7 mx-0 px-0"><%= f.text_field :search, maxlength: 20, class: 'form-control' %></div>
     
     <div class="text-center mt-3 mx-0"><%= f.submit '検索', class: 'd-metal btn px-3 py-0' %></div>
   </div> 
@@ -17,27 +17,27 @@
       <div class="text-center gold py-3">『<%= params[:search] %>』の検索結果</div>
       
       <% @results.each.with_index(1) do |ch_data, i| %>
-        <div class="col-1" >
-          <% icons = ch_data[:snippet][:thumbnails][:default][:url] %>
-          <% names = ch_data[:snippet][:title] %>
-          <% ids = ch_data[:id][:channel_id] %>
-          <% ch_urls = "https://www.youtube.com/channel/#{ids}" %>
-          <% some = "#{names}" + "#{i}" %>
+        <div class="row col-md-6 p-1 m-0">
+          <div class="col-1 p-0 m-0" >
+            <% icons = ch_data[:snippet][:thumbnails][:default][:url] %>
+            <% names = ch_data[:snippet][:title] %>
+            <% ids = ch_data[:id][:channel_id] %>
+            <% ch_urls = "https://www.youtube.com/channel/#{ids}" %>
+            <% some = "#{names}" + "#{i}" %>
+          </div>
+          
+          <div class="col-10 text-start small border-bottom mx-0 px-0 mb-2" >
+            <img src="<%= icons %>" alt="" class="icon">
+            <%= names %>
+          </div>
+          
+          <div class="all_check col-1 px-0 pb-2 mb-2">
+            <%= f.check_box :channel_name, { style: 'transform: scale(2);', class: i, id: some.gsub(" ", "") }, names, false %>
+            <%= f.check_box :icon, { class: "hide", id: icons.gsub(" ", "") }, icons, false %>
+            <%= f.check_box :channel_url, { class: "hide", id: ch_urls.gsub(" ", "") }, ch_urls, false %>
+            <%= f.check_box :search_key, { class: "hide", id: ids.gsub(" ", "")}, ids, false %>
+          </div>
         </div>
-        
-        <div class="col-9 text-start small border-bottom mx-0 px-0 mb-2" >
-          <img src="<%= icons %>" alt="" class="icon">
-          <%= names %>
-        </div>
-        
-        <div class="all_check col-1 px-0 pb-2 mb-2">
-          <%= f.check_box :channel_name, { style: 'transform: scale(2);', class: i, id: some.gsub(" ", "") }, names, false %>
-          <%= f.check_box :icon, { class: "hide", id: icons.gsub(" ", "") }, icons, false %>
-          <%= f.check_box :channel_url, { class: "hide", id: ch_urls.gsub(" ", "") }, ch_urls, false %>
-          <%= f.check_box :search_key, { class: "hide", id: ids.gsub(" ", "")}, ids, false %>
-        </div>
-        
-        <div class="col-1"></div>
       <% end %>
       
       <div class="mini text-center mt-2">↓チェックしたChを登録↓</div>

@@ -9,33 +9,25 @@ class GuidesController < ApplicationController
   def new
     @guide = current_user.guides.build
     @channels = current_user.channels.all
-    @air_times = current_user.air_times.all
   end
 
   def create
-    check = current_user.guides.find_by(guide_name: guide_params[:guide_name], on_air: guide_params[:on_air])
-    if check == nil
-      @guide = current_user.guides.build(guide_params)
-      if @guide.save
-        create_model(@guide)
-      else
-        flash.now[:danger] = '登録できませんでした。名前と放送日を確認してください。'
-        render :new
-      end
-    elsif check.present?
-      create_model(check)
+    @guide = current_user.guides.find_or_create_by(guide_params)
+    @guide_video = @guide.guide_videos.create(time_params)
+    if @guide_video.save
+      flash[:success] = '登録完了！'
+      redirect_to guides_path
     else
-      flash.now[:danger] = '登録できませんでした。入力内容を確認してください。'
+      flash.now[:danger] = '同じ時間帯で登録されています。入力内容を確認してください。'
       render :new
     end
   end
 
   def show
-    @air_times = @guide.air_times.all
-    @videos = @air_times.videos.distinct.pluck(:video_id)
-    @channel_ids = @videos.distinct.pluck(:channel_id)
-    @guide_channels = current_user.channels.find(@channel_ids)
-    
+    @channels = current_user.channels.all
+    @videos = @guide.videos.all
+    @guide_videos = @guide.guide_videos.all
+    @start = @guide_videos.distinct.pluck(:start_h)
   end
 
   def edit
@@ -77,21 +69,12 @@ class GuidesController < ApplicationController
     params.require(:guide).permit(:guide_name, :on_air)
   end
   
-  def v_id
-    params.require(:guide).permit(:video_id)
-  end
-  
-  def air_time_params
-    params.require(:air_time).permit(:start_h, :start_m)
-  end
-  
-  def create_model(any)
-    @air_time = current_user.air_times.find_by(air_time_params)
-    @air_time_video = @air_time.air_time_videos.find_or_create_by(video_id: v_id)
-    @air_time_guide = any.air_time_guides.create(air_time_id: @air_time.id)
+  def time_params
+    params.require(:guide).permit(:video_id, :start_h, :start_m)
   end
   
   def delete_ids
     params.require(:guide).permit(video_id: [])
   end
+  
 end

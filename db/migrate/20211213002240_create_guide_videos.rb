@@ -8,6 +8,5 @@ class CreateGuideVideos < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
-    add_index :guide_videos, [:guide_id, :start_h, :start_m], unique: true
   end
 end

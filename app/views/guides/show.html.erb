@@ -1,5 +1,5 @@
-<h4 class="blue-w text-center gold pb-2">番組表詳細ページ</h4>
-<div class="row blue-w align-middle p-0">
+<h4 class="blue-w text-center gold pb-2 m-0">番組表詳細ページ</h4>
+<div class="row wind align-middle p-0 m-0">
   <div class="text-center pt-2 m-0">
     『<%= @guide.guide_name %>』
   </div> 
@@ -8,14 +8,15 @@
   </div>
 </div>
 
-<div class="row blue-w scroll p-0 m-0">
-  <%= render 'timetable', guide_channels: @guide_channels %>
-    
-  <div class="col-6 text-center">
+<div class="blue-w p-0 m-0">
+  <%= render 'timetable' %>
+</div>
+
+<div class="row blue-w p-0 m-0">
+  <div class="col-6 text-center py-2">
     <%= link_to '一覧に戻る', guides_path, class: 'btn metal p-1' %>
   </div>
-  <div class="col-6 text-center">
+  <div class="col-6 text-center py-2">
     <%= link_to '編集ページ', edit_guide_path, class: 'btn d-metal p-1' %>
   </div>
 </div>
-

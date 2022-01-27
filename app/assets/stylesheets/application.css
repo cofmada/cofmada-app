@@ -37,6 +37,7 @@ h1,h2,h5,.blue-w,.alert-warning,.nav-tabs .nav-link.active,
   background: rgb(0,0,0);
   background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(18,17,20,1) 30%, rgba(70,164,223,1) 60%, rgba(37,34,77,1) 100%);
 }
+
 /*　メタルボタン　*/
 .metal {
   font-size: 20px;
@@ -128,14 +129,10 @@ h1,h2,h5,.blue-w,.alert-warning,.nav-tabs .nav-link.active,
   font-size: 50px;
 }
 
-.nav-tabs {
-  font-size: 20px;
-}
 /*　メニューセレクト　*/
 .select,.nav-tabs .nav-link {
   cursor: pointer;
 }
-/* セレクト後　*/
 .selected,.nav-tabs .nav-link.active {
   color: #ffd700;
   margin-right: 1em;
@@ -144,17 +141,20 @@ h1,h2,h5,.blue-w,.alert-warning,.nav-tabs .nav-link.active,
 .selected:before {
   content: "▶";
 }
+
 /*　説明文行間　*/
 #type { 
   letter-spacing: 1px;
   line-height: 210%;
   }
+  
 /*　登録ボタン表示用　*/
 .box {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
+
 /*　ウィンドウ開閉用*/
 .page {
   display: none;
@@ -163,6 +163,7 @@ h1,h2,h5,.blue-w,.alert-warning,.nav-tabs .nav-link.active,
   margin-left: 2em;
   line-height: 180%;
 }
+
 /*　ページネーションデザイン*/
 .page-item.active .page-link {
   z-index: 3;
@@ -203,19 +204,196 @@ h1,h2,h5,.blue-w,.alert-warning,.nav-tabs .nav-link.active,
 .pagy-bootstrap-nav {
   margin-right: 60px;
 }
+
 /*　表　*/
-.table {
-  color: #fffafa;
+tbody{
+  max-width: 1820px;
+  max-height: 504px;
 }
-td {
-  max-width: 30px;
-}
-td > img {
+.wide {
+  max-width: 176px;
   border: none;
-  width: 160px;
-  height: 90px;
+}
+th {
+  font-size: 22px;
+  color: #fffafa;
+  text-shadow:
+         1px 1px 0px #000, -1px -1px 0px #000,
+        -1px 1px 0px #000,  1px -1px 0px #000,
+         1px 0px 0px #000, -1px  0px 0px #000,
+         0px 1px 0px #000,  0px -1px 0px #000;
+  border-top: 2px solid #d8dcdc;
+  border-right: 2px solid #666;
+  border-bottom: 2px solid #333;
+  border-left: 2px solid #868888;
+  border-radius: 0;
+  background-image: -webkit-gradient(135deg, #ccc 0%, #868888 20%, #d8dcdc 34%, white 53%, #ccc 100%);
+  background-image: -webkit-linear-gradient(135deg, #ccc 0%, #868888 20%, #d8dcdc 34%, white 53%, #ccc 100%);
+  background-image: -o-linear-gradient(135deg, #ccc 0%, #868888 20%, #d8dcdc 34%, white 53%, #ccc 100%);
+  background-image: -moz-linear-gradient(-45deg, #ccc 0%, #868888 20%, #d8dcdc 34%, white 53%, #ccc 100%);
+}
+a > img {
+  border: none;
+  width: 176px;
+  height: 99px;
+}
+.border_top{
+  border-top:3px solid #fffff9;
+  border-right: 3px solid #fffff9;
+  border-bottom: 1px solid #fffff9;
+  border-style: ridge;
+}
+.border_bottom{
+  border-top:1px solid #fffff9;
+  border-right: 3px solid #fffff9;
+  border-bottom: 3px solid #fffff9;
+  border-style: ridge;
+}
+.border_right{
+  border-right: 1px solid #fffff9;
+}
+.scroll {
+  overflow: auto;
+}
+.scroll::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+.scroll::-webkit-scrollbar-track {
+  background-image: linear-gradient(135deg, #ccc 0%, white 53%, #ccc 100%);
+}
+.scroll::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(135deg, #727171 0%, #0d0015 20%, #727171 34%, white 60%, #16160e 100%);
+  border-top: 2px solid #d8dcdc;
+  border-right: 2px solid #666;
+  border-bottom: 2px solid #333;
+  border-left: 2px solid #868888;
+  border-radius: 0;
+}
+figure.hover-parent {
+  width: 176px;
+  height: 99px;
+  position: relative;
+}
+figcaption.hover-mask {
+  font-size: 14px;
+  width: 170px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 3px;
+  background: rgba(0,0,0,0.3);
+  opacity: 0;
+  color: #fff;
+  border-radius: 10px;
+}
+figure.hover-parent:hover .hover-mask {
+  opacity: 1;
+  transition: all 0.7s ease;
+  overflow: hidden;
+}
+td > .thumb_alt{
+  background-color: #fffafa;
+  border-radius: 10px;
+  width: 170px;
+  height: 99px;
+  position: relative;
+}
+.thumb_cap {
+  font-size: 20px;
+  width: 100%;
+  height: 25%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.3);
+  opacity: 1;
+  color: #fff;
+  border-radius: 0 0 10px 10px;
 }
 
+/* 画像表示用 */
+img {
+  border: 3px solid #fffff9;
+  border-style: ridge;
+  border-radius: 10px;
+}
+#user_avatar {
+  font-size: 18px;
+}
+.icon {
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+.none {
+  border: none;
+  min-width: 128px;
+  max-width: 256px;
+  min-height: 72px;
+  max-height: 144px;
+}
+.thumb {
+  border: none;
+  width: 90px;
+  height: 90px;
+}
+.thumb_alt{
+  background-color: #fffafa;
+  border-radius: 10px;
+  min-width: 128px;
+  max-width: 256px;
+  min-height: 72px;
+  max-height: 144px;
+}
+td {
+  position: relative;
+  vertical-align: top;
+}
+
+/* 文字表示系 */
+.omit {
+  font-size: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+}
+.omit:hover {
+  color: #ffd700;
+  overflow: visible;
+  white-space: nowrap;
+}
+.n-omit{
+  font-size: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.n-omit > a:hover {
+  color: #ffd700;
+}
+.omit >a, .n-omit > a {
+  color: #fffafa;
+  text-decoration: none;
+}
+.omit >a:hover {
+  color: #ffd700;
+  background: rgba(0,0,0,0.6);
+  position: absolute;
+  top: 0px;
+  left: 0;
+  z-index: 1;
+}
+.micro{
+  font-size: 10px;
+  color: #fffafa;
+  text-decoration: none;
+}
+.nav-tabs {
+  font-size: 18px;
+}
 .mini {
   white-space: normal;
   font-size: 18px;
@@ -227,57 +405,7 @@ td > img {
   color: #fffafa;
 }
 
-img {
-  border: 3px solid #fffff9;
-  border-style: ridge;
-  border-radius: 10px;
-}
-#user_avatar {
-  font-size: 18px;
-}
-
-.icon {
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-}
-
-.none {
-  border: none;
-  min-width: 128px;
-  max-width: 256px;
-  min-height: 72px;
-  max-height: 144px;
-}
-
-.thumb {
-  border: none;
-  width: 90px;
-  height: 90px;
-}
-
-.scroll {
-  overflow: auto;
-}
 
 .all_check > .hide {
   display:none;
 }
-
-.omit, .omit:hover {
-  font-size: 20px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.omit >a {
-  color: #fffafa;
-  text-decoration: none;
-}
-.omit >a:hover {
-  color: #ffd700;
-  white-space: normal;
-}
-

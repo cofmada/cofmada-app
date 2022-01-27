@@ -1,24 +1,38 @@
 <%= form_with(model: channel, method: :post) do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
   <%= f.hidden_field :search_key, value: "" %>
-  <div class="row blue-w px-0 py-3">
-    <div class="col-2 small text-end mb-2 mx-0 px-0">
-      <%= f.label :channel_name, 'Ch名：', class: 'pt-1 my-3 d-block' %>
-      <%= f.label :channel_url, 'URL：', class: 'pt-1 my-3 d-block' %>
+  
+  <div class="row blue-w m-0 p-3">
+    <div class="row col-md-4 m-0 p-0">
+      <div class="col-3 col-md-4 small text-end mb-2 mx-0 px-0">
+        <%= f.label :channel_name, 'Ch名：', class: 'pt-1 my-3 d-block' %>
+      </div>
+        
+      <div class="col-7 col-md-8 mb-2 px-0">
+        <%= f.text_field :channel_name, class: 'form-control my-3' %>
+      </div>
     </div>
-    <div class="col-8 mb-2 px-0">
-      <%= f.text_field :channel_name, class: 'form-control my-3' %>
-      <%= f.text_field :channel_url, class: 'form-control my-3' %>
+    
+    <div class="row col-md-4 m-0 p-0">
+      <div class="col-3 col-md-4 small text-end mb-2 mx-0 px-0">
+        <%= f.label :channel_url, 'URL：', class: 'pt-1 my-3 d-block' %>
+      </div>
+      
+      <div class="col-7 col-md-8 mb-2 px-0">  
+        <%= f.text_field :channel_url, class: 'form-control my-3' %>
+      </div>
     </div>
+    
     <% if current_page?(new_channel_path) %>
-      <div class="text-center mb-2 mt-0">
-        <%= f.submit '登録', class: 'b-metal btn mt-2 py-1' %>
+      <div class="text-center col-md-4 mb-2 mt-0">
+        <%= f.submit '登録', class: 'b-metal btn mt-2 py-0' %>
       </div>
     <% else %>
-      <div class="text-center mt-2">
-        <%= f.submit '更新', class: 'b-metal btn mt-2 mx-2 py-1' %>
-        <%= link_to '削除', @channel, method: :delete, data: { confirm: 'Chを削除しますか？' }, class: 'd-metal btn mx-2 mt-2 py-1' %>
+      <div class="text-center col-md-4 mt-2 p-0">
+        <%= f.submit '更新', class: 'b-metal btn mt-2 mx-2 py-0' %>
+        <%= link_to '削除', @channel, method: :delete, data: { confirm: 'Chを削除しますか？' }, class: 'd-metal btn mx-2 mt-2 py-0' %>
       </div>
+      
       <div class="text-center mt-3">
         <%= link_to '一覧に戻る', channels_path, class: 'btn metal p-1' %>
       </div>

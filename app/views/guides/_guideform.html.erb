@@ -1,11 +1,13 @@
 <%= form_with(model: guide) do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
+  
   <div class="row  blue-w px-0 py-2">
     <div class="row col-md-6 m-0 p-0">
-      <div class="col-3 small text-end mb-2 mx-0 px-0">
-        <%= f.label :guide_name, '　表名：', class: 'pt-1 my-2' %>
-      </div>  
-      <div class="col-8 small mb-2 mx-0 px-0"> 
+      <div class="col-3 col-md-4 small text-end mb-2 mx-0 px-0">
+        <%= f.label :guide_name, '番組表名：', class: 'pt-1 my-2' %>
+      </div>
+      
+      <div class="col-7 small mb-2 mx-0 px-0"> 
         <%= f.text_field :guide_name, class: 'form-control my-2' %>
       </div>  
     </div>
@@ -13,8 +15,9 @@
     <div class="row col-md-6 m-0 p-0">
       <div class="col-3 small text-end mb-2 mx-0 px-0">
         <%= f.label :on_air, '放送日：', class: 'pt-1 my-2' %>
-      </div>  
-      <div class="col-8 small mb-2 mx-0 px-0"> 
+      </div>
+      
+      <div class="col-7 small mb-2 mx-0 px-0"> 
         <%= f.date_field :on_air, class: 'form-control my-2' %>
       </div>  
     </div>
@@ -34,30 +37,15 @@
   
   <div class="row blue-w px-0 py-2">
     <div class="row align-items-center col-md-6 m-0 p-0">
-      <div class="col-3 small text-end m-0 p-0">
+      <div class="col-3 col-md-4 small text-end m-0 p-0">
         <%= f.label :channel_name, "　Ch名：", class: "mt-3" %>
         <%= f.label :video_name, "動画名：", class: "mt-3" %>
-      </div>
-      <div class="col-8 m-0 mx-0 px-0">
+      </div>  
+        
+      <div class="col-7 m-0 mx-0 px-0"> 
         <%= collection_select(:channel, :channel_id, channels, :id, :channel_name, {include_blank: "---"}, class: "form-control mt-3") %>
         <%= f.select(:video_id, [], {include_blank: "---"}, class: "default_select form-control mt-3") %>
       </div>
-    </div>
-    
-    <div class="row align-items-center col-md-6 m-0 p-0">
-      <div class="col-3 small text-end m-0 mx-0 px-0 pb-0 pt-2 mt-1">開始：</div>
-      
-      <div class="col-3 m-0 mx-0 px-0">
-        <%= select(:air_time, :start_h, [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,0,1,2,3,4], {include_blank: "---"}, class: 'form-control mt-3') %>
-      </div>
-      
-      <div class="col-1 small m-0 mx-0 px-1 pb-0 pt-2 mt-1">時</div>
-      
-      <div class="col-3 m-0 mx-0 px-0">
-        <%= select(:air_time, :start_m, [0,30], {include_blank: "---"}, class: 'form-control mt-3') %>
-      </div>
-      
-      <div class="col-1 small m-0 mx-0 px-1 pb-0 pt-2 mt-1">分</div>
     </div>
     
     <%- channels.each do |ch|  %>
@@ -65,9 +53,33 @@
         <%= f.collection_select(:video_id, ch.videos, :id, :video_name, {include_blank: "---"}, class: "form-control mt-3") %>
       </template>
     <% end %>
-
+        
+    <div class="row align-items-center col-md-6 m-0 p-0">
+      <div class="col-3 small text-end m-0 px-0 pt-3">
+        <%= f.label :start_h, "開始：" %>
+      </div>
+      
+      <div class="col-2 m-0 mx-0 px-0">
+        <%= f.select(:start_h, [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,0,1,2,3,4], {include_blank: "---"}, class: 'form-control mt-3') %>
+      </div>
+      
+      <div class="col-1 mx-2 px-0 pt-3">
+        <%= f.label :start_m, "時" %>
+      </div>
+      
+      <div class="col-2 m-0 mx-0 px-0">
+        <%= f.select(:start_m, [0,30], {include_blank: "---"}, class: 'form-control mt-3') %>
+      </div>
+      
+      <div class="col-1 small mx-2 px-0 pt-3">分</div>
+      
+      <div class="text-center mt-">
+        <%= f.submit '登録', class: 'b-metal btn mt-3 py-0' %>
+      </div>
+    </div>
+    
     <div class="text-center my-2">
-      <%= f.submit '登録', class: 'b-metal btn mt-2 py-1' %>
+      <%= f.submit '登録', class: 'b-metal btn mt-2 py-0' %>
     </div>
   </div>
 <% end %>

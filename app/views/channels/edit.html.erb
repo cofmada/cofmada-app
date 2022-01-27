@@ -1,14 +1,9 @@
 <h4 class="blue-w text-center gold pb-2">Ch編集ページ</h4>
+
 <%= render'form',channel: @channel %>
 
+<%= render'video_form', channel: @channel %>
 
-<div class="row m-0 p-0">
-  <div class="col-md-6 m-0 p-0">
-    <%= render'video_form', channel: @channel %>
-  </div>  
+<%= render'video_search', channel: @channel %>
 
-  <div class="col-md-6 m-0 p-0">
-    <%= render'video_search', channel: @channel %>
-  </div>  
-</div>
 <%= javascript_pack_tag 'user/forms' %>

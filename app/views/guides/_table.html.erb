@@ -11,7 +11,7 @@
   </thead>
   <tbody>
     <% if @guide.guide_name.present? %>
-      <% guidevideos.each do |v| %>
+      <% guides.each do |v| %>
         <tr>
           <td><%= v.video_name %></td>
           <% if current_page?(edit_guide_path) %>

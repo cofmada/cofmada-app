@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 2021_12_13_002240) do
     t.bigint "video_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["guide_id", "start_h", "start_m"], name: "index_guide_videos_on_guide_id_and_start_h_and_start_m", unique: true
     t.index ["guide_id"], name: "index_guide_videos_on_guide_id"
     t.index ["video_id"], name: "index_guide_videos_on_video_id"
   end
