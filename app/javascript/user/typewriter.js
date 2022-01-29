@@ -11,14 +11,21 @@ document.addEventListener('turbolinks:load', () => {
     $.when(
       $('.writer > p').removeClass('selected'),
       $('.writer').css('pointer-events', 'none'),
-      $('.txt').html('<p id="type" class="pt-2"></p>')
+      $('.txt').html('<p id="type" class="pt-2"></p><p id="type2" class="pt-2"></p>'),
     ).done(function typeWriter() {
-      if (i < selector.length) {
+      let first = selector.indexOf('。')+1;
+      console.log(first);
+      if (i < first) {
         document.getElementById('type').innerHTML += selector.charAt(i);
         i++;
         setTimeout(typeWriter, 40);
-        if (i == selector.length) {
-          $('.writer').css('pointer-events', '');
+        if (i >= first) {
+          document.getElementById('type2').innerHTML += selector.charAt(i);
+          i++;
+          setTimeout(typeWriter, 40);
+          if (i == selector.length) {
+            $('.writer').css('pointer-events', '');
+          }
         }
       }
     });

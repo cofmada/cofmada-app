@@ -16,23 +16,31 @@
 </div>
 
 <div class="wind text-center p-0 m-0">
-  <%= form_with(model: @user, method: :get) do |f| %>  
+  <%= form_with url: user_path, method: :get do |f| %>  
     <div class="row align-items-baseline px-0 py-2 m-0">
       <div class="col-3 small text-end mx-0 px-1">
         <%= f.label :guide_id, '番組表:' %>
       </div>
       <div class="col-6 mx-0 px-1">
-        <%= f.collection_select :guide_id, current_user.guides.all, :id, :guide_name, {}, class: 'form-control' %>
+        <%= f.collection_select :guide_id, current_user.guides.all, :id, :guide_name, {include_blank: "---"}, class: 'form-control' %>
       </div>
       <div class="col-2 text-center p-0 m-0">
-        <div class="d-metal btn py-0 px-2 m-0">表示</div>
+        <%= f.submit '表示', class: 'd-metal btn px-3 py-0' %>
       </div>  
     </div>
   <% end %>
 </div>
-
-<div class="blue-w text-center align-middle scroll px-0 py-2 m-0">
-  <% if params[:guide_id].present? %>
-    <%= render 'guides/timetable', guide_channels: @guide_channels %>
-  <% end %>
-</div>
+<% if params[:guide_id].present? %>
+  <div class="row wind align-middle p-0 m-0">
+    <div class="text-center pt-2 m-0">
+      『<%= @guide.guide_name %>』
+    </div> 
+    <div class="text-center small pb-2 m-0">  
+      <%= @guide.on_air %>&nbsp;放送分
+    </div>
+  </div>
+  
+  <div class="blue-w p-0 m-0">
+    <%= render 'guides/timetable' %>
+  </div>
+<% end %>

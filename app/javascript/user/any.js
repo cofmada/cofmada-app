@@ -27,6 +27,6 @@ document.addEventListener('turbolinks:load', () => {
     document.querySelector('.clock-date').innerText = today;
     document.querySelector('.clock-time').innerText = time;
     return clock;
-  }()), 500);
+  }), 60000);
   
 })

@@ -13,13 +13,18 @@ class GuidesController < ApplicationController
 
   def create
     @guide = current_user.guides.find_or_create_by(guide_params)
-    @guide_video = @guide.guide_videos.create(time_params)
-    if @guide_video.save
-      flash[:success] = '登録完了！'
-      redirect_to guides_path
-    else
-      flash.now[:danger] = '同じ時間帯で登録されています。入力内容を確認してください。'
-      render :new
+    if @guide.save
+      @guide_video = @guide.guide_videos.create(time_params)
+      if @guide_video.save
+        flash[:success] = '登録完了！'
+        redirect_to guides_path
+      else
+        flash.now[:danger] = '同じ時間帯で登録されています。入力内容を確認してください。'
+        render :new
+      end
+    else 
+      flash[:danger] = '登録できませんでした。入力内容を確認してください。'
+      redirect_to new_guide_path
     end
   end
 

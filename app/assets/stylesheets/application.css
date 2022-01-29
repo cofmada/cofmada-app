@@ -371,6 +371,9 @@ td {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.n-omit:hover{
+  white-space: normal;
+}
 .n-omit > a:hover {
   color: #ffd700;
 }
