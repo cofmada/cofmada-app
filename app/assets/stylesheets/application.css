@@ -143,9 +143,9 @@ h1,h2,h5,.blue-w,.alert-warning,.nav-tabs .nav-link.active,
 }
 
 /*　説明文行間　*/
-#type { 
+#type, #type2 { 
   letter-spacing: 1px;
-  line-height: 210%;
+  line-height: 180%;
   }
   
 /*　登録ボタン表示用　*/

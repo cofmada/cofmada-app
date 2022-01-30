@@ -1,4 +1,5 @@
 document.addEventListener('turbolinks:load', () => {
+  
   //開閉用
   $('.acord').on('click', function () {
     let parent = $(this).parent();
@@ -8,7 +9,7 @@ document.addEventListener('turbolinks:load', () => {
   });
   
   //時計
-  setInterval((function clock() {
+  const clock = () => {
     const d = new Date();
     const year = d.getFullYear();
     let month = d.getMonth() + 1;
@@ -26,7 +27,10 @@ document.addEventListener('turbolinks:load', () => {
     const time = `${hour}:${min}`;
     document.querySelector('.clock-date').innerText = today;
     document.querySelector('.clock-time').innerText = time;
-    return clock;
-  }), 60000);
-  
-})
+  };
+  clock();
+  setTimeout(function () {
+    clock();
+    setInterval(clock, 1000);
+  }, 1000 - new Date().getUTCMilliseconds());
+});
