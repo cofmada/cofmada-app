@@ -1,13 +1,13 @@
 document.addEventListener('turbolinks:load', () => {
-  
+
   //開閉用
-  $('.acord').on('click', function () {
+  $('.acord').on('click', function() {
     let parent = $(this).parent();
     $(parent).addClass('open');
     $('.open + .page').slideToggle();
     $(parent).removeClass('open');
   });
-  
+
   //時計
   const clock = () => {
     const d = new Date();
@@ -28,9 +28,15 @@ document.addEventListener('turbolinks:load', () => {
     document.querySelector('.clock-date').innerText = today;
     document.querySelector('.clock-time').innerText = time;
   };
+
   clock();
-  setTimeout(function () {
-    clock();
-    setInterval(clock, 1000);
-  }, 1000 - new Date().getUTCMilliseconds());
+
+  const remainingMillisecond = 1000 - new Date().getUTCMilliseconds();
+  setTimeout(function() {
+    const remainingsecond = 60000 - new Date().getUTCSeconds() * 1000;
+    setTimeout(function() {
+      clock();
+      setInterval(clock, 60000);
+    }, remainingsecond);
+  }, remainingMillisecond);
 });

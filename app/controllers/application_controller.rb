@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   def counts(num)
     @count_guides = num.guides.count
     @count_channels = num.channels.count
+    @count_videos = num.videos.count
   end
     
   def search(keyword)

@@ -1,11 +1,6 @@
-<h4 class="blue-w text-center gold pb-2 m-0">番組表詳細ページ</h4>
-<div class="row wind align-middle p-0 m-0">
-  <div class="text-center pt-2 m-0">
-    『<%= @guide.guide_name %>』
-  </div> 
-  <div class="text-center small pb-2 m-0">  
-    <%= @guide.on_air %>&nbsp;放送分
-  </div>
+<div class="blue-w text-center align-middle py-1 m-0">
+  『<%= @guide.guide_name %>』
+  <%= @guide.on_air %>
 </div>
 
 <div class="blue-w p-0 m-0">
@@ -20,3 +15,5 @@
     <%= link_to '編集ページ', edit_guide_path, class: 'btn d-metal p-1' %>
   </div>
 </div>
+
+<%= javascript_pack_tag 'user/timetable' %>

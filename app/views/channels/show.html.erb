@@ -1,2 +1,7 @@
+<div class="blue-w text-center align-middle py-1 m-0">
+  『<%= @channel.channel_name %>』の動画一覧
+</div>
+
 <%= render'guides/videos_index', channel: @channel, videos: @videos %>
+
 <%= javascript_pack_tag 'user/forms' %>

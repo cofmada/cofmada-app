@@ -4,7 +4,7 @@
     <% while h < 24 %>
 
       <tr class="border_top">
-        <th class="text-center m-0" rowspan="2" width="20"><%= h %></th>
+        <th class="text-center m-0" rowspan="2" width="20" id="hour<%= h %>"><%= h %></th>
         <td class="small border_right px-1 m-0">:00</td>
         
         <% if @start.include?(h) %>

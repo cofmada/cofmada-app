@@ -5,7 +5,7 @@
     <%= form_with(model: @user) do |f| %>
       <%= render 'layouts/error_messages', model: f.object %>
       <%= f.file_field :avatar, size: 20 %>
-      <%= f.submit '登録', class: 'b-metal btn m-2 px-2 py-0' %>
+      <%= f.submit '登録', class: 'b-metal btn m-2 px-3 py-0' %>
     <% end %>
   </div>
 </div>

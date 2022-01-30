@@ -5,10 +5,11 @@
       <div class="col-6 text-end px-2 m-0">
         <%= image_tag @user.avatar.url, alt: "" %>
       </div>
-      <div class="col-6 text-start px-2 m-0">
+      <div class="col-6 text-start small px-2 m-0">
         <div class="text-start">ユーザー：<%= @user.name %></div>
         <div class="text-start">番組表数：<%= @count_guides %></div>
         <div class="text-start">登録Ch数：<%= @count_channels %></div>
+        <div class="text-start">総動画数：<%= @count_videos %></div>
       </div>
     </div>
   </div>      
@@ -30,14 +31,11 @@
     </div>
   <% end %>
 </div>
+
 <% if params[:guide_id].present? %>
-  <div class="row wind align-middle p-0 m-0">
-    <div class="text-center pt-2 m-0">
-      『<%= @guide.guide_name %>』
-    </div> 
-    <div class="text-center small pb-2 m-0">  
-      <%= @guide.on_air %>&nbsp;放送分
-    </div>
+  <div class="blue-w text-center align-middle py-1 m-0">
+    『<%= @guide.guide_name %>』
+    <%= @guide.on_air %>
   </div>
   
   <div class="blue-w p-0 m-0">

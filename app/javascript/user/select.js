@@ -1,4 +1,3 @@
-
 $(document).on('turbolinks:load', function() {
   let channelId = $('#channel_channel_id').val();
   if (channelId !== "") {
