@@ -4,15 +4,15 @@
     <% while h < 24 %>
 
       <tr class="border_top">
-        <th class="text-center m-0" rowspan="2" width="20" id="hour<%= h %>"><%= h %></th>
-        <td class="small border_right px-1 m-0">:00</td>
+        <th class="text-center px-1 m-0" rowspan="2" id="hour<%= h %>"><%= h %></th>
+        <td class="small border_right px-1 m-0" id="just_m<%= h %>">:00</td>
         
         <% if @start.include?(h) %>
           <% just = @guide_videos.where(start_h: h, start_m: 0).pluck(:video_id) %>
           <% just_v = @videos.where(id: just).distinct %>
           <% just_v.each do |v| %>
           
-            <td class="wide m-0 px-0">
+            <td class="wide m-0 px-0 just_m<%= h %>">
               <% if v.thumbnail.present? %>
                 <figure class="hover-parent m-0 p-0">
                   <a href="<%= v.video_url %>">
@@ -35,14 +35,14 @@
       </tr>
       
       <tr class="border_bottom">
-        <td class="small border_right px-1 m-0">:30</td>
+        <td class="small border_right px-1 m-0 half_m<%= h %>">:30</td>
         
         <% if @start.include?(h) %>
           <% half = @guide_videos.where(start_h: h, start_m: 30).pluck(:video_id) %>
           <% half_v = @videos.where(id: half).distinct %>
           <% half_v.each do |v| %>
           
-            <td class="wide m-0 px-0">
+            <td class="wide m-0 px-0" id="half_m<%= h %>">
               <% if v.thumbnail.present? %>
                 <figure class="hover-parent m-0 p-0">
                   <a href="<%= v.video_url %>">
