@@ -5,11 +5,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     counts(@user)
-    @guide = current_user.guides.find_by(id: params[:guide_id])
-    @channels = current_user.channels.all
-    @videos = @user.videos.all
+    today = l Date.current
+    @guides = @user.guides.where(on_air: today)
     @guide_videos = @user.guide_videos.all
-    @start = @guide_videos.distinct.pluck(:start_h)
+    @channels = @user.channels.all
+    @videos = @user.videos.all
   end
 
   def new

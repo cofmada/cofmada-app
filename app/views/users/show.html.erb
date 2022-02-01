@@ -16,29 +16,10 @@
   <%= render 'profile_img' %>
 </div>
 
-<div class="wind text-center p-0 m-0">
-  <%= form_with url: user_path, method: :get do |f| %>  
-    <div class="row align-items-baseline px-0 py-2 m-0">
-      <div class="col-3 small text-end mx-0 px-1">
-        <%= f.label :guide_id, '番組表:' %>
-      </div>
-      <div class="col-6 mx-0 px-1">
-        <%= f.collection_select :guide_id, current_user.guides.all, :id, :guide_name, {include_blank: "---"}, class: 'form-control' %>
-      </div>
-      <div class="col-2 text-center p-0 m-0">
-        <%= f.submit '表示', class: 'd-metal btn px-3 py-0' %>
-      </div>  
-    </div>
-  <% end %>
-</div>
+<div class="wind text-center py-1 m-0"><%= l Date.current %>&nbsp;放送中</div>
 
-<% if params[:guide_id].present? %>
-  <div class="blue-w text-center align-middle py-1 m-0">
-    『<%= @guide.guide_name %>』
-    <%= @guide.on_air %>
-  </div>
-  
-  <div class="blue-w p-0 m-0">
-    <%= render 'guides/timetable' %>
-  </div>
+<% if @guides.present? %>
+  <%= render 'now_videos' %>
+<% else %>
+  <div class="blue-w text-center py-1 m-0">登録されている動画はありません</div>
 <% end %>

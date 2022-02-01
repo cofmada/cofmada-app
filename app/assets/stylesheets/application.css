@@ -94,7 +94,7 @@ h1,h2,h5,.blue-w,.alert-warning,.nav-tabs .nav-link.active,
 .metal:hover,.selected:hover,
 .gold,.nav-tabs .nav-link:hover,
 .text-warning,.text-success,
-.select:hover,.page-item > a:hover {
+.select:hover, a:hover {
   color: #ffd700;
 }
 .d-metal:active,
@@ -207,14 +207,17 @@ h1,h2,h5,.blue-w,.alert-warning,.nav-tabs .nav-link.active,
 
 /*　表　*/
 tbody{
-  max-width: 1820px;
+  max-width: 1920px;
   max-height: 549px;
 }
 .wide {
-  max-width: 176px;
+  max-width: 180px;
   border: none;
 }
-th {
+.height {
+  max-height: 192px;
+}
+th,.th {
   font-size: 22px;
   color: #fffafa;
   text-shadow:
@@ -234,8 +237,8 @@ th {
 }
 a > img {
   border: none;
-  width: 176px;
-  height: 99px;
+  width: 184px;
+  height: 104px;
 }
 .border_top{
   border-top:3px solid #fffff9;
@@ -255,14 +258,21 @@ a > img {
 .scroll {
   overflow: auto;
 }
-.scroll::-webkit-scrollbar {
+.y_scroll {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.scroll::-webkit-scrollbar,
+.y_scroll::-webkit-scrollbar {
   width: 15px;
   height: 15px;
 }
-.scroll::-webkit-scrollbar-track {
+.scroll::-webkit-scrollbar-track,
+.y_scroll::-webkit-scrollbar-track {
   background-image: linear-gradient(135deg, #ccc 0%, white 53%, #ccc 100%);
 }
-.scroll::-webkit-scrollbar-thumb, th.now {
+.scroll::-webkit-scrollbar-thumb, th.now,
+.y_scroll::-webkit-scrollbar-thumb {
   background-image: linear-gradient(135deg, #727171 0%, #0d0015 20%, #727171 34%, white 60%, #16160e 100%);
   border-top: 2px solid #d8dcdc;
   border-right: 2px solid #666;
@@ -271,13 +281,13 @@ a > img {
   border-radius: 0;
 }
 figure.hover-parent {
-  width: 176px;
-  height: 99px;
+  width: 184px;
+  height: 104px;
   position: relative;
 }
 figcaption.hover-mask {
-  font-size: 14px;
-  width: 170px;
+  font-size: 17px;
+  width: 178px;
   height: 100%;
   position: absolute;
   top: 0;
@@ -292,11 +302,11 @@ figure.hover-parent:hover .hover-mask {
   transition: all 0.7s ease;
   overflow: hidden;
 }
-td > .thumb_alt{
+.thumb_alt{
   background-color: #fffafa;
   border-radius: 10px;
-  width: 170px;
-  height: 99px;
+  width: 178px;
+  height: 104px;
   position: relative;
 }
 .thumb_cap {
@@ -313,6 +323,11 @@ td > .thumb_alt{
 }
 .now{
   color: #ffd700;
+  border-top: 2px solid #d8dcdc;
+  border-right: 2px solid #666;
+  border-bottom: 2px solid #333;
+  border-left: 2px solid #868888;
+  border-radius: 0;
   background-image: -webkit-gradient(135deg, #68a2ed 0%, #3d44f9 20%, #68a2ed 34%, white 53%, #68a2ed 100%);
   background-image: -webkit-linear-gradient(135deg, #68a2ed 0%, #3d44f9 20%, #68a2ed 34%, white 53%, #68a2ed 100%);
   background-image: -o-linear-gradient(135deg, #68a2ed 0%, #3d44f9 20%, #68a2ed 34%, white 53%, #68a2ed 100%);
@@ -365,35 +380,18 @@ td {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  position: relative;
 }
 .omit:hover {
-  color: #ffd700;
-  overflow: visible;
-  white-space: nowrap;
+ overflow: visible; 
 }
-.n-omit{
-  font-size: 20px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.n-omit:hover{
-  white-space: normal;
-}
-.n-omit > a:hover {
-  color: #ffd700;
-}
-.omit >a, .n-omit > a {
+a {
   color: #fffafa;
   text-decoration: none;
 }
-.omit >a:hover {
+span:hover {
   color: #ffd700;
   background: rgba(0,0,0,0.6);
-  position: absolute;
-  top: 0px;
-  left: 0;
+  position: relative;
   z-index: 1;
 }
 .micro{

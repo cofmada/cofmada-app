@@ -4,25 +4,29 @@
   <div class="row blue-w text-center mx-0 px-2">
     <div class="mini m-0 pb-0 px-0">※Ch名をクリックで【編集】、動画数をクリックで【動画一覧】へ</div>
     
-    <div class="col-5 border-bottom m-0 px-0 py-2">Ch名</div>
+    <div class="col-2 border-bottom"></div>
+    
+    <div class="col-4 border-bottom m-0 px-0 py-2">Ch名</div>
+    
+    <div class="col-2 border-bottom"></div>
     
     <div class="col-2 border-bottom m-0 px-0 py-2">動画数</div>
     
-    <div class="col-5 border-bottom m-0 px-0 py-2">URL</div>
+    <div class="col-2 border-bottom"></div>
     
     <% @channels.each do |ch| %>
-      <div class="col-5 n-omit border-bottom m-0 px-0 py-1">
-        <%= link_to ch.channel_name, edit_channel_path(ch.id) %>
+      <div class="col-2 small border-bottom pt-1"><%= ch.id %></div>
+      
+      <div class="col-6 text-start omit border-bottom m-0 px-0 py-1">
+        <span><%= link_to ch.channel_name, edit_channel_path(ch.id) %></span>
       </div>
       
-      <div class="col-2 n-omit border-bottom m-0 px-0 py-1">
+      <div class="col-2 omit border-bottom m-0 px-0 py-1">
         <% num = ch.videos.count %>
         <%= link_to num, channel_path(ch.id) %>
       </div>
       
-      <div class="col-5 n-omit border-bottom m-0 px-0 py-1">
-        <%= ch.channel_url %>
-      </div>
+      <div class="col-2 border-bottom"></div>
     <% end %>
     
     <div class="mt-3 px-2">

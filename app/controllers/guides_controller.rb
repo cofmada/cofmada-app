@@ -36,8 +36,10 @@ class GuidesController < ApplicationController
   end
 
   def edit
-    @pagy,@videos = pagy(@guide.videos.all, items:10)
     @channels = current_user.channels.all
+    @videos = @guide.videos.all
+    @guide_videos = @guide.guide_videos.all
+    @start = @guide_videos.distinct.pluck(:start_h)
   end
 
   def update

@@ -1,5 +1,14 @@
 <h4 class="blue-w text-center gold pb-2">番組表編集ページ</h4>
 <%= render'guideform', guide: @guide, channels: @channels %>
-<%= render'videos_index', guide: @guide, video: @video %>
+
+<div class="blue-w p-0 m-0">
+  <%= render 'timetable' %>
+</div>
+
+<div class="blue-w mx-0 py-3">
+  <div class="text-center mt-3">
+    <%= link_to '戻る', guide_path, class: 'btn metal py-1' %>
+  </div>
+</div>  
 
 <%= javascript_pack_tag 'user/forms' %>
