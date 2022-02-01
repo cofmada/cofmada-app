@@ -16,10 +16,12 @@
   <%= render 'profile_img' %>
 </div>
 
-<div class="wind text-center py-1 m-0"><%= l Date.current %>&nbsp;放送中</div>
+<div class="wind text-center py-1 m-0"><%= l Date.current %>&nbsp;放送予定の番組表</div>
 
 <% if @guides.present? %>
   <%= render 'now_videos' %>
 <% else %>
-  <div class="blue-w text-center py-1 m-0">登録されている動画はありません</div>
+  <div class="blue-w text-center py-1 m-0">登録されている番組表はありません</div>
 <% end %>
+
+<%= javascript_pack_tag 'user/profile' %>

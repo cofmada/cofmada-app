@@ -1,83 +1,95 @@
 <% @guides.each do |g| %>
-  
   <div class="row blue-w text-center align-middle py-1 m-0">
-    <div class="text-start my-2">番組表:『<%= g.guide_name %>』</div>
-    
+    <div class="text-start my-2"><%= link_to '『'+g.guide_name+'』', guide_path(g.id) %></div>
     
     <div class="col-md-6 m-0 px-1">
-      <div class="text-start th mx-0 px-2">20:00</div>
-      <div class="row now height y_scroll text-start small my-1 mx-0 p-0">
-        <% just = g.guide_videos.where(start_h: 20, start_m: 0).pluck(:video_id) %>
+      <div class="text-start th mx-0 px-2" id="onair"></div>
+    </div>
+    
+    <div class="col-md-6 m-0 px-1">
+      <div class="text-start th mx-0 px-2" id="next"></div>
+    </div>
+    
+    <% h = 0 %>
+    <% while h < 24 %>
+      
+      <template id="just<%= h %>">
+        <% just = g.guide_videos.where(start_h: h, start_m: 0).pluck(:video_id) %>
         
         <% if just.present? %>
-          <% just_v = @videos.where(id: just).distinct %>
-          
-          <% just_v.each do |v| %>
-            <div class="wide m-0 py-1 px-0">
-              <% if v.thumbnail.present? %>
-                <figure class="hover-parent m-0 p-0">
-                  <a href="<%= v.video_url %>">
-                    <img src="<%= v.thumbnail %>" alt="" class="px-1 m-0">
-                    <figcaption class="hover-mask m-0 px-2"><%= v.video_name %></figcaption></a>
-                </figure>
-              <% else %>
-                <div class="thumb_alt text-center m-0 p-0">
-                  <%= image_tag "/assets/"+v.media+".png", alt: "", class: "thumb px-1 m-0" %>
-                  <div class="thumb_cap text-center"><%= v.media %></div>
+          <div class="now height y_scroll text-start small m-0 p-0">
+            <% just_v = @videos.where(id: just).distinct %>
+            
+            <% just_v.each do |v| %>
+              <div class="wide m-0 pt-1 px-0">
+                
+                <% if v.thumbnail.present? %>
+                  <figure class="hover-parent m-0 p-0">
+                    <a href="<%= v.video_url %>">
+                      <img src="<%= v.thumbnail %>" alt="" class="px-1 m-0">
+                      <figcaption class="hover-mask m-0 px-2"><%= v.video_name %></figcaption></a>
+                  </figure>
+                <% else %>
+                  <div class="thumb_alt text-center m-0 p-0">
+                    <%= image_tag "/assets/"+v.media+".png", alt: "", class: "thumb px-1 m-0" %>
+                    <div class="thumb_cap text-center"><%= v.media %></div>
+                  </div>
+                <% end %>
+                
+                <% ch = @channels.find_by(id: v.channel_id) %>
+                <img src="<%= ch.icon %>" alt="" class="icon">
+                <div class="omit">
+                  <a href="<%= ch.channel_url %>"><span><%= ch.channel_name %></span></a>
                 </div>
-              <% end %>
-              
-              <% ch = @channels.find_by(id: v.channel_id) %>
-              <img src="<%= ch.icon %>" alt="" class="icon">
-              <div class="omit">
-                <a href="<%= ch.channel_url %>"><span><%= ch.channel_name %></span></a>
+                
               </div>
-              
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         <% else %>
-          <div class="small text-center">登録されている動画はありません</div>
+          <div class="now small text-center">登録されている動画はありません</div>
         <% end %>
-      </div>
-    </div>
-    
-    <div class="col-md-6 m-0 px-1">
-      <div class="text-start th mx-0 px-2">20:30</div>
-      <div class="row now height y_scroll text-start small my-1 mx-0 p-0">
-        <% half = g.guide_videos.where(start_h: 20, start_m: 30).pluck(:video_id) %>
+      </template>
+      
+      <template id="half<%= h %>">
+        <% half = g.guide_videos.where(start_h: h, start_m: 30).pluck(:video_id) %>
         
         <% if half.present? %>
-          <% half_v = @videos.where(id: half).distinct %>
-          
-          <% half_v.each do |v| %>
-            <div class="wide m-0 py-1 px-0">
-              <% if v.thumbnail.present? %>
-                <figure class="hover-parent m-0 p-0">
-                  <a href="<%= v.video_url %>">
-                    <img src="<%= v.thumbnail %>" alt="" class="px-1 m-0">
-                    <figcaption class="hover-mask m-0 px-2"><%= v.video_name %></figcaption></a>
-                </figure>
-              <% else %>
-                <div class="thumb_alt text-center m-0 p-0">
-                  <%= image_tag "/assets/"+v.media+".png", alt: "", class: "thumb px-1 m-0" %>
-                  <div class="thumb_cap text-center"><%= v.media %></div>
+          <div class="now height y_scroll text-start small m-0 p-0">
+            <% half_v = @videos.where(id: half).distinct %>
+            
+            <% half_v.each do |v| %>
+              <div class="wide m-0 pt-1 px-0">
+                
+                <% if v.thumbnail.present? %>
+                  <figure class="hover-parent m-0 p-0">
+                    <a href="<%= v.video_url %>">
+                      <img src="<%= v.thumbnail %>" alt="" class="px-1 m-0">
+                      <figcaption class="hover-mask m-0 px-2"><%= v.video_name %></figcaption></a>
+                  </figure>
+                <% else %>
+                  <div class="thumb_alt text-center m-0 p-0">
+                    <%= image_tag "/assets/"+v.media+".png", alt: "", class: "thumb px-1 m-0" %>
+                    <div class="thumb_cap text-center"><%= v.media %></div>
+                  </div>
+                <% end %>
+                
+                <% ch = @channels.find_by(id: v.channel_id) %>
+                <img src="<%= ch.icon %>" alt="" class="icon">
+                <div class="omit">
+                  <a href="<%= ch.channel_url %>"><span><%= ch.channel_name %></span></a>
                 </div>
-              <% end %>
-              
-              <% ch = @channels.find_by(id: v.channel_id) %>
-              <img src="<%= ch.icon %>" alt="" class="icon">
-              <div class="omit">
-                <a href="<%= ch.channel_url %>"><span><%= ch.channel_name %></span></a>
+                
               </div>
-              
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         <% else %>
-          <div class="small text-center">登録されている動画はありません</div>
+          <div class="now small text-center">登録されている動画はありません</div>
         <% end %>
-      </div>
-    </div>
-    
-  </div>
+      </template>
+        
+      <% h += 1 %>
+      
+    <% end %>  
+  </div>  
 <% end %>
 

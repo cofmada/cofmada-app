@@ -7,7 +7,6 @@ class UsersController < ApplicationController
     counts(@user)
     today = l Date.current
     @guides = @user.guides.where(on_air: today)
-    @guide_videos = @user.guide_videos.all
     @channels = @user.channels.all
     @videos = @user.videos.all
   end
