@@ -3,6 +3,7 @@
 body {
     margin: 0;
     background-color: #191970;
+    letter-spacing: 0.1em;
 }
 h3,body {
     font-family: 'DotGothic16', sans-serif;
@@ -400,19 +401,20 @@ span:hover {
   text-decoration: none;
 }
 .nav-tabs {
-  font-size: 18px;
+  font-size: 20px;
 }
 .mini {
   white-space: normal;
   font-size: 18px;
   color: #ffd700;
 }
-
 .alert-warning {
   font-size: 20px;
   color: #fffafa;
 }
-
+.slide {
+  transition: .3s ease-in-out ;
+}
 
 .all_check > .hide {
   display:none;

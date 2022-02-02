@@ -14,6 +14,7 @@ document.addEventListener('turbolinks:load', () => {
       $(`#half_m${hour}, .half_m${hour}`).addClass("now");
       $('td').not(`#half_m${hour}, .half_m${hour}`).removeClass("now");
     }
+    $('.now').hide().fadeIn('slow');
   };
 
   active();

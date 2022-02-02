@@ -1,12 +1,12 @@
 <%= form_with url: edit_channel_path, method: :get do |f| %>
   <%= f.hidden_field :search_key, value: channel.search_key %>
   
-  <div class="row text-center wind m-0 p-1">
+  <div class="row align-items-center text-center wind m-0 p-1">
     <div class="col-11 mx-0 px-0">動画検索(YouTube)</div>
-    <div class="col-1 acord metal btn p-0">？</div>
+    <div class="col-1 acord"><div class="metal btn px-1 py-0 m-0">？</div></div>
   </div>
   
-  <div class="blue-w page m-0 py-3">
+  <div class="blue-w page m-0 p-3">
     Ch名と入力した動画名を元にYouTube上で動画を検索します。<br><br>
     ChがYouTube検索から登録されたものの場合はそのChの動画内から最新順に表示され、それ以外の場合は関連度の高いものが結果として表示されます。<br><br>
     検索結果は10件までなので、目当ての動画がない場合は文字を変えて検索し直してみて下さい。<br><br>
@@ -17,7 +17,7 @@
     <div class="mini text-center">※入力は50文字まで、結果は10件のみ表示</div>
     
     <div class="col-3 small text-end mb-2 mx-0 px-0">
-      <%= f.label :video_name, '動画名：', class: 'pt-1 mt-3 d-block' %>
+      <%= f.label :video_name, '動画名:', class: 'pt-1 mt-3 d-block' %>
     </div>
     
     <div class="col-7 col-md-6 px-0">

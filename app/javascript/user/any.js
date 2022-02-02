@@ -27,6 +27,7 @@ document.addEventListener('turbolinks:load', () => {
     const time = `${hour}:${min}`;
     document.querySelector('.clock-date').innerText = today;
     document.querySelector('.clock-time').innerText = time;
+    $('.clock-time').hide().fadeIn('slow');
   };
 
   clock();

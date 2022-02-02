@@ -26,7 +26,18 @@ document.addEventListener('turbolinks:load', () => {
     }
   };
 
-  schedule();
+  const fade = () => {
+    $.when(
+      $('.slide').css({ 'opacity': '0', 'transform': 'translateY(20px)' }),
+      schedule()
+    ).done(
+      setTimeout(function() {
+        $('.slide').css({ 'opacity': '1', 'transform': 'translateY(0)' });
+      }, 500)
+    );
+  };
+
+  fade();
 
   const remainingMillisecond = 1000 - new Date().getUTCMilliseconds();
   setTimeout(function() {
@@ -36,15 +47,15 @@ document.addEventListener('turbolinks:load', () => {
       if (min >= 0 && min < 30) {
         const remainingMinute = 1800000 - min * 60000;
         setTimeout(function() {
-          schedule();
+          fade();
           setInterval(schedule, 1800000);
         }, remainingMinute);
       }
       else if (min >= 30) {
         const remainingMinute = 3600000 - min * 60000;
         setTimeout(function() {
-          schedule();
-          setInterval(schedule, 1800000);
+          fade();
+          setInterval(fade(), 1800000);
         }, remainingMinute);
       }
     }, remainingsecond);

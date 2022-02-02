@@ -10,13 +10,12 @@
     <p class="select ev4">番組表登録</p>
     <p class="select ev5">番組表一覧</p>
   </div>
-  <div class="txt text-start col-8 blue-w m-0 pt-2"></div>
+  <div class="txt text-start col-8 blue-w m-0 p-2"></div>
 </div>
 
 <% if logged_in? %>
-  <div class="blue-w gold text-center pt-2">
-    マイページへ<br>
-    <%= link_to 'マイページ', user_path(current_user), class: 'metal btn px-2 mb-3 mt-2 py-2' %>
+  <div class="blue-w text-center p-2">
+    <%= link_to 'マイページへ', user_path(current_user), class: 'metal btn px-2 py-1' %>
   </div>
 <% else %>
   <div class="box blue-w">
@@ -33,7 +32,7 @@
 
 <div class="row text-center wind m-0 p-1">
   <div class="col-11 mx-0 px-0">更新情報</div>
-  <div class="col-1 acord metal btn p-0">？</div>
+  <div class="col-1 acord"><div class="metal btn px-1 py-0 m-0">？</div></div>
 </div>
 <%= render 'toppages/update' %>
 <%= javascript_pack_tag 'user/toppage' %>
