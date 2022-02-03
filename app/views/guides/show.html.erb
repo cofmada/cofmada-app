@@ -1,19 +1,15 @@
-<div class="now text-center align-middle py-1 m-0">
-  『<%= @guide.guide_name %>』
-  <%= @guide.on_air %>
-</div>
+<h4 class="row now align-items-center text-center py-1 m-0">
+  <div class="col-3 text-center m-0 p-0"></div>
+  <div class="col-6 text-center m-0 p-0">『<%= @guide.guide_name %>』</div>
+  <div class="col-3 text-center m-0 p-0">
+    <%= link_to '戻る', guides_path, class: 'btn metal py-0 mt-1' %>
+  </div>
+</h4>
+
+<div class="text-center wind m-0 p-1"><%= @guide.on_air %>&nbsp;放送予定</div>
 
 <div class="blue-w p-0 m-0">
   <%= render 'timetable' %>
-</div>
-
-<div class="row blue-w p-0 m-0">
-  <div class="col-6 text-center py-2">
-    <%= link_to '一覧に戻る', guides_path, class: 'btn metal p-1' %>
-  </div>
-  <div class="col-6 text-center py-2">
-    <%= link_to '編集ページ', edit_guide_path, class: 'btn d-metal p-1' %>
-  </div>
 </div>
 
 <%= javascript_pack_tag 'user/timetable' %>

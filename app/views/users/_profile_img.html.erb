@@ -1,7 +1,16 @@
 <div class="col-md-5 row p-0 m-0">
-  <div class="wind d-flex justify-content-center align-items-center p-0 m-0">写真変更</div>
+  <div class="row align-items-center wind m-0 p-1">
+    <div class="col-1 p-0 m-0"></div>
+    <div class="col-10 small text-center mx-0 px-0">名前・日付登録</div>
+    <div class="col-1 text-center p-0 m-0 acord"><div class="metal btn px-1 py-0 m-0">？</div></div>
+  </div>
+  
+  <div class="blue-w page m-0 p-3">
+    プロフィール写真を登録できます。<br><br>
+    画像は最大150×150にリサイズされますのでご注意ください。
+  </div>
+  
   <div class="blue-w text-center px-2 py-2 m-0">
-    <div class="mini">※画像は最大150×150にリサイズされます</div>
     <%= form_with(model: @user) do |f| %>
       <%= render 'layouts/error_messages', model: f.object %>
       <%= f.file_field :avatar, size: 20 %>

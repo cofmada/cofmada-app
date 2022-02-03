@@ -28,10 +28,10 @@ document.addEventListener('turbolinks:load', () => {
 
   const fade = () => {
     $.when(
-      $('.slide').css({ 'opacity': '0', 'transform': 'translateY(20px)' }),
-      schedule()
+      $('.slide').css({ 'opacity': '0', 'transform': 'translateY(20px)' })
     ).done(
       setTimeout(function() {
+        schedule();
         $('.slide').css({ 'opacity': '1', 'transform': 'translateY(0)' });
       }, 500)
     );

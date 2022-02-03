@@ -1,29 +1,31 @@
 <%= render 'layouts/tabs' %>
 
-  <div class="row text-center align-items-center wind m-0 p-1">
-    <div class="col-11 mx-0 px-0">フリー登録</div>
-    <div class="col-1 acord"><div class="metal btn px-1 py-0 m-0">？</div></div>
-  </div>
-  
-  <div class="blue-w page m-0 p-3">
-    Ch名を手入力する場合はこちらから登録して下さい。<br><br>
-    ChのURLの入力は任意ですが、設定しておくとリンクで飛べるようになります。
-  </div>
-  
-  <%= render'form', channel: @channel %>
+<div class="row align-items-center wind m-0 p-1">
+  <div class="col-1 p-0 m-0"></div>
+  <div class="col-10 text-center mx-0 px-0">フリー登録</div>
+  <div class="col-1 text-center p-0 m-0 acord"><div class="metal btn px-1 py-0 m-0">？</div></div>
+</div>
 
-  <div class="row text-center align-items-center wind m-0 p-1">
-    <div class="col-11 mx-0 px-0">Ch名検索(YouTube)</div>
-    <div class="col-1 acord"><div class="metal btn px-1 py-0 m-0">？</div></div>
-  </div>
-  
-  <div class="blue-w page m-0 py-3">
-    入力したCh名をYouTube上で検索します。<br><br>
-    結果は関連度が高い順に10件なので、目当てのChが表示されない場合は文字を変えて検索し直してみて下さい。<br><br>
-    任意のものを一つチェックして登録すると、URLやアイコンも自動で登録されます。
-  </div>
-  
-  <%= render'search', channel: @channel %>
+<div class="blue-w page m-0 p-3">
+  Ch名を手入力する場合はこちらから登録して下さい。<br><br>
+  ChのURLの入力は任意ですが、設定しておくとリンクで飛べるようになります。
+</div>
+
+<%= render'form', channel: @channel %>
+
+<div class="row align-items-center wind m-0 p-1">
+  <div class="col-1 p-0 m-0"></div>
+  <div class="col-10 text-center mx-0 px-0">Ch名検索(YouTube)</div>
+  <div class="col-1 text-center p-0 m-0 acord"><div class="metal btn px-1 py-0 m-0">？</div></div>
+</div>
+
+<div class="blue-w page m-0 py-3">
+  入力したCh名をYouTube上で検索します。<br><br>
+  結果は関連度が高い順に10件なので、目当てのChが表示されない場合は文字を変えて検索し直してみて下さい。<br><br>
+  任意のものを一つチェックして登録すると、URLやアイコンも自動で登録されます。
+</div>
+
+<%= render'search', channel: @channel %>
 
 
 <%= javascript_pack_tag 'user/forms' %>

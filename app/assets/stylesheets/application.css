@@ -16,7 +16,7 @@ h3,body {
            0px 1px 0px #000,  0px -1px 0px #000;
 }
 /*　基本ウィンドウ青　*/
-h1,h2,h5,.blue-w,.alert-warning,.nav-tabs .nav-link.active,
+h2,h5,.blue-w,.alert-warning,.nav-tabs .nav-link.active,
 .text-warning,.text-success {
   padding: 5px;
   margin: 0;
@@ -104,16 +104,50 @@ h1,h2,h5,.blue-w,.alert-warning,.nav-tabs .nav-link.active,
   -moz-webkit-transform: translateY(2px);
   transform: translateY(2px);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
-  background-image: linear-gradient(135deg, #ccc 0%, #868888 20%, #d8dcdc 34%, white 53%, #ccc 100%);
+  animation-fill-mode:forwards;
+  animation-duration:0.2s;
 }
 .metal:active {
-  background-image: linear-gradient(135deg, #ccc 0%, #868888 20%, #d8dcdc 34%, white 53%, #ccc 100%);
+  animation-name: metalshine;
+}
+@keyframes metalshine {
+  33% {
+    background-image: linear-gradient(135deg, #ccc 0%, #868888 20%, #d8dcdc 34%, white 53%, #ccc 100%);
+  }
+  66% {
+    background-image: linear-gradient(135deg, #ccc 0%, white 20%, #d8dcdc 34%, #868888 53%, white 100%);
+  }
+  100% {
+    background-image: linear-gradient(135deg, #d8dcdc 0%, white 20%, white 34%, #d8dcdc 53%, #868888 100%);
+  }
 }
 .b-metal:active {
-  background-image: linear-gradient(135deg, #68a2ed 0%, #3d44f9 20%, #68a2ed 34%, white 53%, #68a2ed 100%);
+  animation-name: b-metalshine;
+}
+@keyframes b-metalshine {
+  33% {
+    background-image: linear-gradient(135deg, #68a2ed 0%, #3d44f9 20%, #68a2ed 34%, white 53%, #68a2ed 100%);
+  }
+  66% {
+    background-image: linear-gradient(135deg, #68a2ed 0%, white 20%, #68a2ed 34%, #3d44f9 53%, white 100%);
+  }
+  100% {
+    background-image: linear-gradient(135deg, #68a2ed 0%, white 20%, white 34%, #68a2ed 53%, #3d44f9 100%);
+  }
 }
 .d-metal:active {
-  background-image: linear-gradient(135deg, #727171 0%, #0d0015 20%, #727171 34%, white 60%, #16160e 100%);
+  animation-name: d-metalshine;
+}
+@keyframes d-metalshine {
+  33% {
+    background-image: linear-gradient(135deg, #727171 0%, #0d0015 20%, #727171 34%, white 60%, #16160e 100%);
+  }
+  66% {
+    background-image: linear-gradient(135deg, #727171 0%, white 20%, #727171 34%, #0d0015 53%, white 100%);
+  }
+  100% {
+    background-image: linear-gradient(135deg, #727171 0%, white 20%, white 34%, #727171 53%, #0d0015 100%);
+  }
 }
 
 /*　時計表示用　*/
@@ -396,8 +430,8 @@ span:hover {
   z-index: 1;
 }
 .micro{
-  font-size: 10px;
-  color: #fffafa;
+  font-size: 16px;
+  color: white;
   text-decoration: none;
 }
 .nav-tabs {

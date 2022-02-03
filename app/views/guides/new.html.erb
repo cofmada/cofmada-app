@@ -1,6 +1,16 @@
 <%= render 'layouts/tabs' %>
 
-<div class="text-center wind m-0 p-1">名前・日付入力</div>
+<div class="row align-items-center wind m-0 p-1">
+  <div class="col-1 p-0 m-0"></div>
+  <div class="col-10 text-center mx-0 px-0">名前・日付登録</div>
+  <div class="col-1 text-center p-0 m-0 acord"><div class="metal btn px-1 py-0 m-0">？</div></div>
+</div>
+
+<div class="blue-w page m-0 p-3">
+  番組表の名前と放送日を登録してください。<br><br>
+  登録後に【番組表一覧】で名前を選択し、表に動画を追加してください。
+</div>
+  
 <%= render'guideform', guide: @guide, channels: @channels %>
 
 <%= javascript_pack_tag 'user/forms' %>

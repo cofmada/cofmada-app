@@ -1,16 +1,20 @@
-<h4 class="now text-center py-2 m-0">番組表編集ページ</h4>
+<h4 class="row now align-items-center text-center py-1 m-0">
+  <div class="col-2 text-center m-0 p-0"></div>
+  <div class="col-8 text-center m-0 p-0">番組表編集ページ</div>
+  <div class="col-2 text-center m-0 p-0">
+    <%= link_to '戻る', guides_path, class: 'btn metal py-0 mt-1' %>
+  </div>
+</h4>
 
 <div class="text-center wind m-0 p-1">名前・日付変更</div>
 <%= render'guideform', guide: @guide, channels: @channels %>
 
+<div class="text-center wind m-0 p-1">登録動画一覧</div>
+
 <div class="blue-w p-0 m-0">
+  <div class="text-center border-bottom mini m-0 py-2 px-0">※動画をチェックし【削除】で一括削除できます</div>
   <%= render 'timetable' %>
 </div>
 
-<div class="blue-w mx-0 py-3">
-  <div class="text-center mt-3">
-    <%= link_to '戻る', guide_path, class: 'btn metal py-1' %>
-  </div>
-</div>  
-
 <%= javascript_pack_tag 'user/forms' %>
+<%= javascript_pack_tag 'user/timetable' %>

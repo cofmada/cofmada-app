@@ -14,9 +14,25 @@
 
   <body data-turbolinks="false">
     <header class="m-0 p-0">
-      <%= render 'layouts/navbar' %>
       <div class="container-fruid text-center">
-        <h1 class="py-2">MY番組表</h1>
+        <h1 class="row now align-items-center text-center py-2 m-0">
+          <div class="col-3 m-0 p-0"></div>
+          <div class="col-6 text-center m-0 p-0">My番組表</div>
+          
+          <% if logged_in? && current_page?(root_path) %>
+            <div class="col-3 text-center m-0 p-0">
+              <%= link_to 'ﾛｸﾞｱｳﾄ', logout_path, method: :delete, class: 'micro metal btn px-2 py-0 m-0' %>
+            </div>
+          <% elsif logged_in? %>
+            <div class="col-3 text-center m-0 p-0">
+              <%= link_to 'ﾛｸﾞｱｳﾄ', logout_path, method: :delete, class: 'micro metal btn px-2 py-0 m-0' %><br>
+              <%= link_to 'TOP', root_path, class: 'micro metal btn px-4 py-0 m-0' %>
+            </div>
+          <% else %>
+            <div class="col-3 m-0 p-0"></div>
+          <% end %>
+        </h1>  
+          
         <%= render 'layouts/clock' %>
         <%= render 'layouts/flash_messages' %>
       </div>

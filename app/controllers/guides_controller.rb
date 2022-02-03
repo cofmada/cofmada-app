@@ -12,16 +12,10 @@ class GuidesController < ApplicationController
   end
 
   def create
-    @guide = current_user.guides.find_or_create_by(guide_params)
+    @guide = current_user.guides.build(guide_params)
     if @guide.save
-      @guide_video = @guide.guide_videos.create(time_params)
-      if @guide_video.save
-        flash[:success] = '登録完了！'
-        redirect_to guides_path
-      else
-        flash.now[:danger] = '同じ時間帯で登録されています。入力内容を確認してください。'
-        render :new
-      end
+      flash[:success] = '登録完了！'
+      redirect_to guides_path
     else 
       flash[:danger] = '登録できませんでした。入力内容を確認してください。'
       redirect_to new_guide_path
@@ -43,11 +37,13 @@ class GuidesController < ApplicationController
   end
 
   def update
-    if @guide.update(guide_params)
-      flash[:success] = "更新完了！"
-      redirect_to @guide
+    @guide_video = @guide.guide_videos.find_or_create_by(time_params)
+    
+    if @guide.update(guide_params) || @guide_video.save
+      flash[:success] = '更新完了！'
+      redirect_to action: :edit
     else
-      flash.now[:danger] = '更新できませんでした...'
+      flash.now[:danger] = '登録できませんでした。入力内容を確認してください。'
       render :edit
     end
   end
