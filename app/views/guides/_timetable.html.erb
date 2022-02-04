@@ -21,14 +21,18 @@
                       <figcaption class="hover-mask m-0 px-2"><%= v.video_name %></figcaption></a>
                   </figure>
                 <% else %>
-                  <div class="thumb_alt text-center mx-1 px-0">
+                  <div class="thumb_alt text-center m-0 p-0">
                     <%= image_tag "/assets/"+v.media+".png", alt: "", class: "thumb" %>
                     <div class="thumb_cap text-center"><%= v.media %></div>
                   </div>
                 <% end %>
                 
                 <% ch = @channels.find_by(id: v.channel_id) %>
-                <img src="<%= ch.icon %>" alt="" class="icon">
+                <% if ch.icon.present? %>
+                  <img src="<%= ch.icon %>" alt="" class="icon">
+                <% else %>
+                  <div class="icon"></div>
+                <% end %>
                 <div class="omit wide">
                   <a href="<%= ch.channel_url %>"><span><%= ch.channel_name %></span></a>
                 </div>
@@ -53,14 +57,18 @@
                       <figcaption class="hover-mask m-0 px-2"><%= v.video_name %></figcaption></a>
                   </figure>
                 <% else %>
-                  <div class="thumb_alt text-center mx-1 px-0">
+                  <div class="thumb_alt text-center m-0 p-0">
                     <%= image_tag "/assets/"+v.media+".png", alt: "", class: "thumb" %>
                     <div class="thumb_cap text-center"><%= v.media %></div>
                   </div>
                 <% end %>
                 
                 <% ch = @channels.find_by(id: v.channel_id) %>
-                <img src="<%= ch.icon %>" alt="" class="icon">
+                <% if ch.icon.present? %>
+                  <img src="<%= ch.icon %>" alt="" class="icon">
+                <% else %>
+                  <div class="icon"></div>
+                <% end %>
                 <div class="omit wide">
                   <a href="<%= ch.channel_url %>"><span><%= ch.channel_name %></span></a>
                 </div>

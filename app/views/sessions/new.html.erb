@@ -3,7 +3,7 @@
   <%= form_with(url: login_path, scope: :session) do |f| %>
     <div class="row px-0 mx-0">
       <div class="col-4 small text-end mt-4 px-1">
-        <%= f.label :email, 'メールアドレス:' %>
+        <%= f.label :email, 'Eメール:' %>
       </div>
       <div class="col-5 offset-col-3 mt-4">
         <%= f.email_field :email, class: 'form-control' %>

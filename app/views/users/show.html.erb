@@ -20,8 +20,7 @@
 
 <% if @guides.present? %>
   <%= render 'now_videos' %>
+  <%= javascript_pack_tag 'user/profile' %>
 <% else %>
   <div class="blue-w text-center py-1 m-0">登録されている番組表はありません</div>
 <% end %>
-
-<%= javascript_pack_tag 'user/profile' %>

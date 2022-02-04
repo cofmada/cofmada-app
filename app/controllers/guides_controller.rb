@@ -49,7 +49,7 @@ class GuidesController < ApplicationController
   end
 
   def destroy
-    if request.referer&.include?("/guides/#{params[:id]}")
+    if request.referer&.include?("/guides/#{params[:id]}") && params[:video_id].present?
       @guide.videos.where(delete_ids).delete_all
       flash[:success] = '動画を削除しました。'
       redirect_to @guide
@@ -77,7 +77,11 @@ class GuidesController < ApplicationController
   end
   
   def delete_ids
-    params.require(:guide).permit(video_id: [])
+    if params[:video_id].present?
+      params.require(:guide).permit(video_id: [])
+    else
+      params.require(:guide)
+    end
   end
   
 end

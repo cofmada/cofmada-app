@@ -1,4 +1,4 @@
-<%= form_with(model: channel, method: :post) do |f| %>
+<%= form_with model: channel do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
   <%= f.hidden_field :search_key, value: "" %>
   

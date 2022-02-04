@@ -27,8 +27,12 @@
         <%= f.submit '登録', class: 'b-metal btn mt-0 py-0' %>
       </div>
     <% else %>  
-      <div class="text-center my-2">
-        <%= f.submit '更新', class: 'b-metal btn mt-0 py-0' %>
+      <div class="row mb-2 mx-0 px-0">
+        <div class="col-3 m-0 p-0"></div>
+        <div class="col-3 text-end m-0 py-0 px-3"><%= f.submit '更新', class: 'b-metal btn py-0' %></div>
+        <div class="col-3 text-start m-0 py-0 px-3"><%= link_to '削除', @guide, method: :delete, data: { confirm: '番組表を削除しますか？' }, class: 'd-metal btn py-0' %></div>
+        <div class="col-3 m-0 p-0"></div>
+      </div>
       </div>
     <% end %>
   </div>

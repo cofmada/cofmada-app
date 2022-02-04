@@ -29,10 +29,11 @@ class ChannelsController < ApplicationController
   def edit
     video_search(params[:video_name]) if params[:video_name].present?
     @video = @channel.videos.build
+    @videos = @channel.videos.all
   end
   
   def update
-    @video = @channel.videos.build(video_params) 
+    @video = @channel.videos.build(video_params) if video_params.present?
     
     if @channel.update(channel_params) || @video.save
       flash[:success] = "更新完了！"
@@ -44,10 +45,10 @@ class ChannelsController < ApplicationController
   end
   
   def destroy
-    if request.referer&.include?("/channels/#{params[:id]}")
+    if delete_ids[:video_id].present?
       @channel.videos.where(id: delete_ids[:video_id]).delete_all
       flash[:success] = '動画を削除しました。'
-      redirect_to @channel
+      redirect_to edit_channel_url
     else @channel.destroy
       flash[:success] = 'チャンネル情報を削除しました。'
       redirect_to channels_url

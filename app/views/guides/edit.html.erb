@@ -7,7 +7,9 @@
 </h4>
 
 <div class="text-center wind m-0 p-1">名前・日付変更</div>
-<%= render'guideform', guide: @guide, channels: @channels %>
+<%= render'guideform', guide: @guide %>
+
+<%= render'guide_video_form', guide: @guide, channels: @channels %>
 
 <div class="text-center wind m-0 p-1">登録動画一覧</div>
 

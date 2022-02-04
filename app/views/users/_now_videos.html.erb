@@ -1,5 +1,5 @@
 <% @guides.each do |g| %>
-  <div class="row blue-w text-center align-middle p-2 m-0">
+  <div class="row blue-w text-center align-middle py-2 px-0 m-0">
     <div class="text-start my-2"><%= link_to '『'+g.guide_name+'』', guide_path(g.id) %></div>
     
     <div class="col-md-6 m-0 p-0 slide">
@@ -17,7 +17,7 @@
         <% just = g.guide_videos.where(start_h: h, start_m: 0).pluck(:video_id) %>
         
         <% if just.present? %>
-          <div class="now height y_scroll text-start small m-0 p-0">
+          <div class="row now height y_scroll text-start small m-0 p-0">
             <% just_v = @videos.where(id: just).distinct %>
             
             <% just_v.each do |v| %>
@@ -30,14 +30,18 @@
                       <figcaption class="hover-mask m-0 px-2"><%= v.video_name %></figcaption></a>
                   </figure>
                 <% else %>
-                  <div class="thumb_alt text-center m-0 p-0">
+                  <div class="thumb_alt text-center my-0 mx-1 p-0">
                     <%= image_tag "/assets/"+v.media+".png", alt: "", class: "thumb px-1 m-0" %>
                     <div class="thumb_cap text-center"><%= v.media %></div>
                   </div>
                 <% end %>
                 
                 <% ch = @channels.find_by(id: v.channel_id) %>
-                <img src="<%= ch.icon %>" alt="" class="icon">
+                <% if ch.icon.present? %>
+                  <img src="<%= ch.icon %>" alt="" class="icon">
+                <% else %>
+                  <div class="icon"></div>
+                <% end %>
                 <div class="omit">
                   <a href="<%= ch.channel_url %>"><span><%= ch.channel_name %></span></a>
                 </div>
@@ -54,7 +58,7 @@
         <% half = g.guide_videos.where(start_h: h, start_m: 30).pluck(:video_id) %>
         
         <% if half.present? %>
-          <div class="now height y_scroll text-start small m-0 p-0">
+          <div class="row now height y_scroll text-start small m-0 p-0">
             <% half_v = @videos.where(id: half).distinct %>
             
             <% half_v.each do |v| %>
@@ -67,14 +71,18 @@
                       <figcaption class="hover-mask m-0 px-2"><%= v.video_name %></figcaption></a>
                   </figure>
                 <% else %>
-                  <div class="thumb_alt text-center m-0 p-0">
+                  <div class="thumb_alt text-center my-0 mx-1 p-0">
                     <%= image_tag "/assets/"+v.media+".png", alt: "", class: "thumb px-1 m-0" %>
                     <div class="thumb_cap text-center"><%= v.media %></div>
                   </div>
                 <% end %>
                 
                 <% ch = @channels.find_by(id: v.channel_id) %>
-                <img src="<%= ch.icon %>" alt="" class="icon">
+                <% if ch.icon.present? %>
+                  <img src="<%= ch.icon %>" alt="" class="icon">
+                <% else %>
+                  <div class="icon"></div>
+                <% end %>
                 <div class="omit">
                   <a href="<%= ch.channel_url %>"><span><%= ch.channel_name %></span></a>
                 </div>

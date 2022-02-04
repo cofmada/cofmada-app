@@ -246,11 +246,14 @@ tbody{
   max-height: 549px;
 }
 .wide {
-  max-width: 180px;
+  max-width: 176px;
   border: none;
 }
 .height {
   max-height: 192px;
+}
+.videos {
+  max-height: 549px;
 }
 th,.th {
   font-size: 22px;
@@ -272,7 +275,7 @@ th,.th {
 }
 a > img {
   border: none;
-  width: 184px;
+  width: 176px;
   height: 104px;
 }
 .border_top{
@@ -289,6 +292,12 @@ a > img {
 }
 .border_right{
   border-right: 1px solid #fffff9;
+}
+.border_y {
+  border-top:3px solid #fffff9;
+  border-bottom: 3px solid #fffff9;
+  border-top-style: ridge;
+  border-bottom-style: ridge;
 }
 .scroll {
   overflow: auto;
@@ -316,13 +325,13 @@ a > img {
   border-radius: 0;
 }
 figure.hover-parent {
-  width: 184px;
+  width: 176px;
   height: 104px;
   position: relative;
 }
 figcaption.hover-mask {
   font-size: 17px;
-  width: 178px;
+  width: 96%;
   height: 100%;
   position: absolute;
   top: 0;
@@ -337,13 +346,6 @@ figure.hover-parent:hover .hover-mask {
   transition: all 0.7s ease;
   overflow: hidden;
 }
-.thumb_alt{
-  background-color: #fffafa;
-  border-radius: 10px;
-  width: 178px;
-  height: 104px;
-  position: relative;
-}
 .thumb_cap {
   font-size: 20px;
   width: 100%;
@@ -356,7 +358,7 @@ figure.hover-parent:hover .hover-mask {
   color: #fff;
   border-radius: 0 0 10px 10px;
 }
-.now{
+.now {
   color: #ffd700;
   border-top: 2px solid #d8dcdc;
   border-right: 2px solid #666;
@@ -386,9 +388,9 @@ img {
 }
 .none {
   border: none;
-  min-width: 128px;
+  min-width: 176px;
   max-width: 256px;
-  min-height: 72px;
+  min-height: 104px;
   max-height: 144px;
 }
 .thumb {
@@ -399,10 +401,11 @@ img {
 .thumb_alt{
   background-color: #fffafa;
   border-radius: 10px;
-  min-width: 128px;
+  min-width: 176px;
   max-width: 256px;
-  min-height: 72px;
+  min-height: 104px;
   max-height: 144px;
+  position: relative;
 }
 td {
   position: relative;
@@ -442,7 +445,7 @@ span:hover {
   font-size: 18px;
   color: #ffd700;
 }
-.alert-warning {
+.alert-warning, .videos {
   font-size: 20px;
   color: #fffafa;
 }

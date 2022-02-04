@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   resources :users, only: [:show, :create, :update] 
   
+  delete 'channels/:id/edit', to: 'channels#destroy'
   resources :channels
 
   post 'guides/new', to: 'guides#create'
