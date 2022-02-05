@@ -8,16 +8,16 @@ body {
 h3,body {
     font-family: 'DotGothic16', sans-serif;
     font-size: 25px;
-    color: #fffafa;
+    color: white;
     text-shadow:
-           1px 1px 0px #000, -1px -1px 0px #000,
-          -1px 1px 0px #000,  1px -1px 0px #000,
-           1px 0px 0px #000, -1px  0px 0px #000,
-           0px 1px 0px #000,  0px -1px 0px #000;
+         1px 1px 0px #622d18, -1px -1px 0px #622d18,
+        -1px 1px 0px #622d18,  1px -1px 0px #622d18,
+         1px 0px 0px #622d18, -1px  0px 0px #622d18,
+         0px 1px 0px #622d18,  0px -1px 0px #622d18;
 }
 /*　基本ウィンドウ青　*/
 h2,h5,.blue-w,.alert-warning,.nav-tabs .nav-link.active,
-.text-warning,.text-success {
+.text-success {
   padding: 5px;
   margin: 0;
   box-shadow:1px 1px 4px #191970 inset,-1px -1px 4px #191970 inset,
@@ -90,13 +90,6 @@ h2,h5,.blue-w,.alert-warning,.nav-tabs .nav-link.active,
   background-image: -webkit-linear-gradient(135deg, #727171 0%, #0d0015 20%, #727171 34%, white 60%, #16160e 100%);
   background-image: -o-linear-gradient(135deg, #727171 0%, #0d0015 20%, #727171 34%, white 60%, #16160e 100%);
   background-image: -moz-linear-gradient(-45deg, #727171 0%, #0d0015 20%, #727171 34%, white 60%, #16160e 100%);
-}
-.d-metal:hover,.b-metal:hover,
-.metal:hover,.selected:hover,
-.gold,.nav-tabs .nav-link:hover,
-.text-warning,.text-success,
-.select:hover, a:hover {
-  color: #ffd700;
 }
 .d-metal:active,
 .b-metal:active,
@@ -255,9 +248,8 @@ tbody{
 .videos {
   max-height: 549px;
 }
-th,.th {
+th, .th, .message {
   font-size: 22px;
-  color: #fffafa;
   text-shadow:
          1px 1px 0px #000, -1px -1px 0px #000,
         -1px 1px 0px #000,  1px -1px 0px #000,
@@ -445,12 +437,22 @@ span:hover {
   font-size: 18px;
   color: #ffd700;
 }
-.alert-warning, .videos {
+.videos {
   font-size: 20px;
   color: #fffafa;
 }
 .slide {
   transition: .3s ease-in-out ;
+}
+.danger {
+  color: #ffff00;
+}
+.d-metal:hover,.b-metal:hover,
+.metal:hover,.selected:hover,
+.gold,.nav-tabs .nav-link:hover,
+.text-warning,.text-success,
+.select:hover, a:hover {
+  color: #ffd700;
 }
 
 .all_check > .hide {
