@@ -17,8 +17,8 @@ class GuidesController < ApplicationController
       flash[:success] = '登録完了！'
       redirect_to guides_path
     else 
-      flash[:danger] = '登録できませんでした。入力内容を確認してください。'
-      redirect_to new_guide_path
+      flash.now[:danger] = '登録できませんでした...<br>入力内容を確認してください。'
+      render :new
     end
   end
 
@@ -34,28 +34,44 @@ class GuidesController < ApplicationController
     @videos = @guide.videos.all
     @guide_videos = @guide.guide_videos.all
     @start = @guide_videos.distinct.pluck(:start_h)
+    @guide_video = @guide.guide_videos.build
   end
 
   def update
-    @guide_video = @guide.guide_videos.find_or_create_by(time_params)
-    
-    if @guide.update(guide_params) || @guide_video.save
+    @channels = current_user.channels.all
+    @videos = @guide.videos.all
+    @guide_videos = @guide.guide_videos.all
+    @start = @guide_videos.distinct.pluck(:start_h)
+    @guide_video = @guide.guide_videos.build(time_params) if time_params.present?
+
+    if @guide_video.present?
+      if @guide_video.save
+        flash[:success] = "登録完了！"
+        redirect_to edit_channel_path
+      else
+        flash.now[:danger] = '登録できませんでした...<br>入力内容を確認してください。'
+        render :edit
+      end
+    elsif @guide.update(guide_params)
       flash[:success] = '更新完了！'
-      redirect_to action: :edit
+      redirect_to edit_channel_path
     else
-      flash.now[:danger] = '登録できませんでした。入力内容を確認してください。'
+      flash.now[:danger] = '登録できませんでした...<br>入力内容を確認してください。'
       render :edit
     end
   end
 
   def destroy
-    if request.referer&.include?("/guides/#{params[:id]}") && params[:video_id].present?
-      @guide.videos.where(delete_ids).delete_all
+    if delete_ids[:video_id].present?
+      @guide.videos.where(id: delete_ids[:video_id]).destroy_all
       flash[:success] = '動画を削除しました。'
-      redirect_to @guide
-    else @guide.destroy
+      redirect_to edit_guide_url
+    elsif @guide.destroy
       flash[:success] = '番組表を削除しました。'
       redirect_to guides_url
+    else
+      flash.now[:danger] = '削除できませんでした...<br>内容を確認してください。'
+      render :edit
     end
   end
   

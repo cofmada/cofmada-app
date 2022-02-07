@@ -17,7 +17,7 @@ class ChannelsController < ApplicationController
       flash[:success] = '登録完了！'
       redirect_to channels_path
     else
-      flash.now[:danger] = '登録できませんでした...'
+      flash.now[:danger] = '登録できませんでした...<br>入力内容を確認してください。'
       render :new
     end
   end
@@ -33,22 +33,22 @@ class ChannelsController < ApplicationController
   end
   
   def update
-    if video_params[:video_name].present?
-      @video = @channel.videos.build(video_params)
+    @videos = @channel.videos.all
+    @video = @channel.videos.build(video_params) if params[:video].present?
+    if @video.present?
       if @video.save
         flash[:success] = "登録完了！"
-        redirect_to action: :edit
+        redirect_to edit_channel_path
       else
-        flash[:danger] = '名前が未入力か、既に登録されています。<br>入力内容を確認してください。'
-        redirect_to action: :edit
+        flash.now[:danger] = '登録できませんでした...<br>入力内容を確認してください。'
+        render :edit
       end
-    elsif current_user.channels.find_by(channel_name: channel_params[:channel_name]) == nil
-      @channel.update(channel_params)
+    elsif @channel.update(channel_params)
       flash[:success] = "更新完了！"
-      redirect_to action: :edit
+      redirect_to edit_channel_path
     else
-      flash[:danger] = '動画名が未入力か、既に登録されています。<br>入力内容を確認してください。'
-      redirect_to action: :edit
+      flash.now[:danger] = '登録できませんでした...<br>入力内容を確認してください。'
+      render :edit
     end
   end
   
@@ -57,9 +57,12 @@ class ChannelsController < ApplicationController
       @channel.videos.where(id: delete_ids[:video_id]).destroy_all
       flash[:success] = '動画を削除しました。'
       redirect_to edit_channel_url
-    else @channel.destroy
+    elsif @channel.destroy
       flash[:success] = 'チャンネル情報を削除しました。'
       redirect_to channels_url
+    else
+      flash.now[:danger] = '削除できませんでした...<br>内容を確認してください。'
+      render :edit
     end
   end
   
@@ -77,15 +80,11 @@ class ChannelsController < ApplicationController
   end
   
   def video_params
-    if params[:video].present?
-      params.require(:video).permit(:video_name, :media, :video_url, :thumbnail )
-    else
-      params.require(:channel)
-    end
+    params.require(:video).permit(:video_name, :media, :video_url, :thumbnail )
   end
   
   def delete_ids
-    if params[:channel][:video_id].present?
+    if params[:channel].present?
       params.require(:channel).permit(video_id: [])
     else
       params.require(:channel)

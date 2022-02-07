@@ -1,5 +1,5 @@
-<%= form_with(model: guide) do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
+<%= form_with(model: guide, method: :post) do |f| %>
+  <%= render 'layouts/error_messages', model: @guide_video %>
   
   <div class="row text-center align-items-center wind m-0 p-1">
     <div class="col-11 mx-0 p-0">動画登録</div>
@@ -53,9 +53,6 @@
       
       <div class="col-1 small mx-2 px-0 pt-3">分</div>
       
-      <div class="text-center mt-">
-        <%= f.submit '登録', class: 'b-metal btn mt-3 py-0' %>
-      </div>
     </div>
     
     <div class="text-center my-2">

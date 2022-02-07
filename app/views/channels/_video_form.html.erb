@@ -1,5 +1,5 @@
-<%= form_with(model: channel) do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
+<%= form_with(model: channel, method: :post) do |f| %>
+  <%= render 'layouts/error_messages', model: @video %>
   <%= f.hidden_field :channel_name, value: channel.channel_name %>
   
   <div class="row align-items-center wind m-0 p-1">

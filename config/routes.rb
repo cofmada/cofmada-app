@@ -10,8 +10,9 @@ Rails.application.routes.draw do
 
   resources :channels
   delete 'channels/:id/edit', to: 'channels#destroy'
+  post 'channels/:id', to: 'channels#update'
   
-  
-  post 'guides/new', to: 'guides#create'
   resources :guides
+  delete 'guides/:id/edit', to: 'guides#destroy'
+  post 'guides/:id', to: 'guides#update'
 end
