@@ -1,8 +1,8 @@
 <%= form_with(model: guide) do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
   
-  <div class="row  blue-w px-0 py-2 m-0">
-    <div class="row col-md-6 m-0 p-0">
+  <div class="row align-items-center blue-w px-0 py-2 m-0">
+    <div class="row col-md-6 col-lg-4 m-0 p-0">
       <div class="col-3 col-md-4 small text-end mb-2 mx-0 px-0">
         <%= f.label :guide_name, '番組表名:', class: 'pt-1 my-2' %>
       </div>
@@ -12,8 +12,8 @@
       </div>  
     </div>
     
-    <div class="row col-md-6 m-0 p-0">
-      <div class="col-3 small text-end mb-2 mx-0 px-0">
+    <div class="row col-md-6 col-lg-4 m-0 p-0">
+      <div class="col-3 col-md-4 small text-end mb-2 mx-0 px-0">
         <%= f.label :on_air, '放送日:', class: 'pt-1 my-2' %>
       </div>
       
@@ -22,19 +22,13 @@
       </div>  
     </div>
     
-    <% if current_page?(new_guide_path) %>
-      <div class="text-center my-2">
-        <%= f.submit '登録', class: 'b-metal btn mt-0 py-0' %>
-      </div>
-    <% else %>  
-      <div class="row mb-2 mx-0 px-0">
-        <div class="col-3 m-0 p-0"></div>
-        <div class="col-3 text-end m-0 py-0 px-3"><%= f.submit '更新', class: 'b-metal btn py-0' %></div>
-        <div class="col-3 text-start m-0 py-0 px-3"><%= link_to '削除', @guide, method: :delete, data: { confirm: '番組表を削除しますか？' }, class: 'd-metal btn py-0' %></div>
-        <div class="col-3 m-0 p-0"></div>
-      </div>
-      </div>
-    <% end %>
+    <div class="text-center col-lg-4 mb-2 mx-0 px-0" id="shows">
+      <%= f.submit '登録', class: 'b-metal btn py-0' %>
+    </div>
+    <div class="text-center col-lg-4 mb-2 mx-0 px-0" id="hiddens">
+      <%= f.submit '更新', class: 'b-metal btn py-0 mx-2' %>
+      <%= link_to '削除', @channel, method: :delete, data: { confirm: 'Chを削除しますか？' }, class: 'd-metal btn py-0 mx-2' %>
+    </div>
   </div>
 <% end %>
 

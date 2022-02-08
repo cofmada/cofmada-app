@@ -1,0 +1,52 @@
+<% if videos.any? %>
+
+  <%= form_with(model: channel, method: :delete) do |f| %>  
+    <div class="row blue-w mx-0 py-3 px-0">
+      
+      <% if current_page?(edit_channel_path) %>
+        <div class="text-center mini m-0 pb-2 px-0">※動画をチェックし【削除】で一括削除できます</div>
+      <% end %>
+      
+      <div class="row border_y y_scroll videos m-0 p-0">
+        <% videos.each do |v| %>
+          <div class="row align-items-center text-center col-md-6 m-0 p-0">
+            <% if v.thumbnail.present? %>
+              <div class="col-sm-5 col-md-10 my-2 mx-0 px-1">
+                <img src=<%= v.thumbnail %> alt="" class="none w-75">
+                
+                <% if current_page?(edit_channel_path) %>
+                  <%= f.check_box :video_id, { multiple: true, style: 'transform: scale(2);', id: v.id }, v.id, false %>
+                <% end %>
+              </div>
+              
+              <div class="col-sm-7 col-md-12 text-start border-bottom my-2 mx-0 px-1"><%= v.video_name %></div>
+              
+            <% else %>
+              <div class="col-sm-5 col-md-10 my-2 px-2">
+                <%= image_tag "/assets/"+v.media+".png", alt: "", class: "thumb w-75" %>
+              
+                <% if current_page?(edit_channel_path) %>
+                  <%= f.check_box :video_id, { multiple: true, style: 'transform: scale(2);', id: v.id }, v.id, false %>
+                <% end %>
+              </div>
+              
+              <div class="col-sm-7 col-md-12 text-start border-bottom my-2 px-1"><%= v.video_name %></div>
+              
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="text-center align-items-center mt-3 px-0" id="hidden">
+        <%= f.submit '削除', data: { confirm: '動画を削除しますか？' }, class: 'd-metal btn py-0 px-3' %>
+      </div>
+      <div class="text-center align-items-center mt-3 px-0" id="show">
+        <%= link_to '編集へ', edit_channel_path(params[:id]), class: 'd-metal btn py-0 px-2' %>
+      </div>
+
+    </div>
+  <% end %>
+  
+<% else %>
+  <div class="blue-w text-center m-0 p-2">動画が登録されていません...</div>
+<% end %>

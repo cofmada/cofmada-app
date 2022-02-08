@@ -53,7 +53,7 @@ class ChannelsController < ApplicationController
   end
   
   def destroy
-    if delete_ids[:video_id].present?
+    if delete_ids.present?
       @channel.videos.where(id: delete_ids[:video_id]).destroy_all
       flash[:success] = '動画を削除しました。'
       redirect_to edit_channel_url
@@ -84,10 +84,6 @@ class ChannelsController < ApplicationController
   end
   
   def delete_ids
-    if params[:channel].present?
-      params.require(:channel).permit(video_id: [])
-    else
-      params.require(:channel)
-    end
+    params.require(:channel).permit(video_id: []) if params[:channel].present?
   end
 end

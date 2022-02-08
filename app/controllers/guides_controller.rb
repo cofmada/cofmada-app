@@ -47,14 +47,14 @@ class GuidesController < ApplicationController
     if @guide_video.present?
       if @guide_video.save
         flash[:success] = "登録完了！"
-        redirect_to edit_channel_path
+        redirect_to edit_guide_path
       else
         flash.now[:danger] = '登録できませんでした...<br>入力内容を確認してください。'
         render :edit
       end
     elsif @guide.update(guide_params)
       flash[:success] = '更新完了！'
-      redirect_to edit_channel_path
+      redirect_to edit_guide_path
     else
       flash.now[:danger] = '登録できませんでした...<br>入力内容を確認してください。'
       render :edit
@@ -62,8 +62,8 @@ class GuidesController < ApplicationController
   end
 
   def destroy
-    if delete_ids[:video_id].present?
-      @guide.videos.where(id: delete_ids[:video_id]).destroy_all
+    if delete_ids.present?
+      @guide.guide_videos.where(id: delete_ids[:video_id]).destroy_all
       flash[:success] = '動画を削除しました。'
       redirect_to edit_guide_url
     elsif @guide.destroy
@@ -93,11 +93,7 @@ class GuidesController < ApplicationController
   end
   
   def delete_ids
-    if params[:video_id].present?
-      params.require(:guide).permit(video_id: [])
-    else
-      params.require(:guide)
-    end
+    params.require(:guide).permit(video_id: []) if params[:video_id].present?
   end
   
 end

@@ -248,7 +248,7 @@ tbody{
 .videos {
   max-height: 549px;
 }
-th, .th, .message {
+th, .message {
   font-size: 22px;
   border-top: 2px solid #d8dcdc;
   border-right: 2px solid #666;
@@ -303,7 +303,7 @@ a > img {
   background-image: linear-gradient(135deg, #ccc 0%, white 53%, #ccc 100%);
 }
 .scroll::-webkit-scrollbar-thumb, th.now, #error_explanation,
-.y_scroll::-webkit-scrollbar-thumb {
+.y_scroll::-webkit-scrollbar-thumb, #onair, #next {
   background-image: linear-gradient(135deg, #727171 0%, #0d0015 20%, #727171 34%, white 60%, #16160e 100%);
   border-top: 2px solid #d8dcdc;
   border-right: 2px solid #666;
@@ -377,13 +377,12 @@ img {
   border: none;
   min-width: 176px;
   max-width: 256px;
-  min-height: 104px;
-  max-height: 144px;
+  height: auto;
 }
 .thumb {
   border: none;
   width: 90px;
-  height: 90px;
+  height: auto;
 }
 .thumb_alt{
   background-color: #fffafa;
@@ -453,6 +452,6 @@ span:hover {
   color: #ffd700;
 }
 
-.all_check > .hide {
+.all_check > .hide, #hidden, #hiddens {
   display:none;
 }

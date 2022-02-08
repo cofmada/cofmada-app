@@ -13,10 +13,7 @@
 
 <div class="text-center wind m-0 p-1">登録動画一覧</div>
 
-<div class="blue-w p-0 m-0">
-  <div class="text-center border-bottom mini m-0 py-2 px-0">※動画をチェックし【削除】で一括削除できます</div>
-  <%= render 'timetable' %>
-</div>
+<%= render 'timetable', guide: @guide, videos: @videos %>
 
 <%= javascript_pack_tag 'user/forms' %>
 <%= javascript_pack_tag 'user/timetable' %>
