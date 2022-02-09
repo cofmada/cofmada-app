@@ -1,10 +1,10 @@
-<h4 class="row now align-items-center text-center py-1 m-0">
+<div class="row now align-items-center text-center py-1 m-0">
   <div class="col-2 text-center m-0 p-0"></div>
-  <div class="col-8 text-center m-0 p-0">番組表編集ページ</div>
+  <h4 class="col-8 text-center m-0 p-0">番組表編集ページ</h4>
   <div class="col-2 text-center m-0 p-0">
     <%= link_to '戻る', guides_path, class: 'btn metal py-0 mt-1' %>
   </div>
-</h4>
+</div>
 
 <div class="text-center wind m-0 p-1">名前・日付変更</div>
 <%= render'guideform', guide: @guide %>

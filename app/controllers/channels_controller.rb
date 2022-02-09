@@ -35,6 +35,7 @@ class ChannelsController < ApplicationController
   def update
     @videos = @channel.videos.all
     @video = @channel.videos.build(video_params) if params[:video].present?
+    
     if @video.present?
       if @video.save
         flash[:success] = "登録完了！"

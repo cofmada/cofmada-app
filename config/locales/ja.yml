@@ -8,6 +8,7 @@ ja:
       user:
         name: 名前
         email: Eメール
+        password: パスワード
       channel:
         channel_name: Ch名
         channel_url: 入力された値

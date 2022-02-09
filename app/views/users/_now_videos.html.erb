@@ -1,103 +1,115 @@
-<% @guides.each do |g| %>
-  <div class="row blue-w text-center align-middle py-2 px-0 m-0">
-    <div class="text-center my-2"><%= link_to '『'+g.guide_name+'』', guide_path(g.id) %></div>
+<div class="row blue-w text-center align-middle py-2 px-0 m-0">
+  
+  <div class="text-center my-2"><%= link_to '『'+guide.guide_name+'』', guide_path(guide.id) %></div>
+  
+  <div class="col-md-6 m-0 p-0 slide">
+    <div class="gold text-start mx-0 px-2" id="onair"></div>
+  </div>
+  
+  <div class="gold col-md-6 m-0 p-0 slide">
+    <div class="text-start mx-0 px-2" id="next"></div>
+  </div>
+  
+  <% hour = 0 %>
+  <% while hour < 24 %>
     
-    <div class="col-md-6 m-0 p-0 slide">
-      <div class="gold text-start mx-0 px-2" id="onair"></div>
-    </div>
-    
-    <div class="gold col-md-6 m-0 p-0 slide">
-      <div class="text-start mx-0 px-2" id="next"></div>
-    </div>
-    
-    <% h = 0 %>
-    <% while h < 24 %>
+    <template id="just<%= hour %>">
+      <% just = guide.guide_videos.where(start_h: hour, start_m: 0).pluck(:video_id) %>
       
-      <template id="just<%= h %>">
-        <% just = g.guide_videos.where(start_h: h, start_m: 0).pluck(:video_id) %>
-        
-        <% if just.present? %>
-          <div class="row now height y_scroll text-start small m-0 p-0">
-            <% just_v = @videos.where(id: just).distinct %>
-            
-            <% just_v.each do |v| %>
-              <div class="wide m-0 pt-1 px-0">
+      <% if just.present? %>
+        <div class="row now height y_scroll text-start small m-0 p-0">
+          <% just_v = @videos.where(id: just).distinct %>
+          
+          <% just_v.each do |video| %>
+            <div class="wide m-0 pt-1 px-0">
+              
+              <% if video.thumbnail.present? %>
+                <figure class="hover-parent m-0 p-0">
+                  <a href="<%= video.video_url %>"><img src="<%= video.thumbnail %>" alt="" class="px-1 m-0"></a>
+                  <figcaption class="hover-mask m-0 px-2"><%= video.video_name %></figcaption>
+                </figure>
                 
-                <% if v.thumbnail.present? %>
-                  <figure class="hover-parent m-0 p-0">
-                    <a href="<%= v.video_url %>">
-                      <img src="<%= v.thumbnail %>" alt="" class="px-1 m-0">
-                      <figcaption class="hover-mask m-0 px-2"><%= v.video_name %></figcaption></a>
-                  </figure>
-                <% else %>
-                  <div class="thumb_alt text-center my-0 mx-1 p-0">
-                    <%= image_tag "/assets/"+v.media+".png", alt: "", class: "thumb px-1 m-0" %>
-                    <div class="thumb_cap text-center"><%= v.media %></div>
-                  </div>
-                <% end %>
-                
-                <% ch = @channels.find_by(id: v.channel_id) %>
-                <% if ch.icon.present? %>
-                  <img src="<%= ch.icon %>" alt="" class="icon">
-                <% else %>
-                  <div class="icon"></div>
-                <% end %>
-                <div class="omit">
-                  <a href="<%= ch.channel_url %>"><span><%= ch.channel_name %></span></a>
+              <% else %>
+                <div class="thumb_alt text-center my-0 mx-1 p-0">
+                  <%= image_tag "/assets/"+video.media+".png", alt: "", class: "thumb px-1 m-0" %>
+                  <div class="thumb_cap text-center"><%= video.media %></div>
                 </div>
                 
+              <% end %>
+              
+              <% ch = @channels.find_by(id: video.channel_id) %>
+              
+              <% if ch.icon.present? %>
+                <img src="<%= ch.icon %>" alt="" class="icon">
+                
+              <% else %>
+                <div class="icon"></div>
+                
+              <% end %>
+              
+              <div class="omit">
+                <a href="<%= ch.channel_url %>"><span><%= ch.channel_name %></span></a>
               </div>
-            <% end %>
-          </div>
-        <% else %>
-          <div class="now small text-center">登録されている動画はありません</div>
-        <% end %>
-      </template>
-      
-      <template id="half<%= h %>">
-        <% half = g.guide_videos.where(start_h: h, start_m: 30).pluck(:video_id) %>
+              
+            </div>
+          <% end %>
+        </div>
         
-        <% if half.present? %>
-          <div class="row now height y_scroll text-start small m-0 p-0">
-            <% half_v = @videos.where(id: half).distinct %>
-            
-            <% half_v.each do |v| %>
-              <div class="wide m-0 pt-1 px-0">
+      <% else %>
+        <div class="now small text-center">登録されている動画はありません</div>
+      <% end %>
+    </template>
+    
+    <template id="half<%= hour %>">
+      <% half = guide.guide_videos.where(start_h: hour, start_m: 30).pluck(:video_id) %>
+      
+      <% if half.present? %>
+        <div class="row now height y_scroll text-start small m-0 p-0">
+          <% half_v = @videos.where(id: half).distinct %>
+          
+          <% half_v.each do |video| %>
+            <div class="wide m-0 pt-1 px-0">
+              
+              <% if video.thumbnail.present? %>
+                <figure class="hover-parent m-0 p-0">
+                  <a href="<%= video.video_url %>"><img src="<%= video.thumbnail %>" alt="" class="px-1 m-0"></a>
+                  <figcaption class="hover-mask m-0 px-2"><%= video.video_name %></figcaption>
+                </figure>
                 
-                <% if v.thumbnail.present? %>
-                  <figure class="hover-parent m-0 p-0">
-                    <a href="<%= v.video_url %>">
-                      <img src="<%= v.thumbnail %>" alt="" class="px-1 m-0">
-                      <figcaption class="hover-mask m-0 px-2"><%= v.video_name %></figcaption></a>
-                  </figure>
-                <% else %>
-                  <div class="thumb_alt text-center my-0 mx-1 p-0">
-                    <%= image_tag "/assets/"+v.media+".png", alt: "", class: "thumb px-1 m-0" %>
-                    <div class="thumb_cap text-center"><%= v.media %></div>
-                  </div>
-                <% end %>
-                
-                <% ch = @channels.find_by(id: v.channel_id) %>
-                <% if ch.icon.present? %>
-                  <img src="<%= ch.icon %>" alt="" class="icon">
-                <% else %>
-                  <div class="icon"></div>
-                <% end %>
-                <div class="omit">
-                  <a href="<%= ch.channel_url %>"><span><%= ch.channel_name %></span></a>
+              <% else %>
+                <div class="thumb_alt text-center my-0 mx-1 p-0">
+                  <%= image_tag "/assets/"+video.media+".png", alt: "", class: "thumb px-1 m-0" %>
+                  <div class="thumb_cap text-center"><%= video.media %></div>
                 </div>
                 
+              <% end %>
+              
+              <% ch = @channels.find_by(id: video.channel_id) %>
+              
+              <% if ch.icon.present? %>
+                <img src="<%= ch.icon %>" alt="" class="icon">
+                
+              <% else %>
+                <div class="icon"></div>
+                
+              <% end %>
+              
+              <div class="omit">
+                <a href="<%= ch.channel_url %>"><span><%= ch.channel_name %></span></a>
               </div>
-            <% end %>
-          </div>
-        <% else %>
-          <div class="now small text-center">登録されている動画はありません</div>
-        <% end %>
-      </template>
+              
+            </div>
+          <% end %>
+        </div>
         
-      <% h += 1 %>
+      <% else %>
+        <div class="now small text-center">登録されている動画はありません</div>
+        
+      <% end %>
+    </template>
       
-    <% end %>  
-  </div>  
-<% end %>
+    <% hour += 1 %>
+    
+  <% end %>  
+</div>  
 

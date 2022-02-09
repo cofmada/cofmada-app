@@ -1,28 +1,37 @@
 <div class="blue-w text-center py-2">ログイン認証</div>
+
 <div class="blue-w pt-4">
-  <%= form_with(url: login_path, scope: :session) do |f| %>
+  <%= form_with(url: login_path, scope: :session) do |form| %>
+  
     <div class="row px-0 mx-0">
       <div class="col-4 small text-end mt-4 px-1">
-        <%= f.label :email, 'Eメール:' %>
+        <%= form.label :email, 'Eメール:' %>
       </div>
+      
       <div class="col-5 offset-col-3 mt-4">
-        <%= f.email_field :email, class: 'form-control' %>
+        <%= form.email_field :email, class: 'form-control' %>
       </div>
     </div>
+    
     <div class="row px-0 mx-0">
       <div class="col-4 small text-end mt-4 px-1">
-        <%= f.label :password, 'パスワード:' %>
+        <%= form.label :password, 'パスワード:' %>
       </div>
+      
       <div class="col-5 offset-col-3 mt-4">
-        <%= f.password_field :password, class: 'form-control' %>
+        <%= form.password_field :password, class: 'form-control' %>
       </div>
     </div>
+    
     <div class=" text-center mt-4">
-      <%= f.submit 'ログイン', class: 'b-metal py-1 px-3' %>
+      <%= form.submit 'ログイン', class: 'b-metal py-1 px-3' %>
     </div>
+    
   <% end %>
+  
   <div class="text-center my-4">
     <%= link_to 'ユーザー登録', signup_path, class: 'metal btn px-2 py-2 mx-4' %>
     <%= link_to 'ＴＯＰへ', root_path, class: 'metal btn mx-4 px-4 py-2' %>
   </div>
 </div>
+

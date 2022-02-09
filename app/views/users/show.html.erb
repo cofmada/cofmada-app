@@ -1,26 +1,32 @@
 <%= render 'layouts/tabs' %>
+
 <div class="row p-0 m-0">
   <div class="col-md-7 blue-w px-0 py-3 m-0">
     <div class="row p-0 m-0">
+      
       <div class="col-6 text-end px-2 m-0">
         <%= image_tag @user.avatar.url, alt: "" %>
       </div>
+      
       <div class="row col-6 text-start small px-2 m-0">
         <div class="text-start">ユーザー：<%= @user.name %></div>
         <div class="text-start">番組表数：<%= @count_guides %></div>
         <div class="text-start">登録Ch数：<%= @count_channels %></div>
         <div class="text-start">総動画数：<%= @count_videos %></div>
       </div>
+      
     </div>
-  </div>      
+  </div>
+  
   <%= render 'profile_img' %>
 </div>
 
 <div class="wind small text-center py-1 m-0"><%= l Date.current %>&nbsp;放送予定の番組表</div>
 
-<% if @guides.present? %>
-  <%= render 'now_videos' %>
+<% if @guide.present? %>
+  <%= render 'now_videos', guide: @guide %>
   <%= javascript_pack_tag 'user/profile' %>
+  
 <% else %>
   <div class="blue-w text-center py-1 m-0">登録されている番組表はありません</div>
 <% end %>

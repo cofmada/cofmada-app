@@ -15,9 +15,9 @@
   <body data-turbolinks="false">
     <header class="m-0 p-0">
       <div class="container-fruid text-center">
-        <h1 class="row now align-items-center text-center py-2 m-0">
+        <div class="row now align-items-center text-center py-2 m-0">
           <div class="col-3 m-0 p-0"></div>
-          <div class="col-6 text-center m-0 p-0">My番組表</div>
+          <h1 class="col-6 text-center m-0 p-0">My番組表</h1>
           
           <% if logged_in? && current_page?(root_path) %>
             <div class="col-3 text-center m-0 p-0">
@@ -31,7 +31,7 @@
           <% else %>
             <div class="col-3 m-0 p-0"></div>
           <% end %>
-        </h1>  
+        </div>  
           
         <%= render 'layouts/clock' %>
         <%= render 'layouts/flash_messages' %>

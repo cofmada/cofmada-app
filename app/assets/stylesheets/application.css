@@ -452,6 +452,6 @@ span:hover {
   color: #ffd700;
 }
 
-.all_check > .hide, #hidden, #hiddens {
+.all_check > .hide, #hidden_a, #hidden_b {
   display:none;
 }

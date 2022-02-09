@@ -26,14 +26,14 @@ class GuidesController < ApplicationController
     @channels = current_user.channels.all
     @videos = @guide.videos.all
     @guide_videos = @guide.guide_videos.all
-    @start = @guide_videos.distinct.pluck(:start_h)
+    @start = @guide_videos.distinct.pluck(:start_h, :start_m)
   end
 
   def edit
     @channels = current_user.channels.all
     @videos = @guide.videos.all
     @guide_videos = @guide.guide_videos.all
-    @start = @guide_videos.distinct.pluck(:start_h)
+    @start = @guide_videos.distinct.pluck(:start_h, :start_m)
     @guide_video = @guide.guide_videos.build
   end
 
@@ -41,7 +41,7 @@ class GuidesController < ApplicationController
     @channels = current_user.channels.all
     @videos = @guide.videos.all
     @guide_videos = @guide.guide_videos.all
-    @start = @guide_videos.distinct.pluck(:start_h)
+    @start = @guide_videos.distinct.pluck(:start_h, :start_m)
     @guide_video = @guide.guide_videos.build(time_params) if time_params.present?
 
     if @guide_video.present?
@@ -63,7 +63,7 @@ class GuidesController < ApplicationController
 
   def destroy
     if delete_ids.present?
-      @guide.guide_videos.where(id: delete_ids[:video_id]).destroy_all
+      @guide.guide_videos.where(id: delete_ids[:id]).destroy_all
       flash[:success] = '動画を削除しました。'
       redirect_to edit_guide_url
     elsif @guide.destroy
@@ -93,7 +93,7 @@ class GuidesController < ApplicationController
   end
   
   def delete_ids
-    params.require(:guide).permit(video_id: []) if params[:video_id].present?
+    params.require(:guide).permit(id: [],) if params[:guide][:id].present?
   end
   
 end

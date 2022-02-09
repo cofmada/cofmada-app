@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
     require 'google/apis/youtube_v3'
     youtube = Google::Apis::YoutubeV3::YouTubeService.new
     youtube.key = Rails.application.credentials[:youtube_api_key]
+    
     if params[:video_name].present?
       if params[:search_key].present?
         youtube_search_list = youtube.list_searches(:snippet, type: 'video', channel_id: params[:search_key], max_results: 10, order: :date,  q: word)

@@ -1,6 +1,6 @@
-<%= form_with(model: channel, method: :post) do |f| %>
+<%= form_with(model: channel, method: :post) do |form| %>
   <%= render 'layouts/error_messages', model: @video %>
-  <%= f.hidden_field :channel_name, value: channel.channel_name %>
+  <%= form.hidden_field :channel_name, value: channel.channel_name, id: 'hidden_name' %>
   
   <div class="row align-items-center wind m-0 p-1">
     <div class="col-1 p-0 m-0"></div>
@@ -49,7 +49,7 @@
     </div>    
         
     <div class=" text-center mb-2 mt-0">
-      <%= f.submit '登録', class: 'b-metal btn mt-2 py-0' %>
+      <%= form.submit '登録', class: 'b-metal btn mt-2 py-0' %>
     </div>
   </div>  
 <% end %>

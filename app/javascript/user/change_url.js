@@ -2,21 +2,25 @@ $(document).on('turbolinks:load', function() {
 
   let path = location.pathname;
   let newForm = /^.*\/new.*$/;
+  let signUp = /^.*\/signup.*$/;
   let editForm = /^.*\/edit.*$/;
   let channelInt = path.slice(10);
   let guideInt = path.slice(8);
 
-  const switching = () => {
-    $('#hidden').show();
-    $('#show').hide();
+  const switchingA = () => {
+    $('#hidden_a').show();
+    $('#show_a').hide();
   };
-  const switchings = () => {
-    $('#hiddens').show();
-    $('#shows').hide();
+  const switchingB = () => {
+    $('#hidden_b').show();
+    $('#show_b').hide();
   };
 
-  if (path.match(newForm)) {
+  if (path.match(newForm) || path.match(signUp)) {
     return;
+  }
+  else if (path == '/users') {
+    history.replaceState('', '', `/signup`);
   }
   else if (path == '/channels') {
     history.replaceState('', '', `${ path }/new`);
@@ -26,17 +30,17 @@ $(document).on('turbolinks:load', function() {
   }
   
   if (path.match(editForm)) {
-    switchings();
-    switching();
+    switchingB();
+    switchingA();
   }
   else if (path.match('/channels/') && $.isNumeric(channelInt)) {
-    switchings();
-    switching();
+    switchingB();
+    switchingA();
     history.replaceState('', '', `${ path }/edit`);
   }
   else if (path.match('/guides/') && $.isNumeric(guideInt)) {
-    switchings();
-    switching();
+    switchingB();
+    switchingA();
     history.replaceState('', '', `${ path }/edit`);
   }
 });

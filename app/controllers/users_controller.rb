@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     counts(@user)
     today = l Date.current
-    @guides = @user.guides.where(on_air: today)
+    @guide = @user.guides.find_by(on_air: today)
     @channels = @user.channels.all
     @videos = @user.videos.all
   end

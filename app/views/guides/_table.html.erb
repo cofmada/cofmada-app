@@ -1,4 +1,5 @@
 <table class="table  table-sm text-center align-middle my-3">
+  
   <thead>
     <tr>
       <th style="width: 30%">ｃｈ名</th>
@@ -9,18 +10,24 @@
       <th style="width: 15%"></th>
     </tr>
   </thead>
+  
   <tbody>
     <% if @guide.guide_name.present? %>
-      <% guides.each do |v| %>
+      <% guides.each do |video| %>
+      
         <tr>
-          <td><%= v.video_name %></td>
+          <td><%= video.video_name %></td>
+          
           <% if current_page?(edit_guide_path) %>
             <td><%= link_to '削除',  guide_path(params[:id], ch.id), method: :delete, data: { confirm: '削除しますか？' }, class: 'btn d-metal p-1' %></td>
+          
           <% else %>
             <td></td>
           <% end %>
         </tr>
+        
       <% end %>
     <% end %>
   </tbody>
+  
 </table>
